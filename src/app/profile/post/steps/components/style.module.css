@@ -1,0 +1,35 @@
+
+
+.imgUploadContainer {
+  @apply flex gap-4 flex-col my-4 bg-white py-10 px-5;
+}
+.imgUpload {
+  @apply mt-3 h-[400px] border-[#CCD6F6] border-b-2;
+}
+
+.buttonUpload {
+  @apply hover:text-[#112240] inline-block w-[150px] relative p-3 text-white text-center cursor-pointer font-bold rounded-md;
+}
+
+.inputImg {
+  @apply inline-block border w-[90px] cursor-pointer absolute border-fuchsia-800 opacity-0 z-[21];
+}
+
+.imgContainer {
+  @apply flex flex-wrap gap-4 mt-5;
+}
+
+.noImages {
+  @apply flex flex-col items-center justify-center w-[100%] h-[100%];
+}
+
+.img {
+  @apply relative my-2 h-[50px] w-[100px];
+}
+
+.icon {
+  @apply text-gray-700 cursor-pointer hover:text-red-600;
+}
+
+
+

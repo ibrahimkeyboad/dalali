@@ -1,0 +1,17 @@
+.signupSection {
+  @apply max-w-[1240px] py-20 m-auto my-[5%];
+}
+.form {
+  @apply w-[100%] rounded-md py-20  md:w-[60%] m-auto items-center gap-5 flex flex-col;
+}
+
+.input-control {
+  @apply sm:w-[60%] w-[80%];
+}
+
+.desc {
+  @apply text-gray-400 text-sm ml-2;
+}
+.btn {
+  @apply bg-[#098366]  rounded-lg py-3 mx-10 tracking-wider text-white;
+}
