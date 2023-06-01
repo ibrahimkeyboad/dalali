@@ -30,7 +30,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/db/index.ts",
-    "src/app/profile/post/steps/page.tsx"
+    "src/app/profile/post/create/page.tsx"
   ],
   "exclude": ["node_modules"]
 }

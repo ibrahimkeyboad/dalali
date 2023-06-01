@@ -1,8 +1,7 @@
 import { Metadata } from 'next';
-import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Fungua account yako',
+  title: 'Weka nyumba mpya',
 };
 
 interface props {
@@ -11,7 +10,15 @@ interface props {
 
 export default function StepsLayout({ children }: props) {
   return (
-    <div className='max-w-[900px] my-[10%] mx-auto dark:bg-[#112240] shadow-lg rounded-lg bg-white p-8'>
+    <div
+      className='
+          max-w-[60rem] 
+          my-[25vh]
+          mx-auto
+          dark:bg-[#112240] 
+          shadow-lg rounded-lg 
+          bg-white 
+          p-8'>
       {children}
     </div>
   );

@@ -1,21 +1,33 @@
 interface props {
-  type: string;
+  id: string;
+  type?: string;
+  label: string;
+  disabled?: boolean;
+  formatPrice?: boolean;
   name: string;
-  hint: string;
-  formik: any;
+  register?: any;
+  errors: any;
 }
 
-function TextField({ type, name, hint, formik }: props) {
+function TextField({
+  errors,
+  id,
+  label,
+  register,
+  disabled,
+  formatPrice,
+  type = 'text',
+}: props) {
   return (
     <input
       className={`border-b-2 outline-none p-2  py-1 px-2 focus:border-[#098366] outline-none; dark:bg-[#112240] w-[100%] ${
-        formik.errors &&
-        formik.touched[name] &&
-        formik.errors[name] &&
+        errors.errorsrors &&
+        errors.touched[id] &&
+        errors.errors[id] &&
         'border-red-400'
       }`}
-      placeholder={hint}
-      {...formik.getFieldProps(name)}
+      placeholder={label}
+      {...register(id)}
       type={type}
     />
   );
