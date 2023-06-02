@@ -8,7 +8,7 @@ function Heading({ title, center, subtitle }: HeadingProps) {
   return (
     <div className={center ? 'text-center' : 'text-start'}>
       <h2 className='text-2xl font-bold text-gray-300'>{title}</h2>
-      <h3 className='font-light text-gray-500 mt-2'>{subtitle}</h3>
+      <h3 className='font-normal text-gray-500 mt-2'>{subtitle}</h3>
     </div>
   );
 }

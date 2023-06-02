@@ -7,10 +7,20 @@ interface Props {
   beds: number;
   sofa: number;
   bathrooms: number;
-  onHandlerChange: (value: number) => void;
+  onHandlerBeedRoom: (value: number) => void;
+  onHandlerBathRoom: (value: number) => void;
+  onHandlerSofa: (value: number) => void;
 }
 
-function Stepone({ bathrooms, bedrooms, sofa, onHandlerChange }: Props) {
+function Stepone({
+  bathrooms,
+  bedrooms,
+  sofa,
+  onHandlerBathRoom,
+  beds,
+  onHandlerBeedRoom,
+  onHandlerSofa,
+}: Props) {
   return (
     <section className='flex flex-col gap-8 divide-dashed'>
       <Heading
@@ -18,19 +28,19 @@ function Stepone({ bathrooms, bedrooms, sofa, onHandlerChange }: Props) {
         subtitle='What amenitis do you have?'
       />
       <Counter
-        onChange={onHandlerChange}
+        onChange={onHandlerBeedRoom}
         value={bedrooms}
         title='Rooms'
         subtitle='How many rooms do you have?'
       />
       <Counter
-        onChange={onHandlerChange}
+        onChange={onHandlerBathRoom}
         value={bathrooms}
         title='Bathrooms'
         subtitle='How many bathrooms do you have?'
       />
       <Counter
-        onChange={onHandlerChange}
+        onChange={onHandlerSofa}
         value={sofa}
         title='Sofa'
         subtitle='How many sofa do you have?'

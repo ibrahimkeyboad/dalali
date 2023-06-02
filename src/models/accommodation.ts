@@ -1,18 +1,12 @@
 import { Schema, model, models } from 'mongoose';
 
-interface Image {
-  url: string;
-  pulic: string;
-}
-
 interface Accommodation {
+  _id: Schema.Types.ObjectId;
   type: string;
   price: number;
   bedrooms: number;
   beds: number;
-
   sofa: number;
-
   street: string;
   city: string;
   bathrooms: number;
@@ -21,13 +15,26 @@ interface Accommodation {
   isAvailable: boolean;
   area: number;
   tags: string[];
-  imageCover: Image;
-  images: Image[];
+  imageCover: {
+    uri: string;
+    public_id: string;
+  };
+  images: [
+    {
+      uri: string;
+      public_id: string;
+    }
+  ];
   description: string;
 }
 
 const accommodationSchema = new Schema<Accommodation>(
   {
+    _id: {
+      type: Schema.Types.ObjectId,
+      required: false,
+    },
+
     type: {
       type: String,
       required: true,
@@ -64,13 +71,27 @@ const accommodationSchema = new Schema<Accommodation>(
       required: true,
     },
     imageCover: {
-      type: Image,
-      required: true,
+      uri: {
+        type: String,
+        required: true,
+      },
+      public_id: {
+        type: String,
+        required: true,
+      },
     },
-    images: {
-      type: [Image],
-      required: true,
-    },
+    images: [
+      {
+        uri: {
+          type: String,
+          required: true,
+        },
+        public_id: {
+          type: String,
+          required: true,
+        },
+      },
+    ],
     isAvailable: {
       type: Boolean,
       default: true,
@@ -91,6 +112,7 @@ const accommodationSchema = new Schema<Accommodation>(
   }
 );
 
-const User = models.User || model('User', accommodationSchema);
+const Accommodation =
+  models.Accommodation || model('Accommodation', accommodationSchema);
 
-export default User;
+export default Accommodation;

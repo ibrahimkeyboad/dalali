@@ -20,7 +20,7 @@ function TextField({
 }: props) {
   return (
     <input
-      className={`border-b-2 outline-none p-2  py-1 px-2 focus:border-[#098366] outline-none; dark:bg-[#112240] w-[100%] ${
+      className={`border-b-2 outline-none p-2   py-1 px-2 focus:border-[#098366] outline-none; dark:bg-[#112240] w-[100%] ${
         errors.errorsrors &&
         errors.touched[id] &&
         errors.errors[id] &&

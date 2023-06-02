@@ -27,6 +27,7 @@ function Counter({ onChange, subtitle, title, value }: CounterProps) {
       </div>
       <div className='flex items-center gap-4 text-gray-50'>
         <button
+          type='button'
           onClick={onReduce}
           className='
         w-10 
@@ -45,6 +46,7 @@ function Counter({ onChange, subtitle, title, value }: CounterProps) {
         <span className='font-light text-xl text-neutral-300'>{value}</span>
         <button
           onClick={onAdd}
+          type='button'
           className='
             w-10 
             h-10 

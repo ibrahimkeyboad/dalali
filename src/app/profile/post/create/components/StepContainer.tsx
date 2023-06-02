@@ -6,6 +6,7 @@ import { useForm, SubmitHandler, FieldValues } from 'react-hook-form';
 import StepTwo from './steps/step-02';
 import StepThree from './steps/step-03';
 import StepFour from './steps/step-04';
+import * as yup from 'yup';
 
 export enum Steps {
   step1 = 1,
@@ -18,6 +19,17 @@ type ID = 'bedrooms' | 'bathrooms' | 'beds' | 'sofa';
 
 function StepContainer() {
   const [step, setStep] = useState(Steps.step1);
+
+  const schema = yup.object({
+    bedrooms: yup.number().required().max(5, 'Bed rooms should be less than 6'),
+    bathrooms: yup
+      .number()
+      .required()
+      .max(3, 'bathrooms should be less than 4'),
+    city: yup.string().required('city is required'),
+    street: yup.string().required('street is required'),
+  });
+
   const {
     register,
     handleSubmit,
@@ -31,6 +43,7 @@ function StepContainer() {
       beds: 1,
       sofa: 1,
     },
+    // resolver: yupResolver(schema),
   });
 
   const bedrooms = watch('bedrooms');
@@ -55,7 +68,7 @@ function StepContainer() {
     }
   };
 
-  function setCustomValue(id: ID, value: any) {
+  function setCustomValue(id: ID, value: number) {
     setValue(id, value, {
       shouldDirty: true,
       shouldTouch: true,
@@ -65,7 +78,9 @@ function StepContainer() {
 
   let bodyContent = (
     <StepOne
-      onHandlerChange={(value) => setCustomValue('bedrooms', value)}
+      onHandlerBathRoom={(value) => setCustomValue('bathrooms', value)}
+      onHandlerBeedRoom={(value) => setCustomValue('bedrooms', value)}
+      onHandlerSofa={(value) => setCustomValue('sofa', value)}
       bathrooms={bathrooms}
       bedrooms={bedrooms}
       beds={beds}
@@ -96,9 +111,6 @@ function StepContainer() {
         md:h-auto
         border-0
         rounded-lg
-        relative
-        flex
-        flex-col
         w-full
         outline-none
         focus:outline-none'>

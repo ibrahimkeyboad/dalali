@@ -10,7 +10,7 @@ interface StepProp {
 
 function StepThree({ register, errors, disabled }: StepProp) {
   return (
-    <div className='flex flex-col gap-8'>
+    <div className='flex flex-col w-[60%] gap-10'>
       <Heading
         title='How would you describe your place?'
         subtitle='Short and sweet works best!'
@@ -23,7 +23,6 @@ function StepThree({ register, errors, disabled }: StepProp) {
         register={register}
         errors={errors}
       />
-      <hr />
       <TextField
         label='Description'
         id='description'
