@@ -7,7 +7,7 @@ import Button from './Button';
 interface ModalProps {
   isOpen?: boolean;
   onClose: () => void;
-  onSubmint: () => void;
+  onSubmit: () => void;
   title?: string;
   body?: ReactElement;
   footer?: ReactElement;
@@ -20,7 +20,7 @@ interface ModalProps {
 function Modal({
   actionLabel,
   onClose,
-  onSubmint,
+  onSubmit,
   body,
   disable,
   footer,
@@ -46,8 +46,9 @@ function Modal({
       return;
     }
 
-    onSubmint();
-  }, [disable, onSubmint]);
+    onSubmit();
+    onClose();
+  }, [disable, onSubmit, onClose]);
 
   useEffect(() => {
     setShowModal(isOpen);
@@ -135,7 +136,7 @@ function Modal({
                     '>
                   <IoMdClose size={18} />
                 </button>
-                <div className='text-lg  font-semibold'>{title}</div>
+                <h2 className='text-lg  font-semibold'>{title}</h2>
               </div>
               {/* Body */}
               <div className='relative p-6 flex-auto'>{body}</div>

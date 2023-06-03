@@ -30,19 +30,39 @@ function StepContainer() {
     street: yup.string().required('street is required'),
   });
 
+  interface FormData {
+    bedrooms: number;
+    bathrooms: number;
+    beds: number;
+    sofa: number;
+    imageCover: {
+      label: string;
+      uri: File | null;
+    };
+    images: [
+      {
+        label: string;
+        uri: File | null;
+      }
+    ];
+  }
+
   const {
     register,
     handleSubmit,
     setValue,
     watch,
     formState: { errors },
-  } = useForm({
+  } = useForm<FormData>({
     defaultValues: {
       bedrooms: 1,
       bathrooms: 1,
       beds: 1,
       sofa: 1,
-      imageCover: null,
+      imageCover: {
+        label: '',
+        uri: null,
+      },
       images: [],
     },
     // resolver: yupResolver(schema),
@@ -73,11 +93,43 @@ function StepContainer() {
   };
 
   function setCustomValue(id: ID, value: any) {
+    console.log('value', value);
     setValue(id, value, {
       shouldDirty: true,
       shouldTouch: true,
       shouldValidate: true,
     });
+  }
+
+  function setImageValue(
+    id: ID,
+    { uri, label }: { uri: File | null; label: string }
+  ) {
+    // console.log('value', value);
+    setValue(
+      id,
+      { label, uri },
+      {
+        shouldDirty: true,
+        shouldTouch: true,
+        shouldValidate: true,
+      }
+    );
+  }
+  function setImagesValue(
+    id: ID,
+    { uri, label }: { uri: File | null; label: string }
+  ) {
+    // console.log('value', value);
+    setValue(
+      id,
+      { label, uri },
+      {
+        shouldDirty: true,
+        shouldTouch: true,
+        shouldValidate: true,
+      }
+    );
   }
 
   let bodyContent = (
@@ -105,7 +157,10 @@ function StepContainer() {
   if (step === Steps.step4) {
     bodyContent = (
       <StepFour
-        handelerImageCover={(value) => setCustomValue('imageCover', value)}
+        handelerImageCover={(uri, label) =>
+          setImageValue('imageCover', { uri, label })
+        }
+        handelerImages={(uri, label) => setImageValue('images', { uri, label })}
         imageCover={imageCover}
       />
     );

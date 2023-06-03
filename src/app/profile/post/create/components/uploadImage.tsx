@@ -69,5 +69,3 @@ function UploadImage({
 }
 
 export default memo(UploadImage);
-
-export function UploadImages() {}
