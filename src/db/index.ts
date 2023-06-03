@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-async function connetDB() {
+async function connectDB() {
   try {
     const conn = await mongoose.connect(process.env.MONGODB_URI);
     console.log(`MongoDB Conneted At ${conn.connection.host}`);
@@ -8,4 +8,4 @@ async function connetDB() {
   }
 }
 
-export default connetDB;
+export default connectDB;

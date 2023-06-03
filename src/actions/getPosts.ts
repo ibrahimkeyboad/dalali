@@ -1,20 +1,22 @@
-// import Accommodation from '@/models/accommodation';
+import Accommodation from '@/models/accommodation';
+import connectDB from '@/db';
 
-// async function getPosts() {
-//   try {
-//     const posts = await Accommodation.find();
+async function getPosts() {
+  try {
+    connectDB()
+    const posts = await Accommodation.find();
 
-//     console.log(posts);
+    console.log(posts);
 
-//     if (!posts) {
-//       return [];
-//     }
+    if (!posts) {
+      return [];
+    }
 
-//     return posts;
-//   } catch (error) {
-//     console.log('error', error);
-//     return [];
-//   }
-// }
+    return posts;
+  } catch (error) {
+    console.log('error', error);
+    return [];
+  }
+}
 
-// export default getPosts;
+export default getPosts;

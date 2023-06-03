@@ -5,10 +5,11 @@ import Heading from '@/components/Heading';
 import ImageUpload from '../ImageUpload';
 
 interface StepProp {
-  register: any;
+  handelerImageCover: (value: any) => void;
+  imageCover: string | null;
 }
 
-function StepFour({ register }: StepProp) {
+function StepFour({ handelerImageCover, imageCover }: StepProp) {
   const [images, setImages] = useState<File[]>([]);
 
   function removeHandler(index: number) {
@@ -24,6 +25,7 @@ function StepFour({ register }: StepProp) {
     files.forEach((file) => {
       num += 1;
       if (num <= 10) {
+        handelerImageCover(file);
         imgs.push(file);
         return imgs;
       }
@@ -37,6 +39,10 @@ function StepFour({ register }: StepProp) {
         title='Add some photos of your place'
         subtitle='Show people what your place looks like!'
       />
+
+      <div className='border'>
+        <h3>Upload a photo for your </h3>
+      </div>
       <UploadImage
         style={style}
         imageHandler={imageHandler}

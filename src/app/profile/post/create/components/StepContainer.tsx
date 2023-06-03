@@ -15,7 +15,7 @@ export enum Steps {
   step4 = 4,
 }
 
-type ID = 'bedrooms' | 'bathrooms' | 'beds' | 'sofa';
+type ID = 'bedrooms' | 'bathrooms' | 'beds' | 'sofa' | 'imageCover' | 'images';
 
 function StepContainer() {
   const [step, setStep] = useState(Steps.step1);
@@ -42,6 +42,8 @@ function StepContainer() {
       bathrooms: 1,
       beds: 1,
       sofa: 1,
+      imageCover: null,
+      images: [],
     },
     // resolver: yupResolver(schema),
   });
@@ -50,6 +52,8 @@ function StepContainer() {
   const bathrooms = watch('bathrooms');
   const beds = watch('beds');
   const sofa = watch('sofa');
+  const imageCover = watch('imageCover');
+  const images = watch('images');
 
   const onBack = useCallback(() => {
     setStep((value) => value - 1);
@@ -68,7 +72,7 @@ function StepContainer() {
     }
   };
 
-  function setCustomValue(id: ID, value: number) {
+  function setCustomValue(id: ID, value: any) {
     setValue(id, value, {
       shouldDirty: true,
       shouldTouch: true,
@@ -88,7 +92,7 @@ function StepContainer() {
     />
   );
 
-  console.log(step);
+  console.log('imageCover', imageCover);
 
   if (step === Steps.step2) {
     bodyContent = <StepTwo errors={errors} register={register} />;
@@ -99,7 +103,12 @@ function StepContainer() {
   }
 
   if (step === Steps.step4) {
-    bodyContent = <StepFour register={register} />;
+    bodyContent = (
+      <StepFour
+        handelerImageCover={(value) => setCustomValue('imageCover', value)}
+        imageCover={imageCover}
+      />
+    );
   }
 
   return (
