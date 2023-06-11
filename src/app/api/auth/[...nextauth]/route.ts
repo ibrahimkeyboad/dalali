@@ -1,7 +1,9 @@
 import clientPromise from '@/db/mongodb';
+import User from '@/models/user';
 import { MongoDBAdapter } from '@next-auth/mongodb-adapter';
 import NextAuth, { AuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import bcrypt from 'bcryptjs';
 import GoogleProvider from 'next-auth/providers/google';
 
 export const authOptions: AuthOptions = {
@@ -22,10 +24,8 @@ export const authOptions: AuthOptions = {
           throw new Error('Invalid Credetials');
         }
 
-        const user = await prisma.user.findUnique({
-          where: {
-            email: credentials.email,
-          },
+        const user = await User.findOne({
+          email: credentials.email.trim().toLowerCase(),
         });
 
         if (!user || !user.hashedPassword) {

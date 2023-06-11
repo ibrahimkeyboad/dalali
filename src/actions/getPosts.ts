@@ -3,10 +3,8 @@ import connectDB from '@/db';
 
 async function getPosts() {
   try {
-    connectDB()
+    connectDB();
     const posts = await Accommodation.find();
-
-    console.log(posts);
 
     if (!posts) {
       return [];

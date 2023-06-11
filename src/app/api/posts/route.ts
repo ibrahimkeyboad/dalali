@@ -1,10 +1,26 @@
 import Accommodation from '@/models/accommodation';
 import { NextResponse } from 'next/server';
 import connetDB from '@/db';
+import { FormData } from '@/app/profile/post/create/components/StepContainer';
 
 export async function Post(request: Request) {
-  connetDB();
-  const body = await request.json();
+  try {
+    connetDB();
+    const body: FormData = await request.json();
+
+    const { bathrooms, bedrooms, beds, imageCover, images, sofa } = body;
+
+    await Accommodation.create({
+      bathrooms,
+      bedrooms,
+      beds,
+      imageCover,
+      images,
+      sofa,
+    });
+  } catch (err: any) {
+    return new NextResponse(err, { status: 500 });
+  }
 }
 
 export async function GET(req: Request) {

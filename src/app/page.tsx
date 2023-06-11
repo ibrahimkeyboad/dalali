@@ -1,11 +1,12 @@
+import getPosts from '@/actions/getPosts';
 import Posts from '@/components/posts/Posts';
 import Accommodation from '@/models/accommodation';
-import React from 'react';
 
 async function Page() {
-  const res = await fetch('http://localhost:3000/api/posts');
-  const resData = await res.json();
-  console.log(resData);
+  // const res = await fetch('http://localhost:3000/api/posts');
+  // const resData = await res.json();
+  const resData = await getPosts();
+  console.log('resData', resData);
   return (
     <main
       className='

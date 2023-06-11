@@ -1,11 +1,11 @@
 import { hash } from 'bcryptjs';
 import User from '@/models/user';
 import { NextResponse } from 'next/server';
-import { connetDB } from '@/db';
+import connetDB from '@/db';
+import validator from 'validator';
 
 export async function POST(req: Request) {
   connetDB();
-  console.log('api router 😎');
 
   interface bodyData {
     name: string;
@@ -16,11 +16,16 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
 
-    console.log(body);
-
     const { name, email, password }: bodyData = body;
 
-    const exist = await User.findOne({ email });
+    if (!validator.isEmail(email)) {
+      return NextResponse.json(
+        { error: 'Invalid crendential' },
+        { status: 422 }
+      );
+    }
+
+    const exist = await User.findOne({ email: email.trim() });
 
     if (exist) {
       return NextResponse.json(
@@ -31,11 +36,15 @@ export async function POST(req: Request) {
       );
     }
 
-    const newPassword = await hash(password, 12);
+    const newPassword = await hash(password.trim(), 12);
 
-    await User.create({ email, name, password: newPassword });
+    await User.create({
+      email: email.trim().toLowerCase(),
+      name: name.trim(),
+      password: newPassword,
+    });
 
-    return NextResponse.json({ msg: 'Imeisha iyo😎' });
+    return NextResponse.json({ msg: 'Imeisha iyo😎' }, { status: 201 });
   } catch (error) {
     console.log('API error', error);
     return NextResponse.json(

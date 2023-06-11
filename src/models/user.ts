@@ -3,8 +3,8 @@ import moongose from 'mongoose';
 const { Schema, model, models } = moongose;
 
 enum Role {
-  adim,
-  user,
+  admin = 'admin',
+  user = 'user',
 }
 
 export interface User {
@@ -28,6 +28,7 @@ const userSchema = new Schema<User>({
   password: {
     type: String,
     required: true,
+    minlength: 6,
   },
 
   role: {

@@ -1,6 +1,5 @@
 import { useState, ChangeEvent, useCallback } from 'react';
 import style from '../style.module.css';
-import UploadImage from '../uploadImage';
 import Heading from '@/components/Heading';
 import UploadImageModal from '../UploadImageModal';
 import Image from 'next/image';

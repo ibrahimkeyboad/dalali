@@ -17,6 +17,23 @@ export enum Steps {
 
 type ID = 'bedrooms' | 'bathrooms' | 'beds' | 'sofa' | 'imageCover' | 'images';
 
+export interface FormData {
+  bedrooms: number;
+  bathrooms: number;
+  beds: number;
+  sofa: number;
+  imageCover: {
+    label: string;
+    uri: File | null;
+  };
+  images: [
+    {
+      label: string;
+      uri: File | null;
+    }
+  ];
+}
+
 function StepContainer() {
   const [step, setStep] = useState(Steps.step1);
 
@@ -29,23 +46,6 @@ function StepContainer() {
     city: yup.string().required('city is required'),
     street: yup.string().required('street is required'),
   });
-
-  interface FormData {
-    bedrooms: number;
-    bathrooms: number;
-    beds: number;
-    sofa: number;
-    imageCover: {
-      label: string;
-      uri: File | null;
-    };
-    images: [
-      {
-        label: string;
-        uri: File | null;
-      }
-    ];
-  }
 
   const {
     register,
@@ -170,6 +170,9 @@ function StepContainer() {
     <form
       onSubmit={handleSubmit(onSubmit)}
       className='
+      p-8
+      dark:bg-[#112240] 
+      bg-white 
         translate 
         h-full 
         md:h-auto

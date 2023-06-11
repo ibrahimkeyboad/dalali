@@ -13,12 +13,13 @@ export default function StepsLayout({ children }: props) {
     <div
       className='
           max-w-[60rem] 
-          my-[25vh]
+          h-screen
+          flex
+          justify-center
+          items-center
           mx-auto
-          dark:bg-[#112240] 
           shadow-lg rounded-lg 
-          bg-white 
-          p-8'>
+          '>
       {children}
     </div>
   );
