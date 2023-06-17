@@ -12,6 +12,7 @@ export interface User {
   email: string;
   password: string;
   role: String;
+  iEmailVerified: boolean;
 }
 
 const userSchema = new Schema<User>({
@@ -24,6 +25,11 @@ const userSchema = new Schema<User>({
   email: {
     type: String,
     required: true,
+  },
+
+  iEmailVerified: {
+    type: Boolean,
+    default: false,
   },
   password: {
     type: String,
