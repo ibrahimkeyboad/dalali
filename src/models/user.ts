@@ -7,14 +7,6 @@ enum Role {
   user = 'user',
 }
 
-export interface User {
-  name: string;
-  email: string;
-  password: string;
-  role: String;
-  iEmailVerified: boolean;
-}
-
 const userSchema = new Schema<User>({
   name: {
     type: String,

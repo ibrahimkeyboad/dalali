@@ -5,6 +5,7 @@ import NextAuth, { AuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import bcrypt from 'bcryptjs';
 import GoogleProvider from 'next-auth/providers/google';
+import validator from 'validator';
 
 export const authOptions: AuthOptions = {
   adapter: MongoDBAdapter(clientPromise),
@@ -24,9 +25,17 @@ export const authOptions: AuthOptions = {
           throw new Error('Invalid Credetials');
         }
 
+        if (!validator.isEmail(credentials.email)) {
+          throw new Error('Invalid crendential');
+        }
+
         const user = await User.findOne({
           email: credentials.email.trim().toLowerCase(),
         });
+
+        if (user.iEmailVerified) {
+          throw new Error('Your email is not verified. Please Verify it');
+        }
 
         if (!user || !user.hashedPassword) {
           throw new Error('Invalid credentials');

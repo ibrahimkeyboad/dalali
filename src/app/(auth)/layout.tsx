@@ -13,7 +13,7 @@ export default function AuthLayout({
   return (
     <>
       <section
-        className={`${style.signupSection} shadow-xl shadow-gray-200 dark:shadow-none`}>
+        className={`max-w-[1240px] py-20 m-auto my-[5%] shadow-xl shadow-gray-200 dark:shadow-none`}>
         {children}
       </section>
     </>

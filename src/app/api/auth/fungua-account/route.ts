@@ -5,23 +5,18 @@ import connetDB from '@/db';
 import validator from 'validator';
 import nodemailer from 'nodemailer';
 import { v4 as uuid } from 'uuid';
+import VerificationToken from '@/models/token';
+
+const transporter = nodemailer.createTransport({
+  service: process.env.SERVICE,
+  auth: {
+    user: process.env.USER,
+    pass: process.env.PASS,
+  },
+});
 
 export async function POST(req: Request) {
   connetDB();
-
-  interface bodyData {
-    name: string;
-    email: string;
-    password: string;
-  }
-
-  let transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: 'ibrahimmwanga07@gamil.com',
-      pass: 'ibra2571',
-    },
-  });
 
   transporter.verify((err, success) => {
     if (err) {
@@ -63,9 +58,15 @@ export async function POST(req: Request) {
       password: newPassword,
     });
 
-    sendEmailVerification(user, NextResponse);
+    await sendEmailVerification(user);
 
-    return NextResponse.json({ msg: 'Imeisha iyo😎' }, { status: 201 });
+    return NextResponse.json(
+      {
+        status: 'PENDING',
+        msg: 'Verification Email sent',
+      },
+      { status: 201 }
+    );
   } catch (error) {
     console.log('API error', error);
     return NextResponse.json(
@@ -75,21 +76,35 @@ export async function POST(req: Request) {
   }
 }
 
-async function sendEmailVerification(user, res) {
+async function sendEmailVerification(user: User) {
   const currentUrl = 'http://localhost:3000/';
 
   const uniqueString = uuid() + user._id;
 
   const mailOptions = {
-    form: 'ibrahimmwanga07@gmail.com',
-    to: 'mwangaibrahim27@gmail.com',
+    form: process.env.USER,
+    to: user.email,
     subject: 'Verify your email',
-    html: `<p>Verify your email address to complete the signup into your account.</p> <p>This link expires in <strong>6 hours. </strong> </p> <p>Press <a href=${currentUrl}user/verify/>${user._id}/${uniqueString}>here</a> to proceed</p>`,
+    html: `
+        <p>Verify your email address to complete the signup into your account.
+        </p> 
+        <p>This link expires in <strong>6 hours. </strong> </p> <div> 
+          <p>Press</p> 
+          <a 
+            href=${currentUrl}/api/>verify?userId=${user._id}&uniqueString=${uniqueString}
+            >
+            here
+            </a> 
+          <p>to proceed</p>
+        </div>`,
   };
 
-  try {
-    const result = await hash(uniqueString, 12);
-  } catch (err) {
-    console.log(err);
-  }
+  const hashId = await hash(uniqueString, 12);
+
+  await VerificationToken.create({
+    identifier: user._id,
+    token: hashId,
+    expires: Date.now() + 21600000,
+  });
+  await transporter.sendMail(mailOptions);
 }

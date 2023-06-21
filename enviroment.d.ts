@@ -10,6 +10,9 @@ declare global {
       SENDGRID_API_KEY: string;
       TWILIO_AUTH_TOKEN: string;
       JWT_SECRET: string;
+      SERVICE: string;
+      USER: string;
+      PASS: string;
       NODE_ENV: 'development' | 'production';
     }
   }
