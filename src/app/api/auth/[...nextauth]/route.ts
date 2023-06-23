@@ -20,6 +20,8 @@ export const authOptions: AuthOptions = {
         if (!credentials?.email || !credentials.password) {
           throw new Error('Invalid Credetials');
         }
+        console.log(credentials.email, credentials.password);
+        console.log(validator.isEmail(credentials.email));
 
         if (!validator.isEmail(credentials.email)) {
           throw new Error('Invalid crendential');
@@ -29,16 +31,18 @@ export const authOptions: AuthOptions = {
           email: credentials.email.trim().toLowerCase(),
         });
 
-        if (user.iEmailVerified) {
+        if (!user.iEmailVerified) {
           throw new Error('Your email is not verified. Please Verify it');
         }
 
-        if (!user || !user.hashedPassword) {
+        console.log(user);
+
+        if (!user || !user.password) {
           throw new Error('Invalid credentials');
         }
         const isCorrectPassword = await bcrypt.compare(
           credentials.password,
-          user.hashedPassword
+          user.password
         );
 
         if (!isCorrectPassword) {

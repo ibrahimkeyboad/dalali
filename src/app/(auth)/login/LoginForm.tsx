@@ -40,19 +40,19 @@ function LoginForm({ email }: { email: string }) {
   });
 
   async function onSubmitHandler(value: Data) {
-    try {
-      const res = await signIn('credentials', {
-        email: value.email,
-        password: value.password,
-        redirect: false,
-      });
+    const res = await signIn('credentials', {
+      email: value.email,
+      password: value.password,
+      redirect: false,
+    });
 
-      if (res?.ok) {
-        toast.success('logged in');
-        router.push('/');
-      }
-    } catch (error: any) {
-      toast.error(error.message);
+    console.log(res);
+
+    if (res?.ok && !res?.error) {
+      toast.success('logged in');
+      router.push('/');
+    } else {
+      toast.error(`${res?.error}`);
     }
   }
 
