@@ -6,6 +6,9 @@ import NextAuth, { AuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import bcrypt from 'bcryptjs';
 import validator from 'validator';
+import VerificationToken from '@/models/token';
+import sendEmailVerification from '@/utils/sendEmail';
+import { NextResponse } from 'next/server';
 
 export const authOptions: AuthOptions = {
   adapter: MongoDBAdapter(clientPromise),
@@ -18,13 +21,23 @@ export const authOptions: AuthOptions = {
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials.password) {
-          throw new Error('Invalid Credetials');
+          return NextResponse.json(
+            {
+              msg: 'Invalid crendential.',
+              error: 'Please fill all the field',
+            },
+            { status: 401 }
+          );
         }
-        console.log(credentials.email, credentials.password);
-        console.log(validator.isEmail(credentials.email));
 
         if (!validator.isEmail(credentials.email)) {
-          throw new Error('Invalid crendential');
+          return NextResponse.json(
+            {
+              msg: 'Invalid crendential.',
+              error: 'Your email is not valid',
+            },
+            { status: 403 }
+          );
         }
 
         const user = await User.findOne({
@@ -32,21 +45,32 @@ export const authOptions: AuthOptions = {
         });
 
         if (!user.iEmailVerified) {
-          throw new Error('Your email is not verified. Please Verify it');
+          await VerificationToken.findOneAndDelete({ identifier: user._id });
+
+          await sendEmailVerification(user);
+
+          return NextResponse.json(
+            {
+              msg: 'Your email is not verified.',
+              error: 'Please check your email ',
+            },
+            { status: 401 }
+          );
         }
 
-        console.log(user);
-
-        if (!user || !user.password) {
-          throw new Error('Invalid credentials');
-        }
         const isCorrectPassword = await bcrypt.compare(
           credentials.password,
           user.password
         );
 
-        if (!isCorrectPassword) {
-          throw new Error('Invalid credentials');
+        if (!user || !isCorrectPassword) {
+          return NextResponse.json(
+            {
+              msg: 'Invalid crendential.',
+              error: 'Make sure you add correct value',
+            },
+            { status: 401 }
+          );
         }
         return user;
       },
