@@ -1,7 +1,15 @@
 import React from 'react';
+import LoginForm from './LoginForm';
 
-function LoginPage() {
-  return <div>LoginPage</div>;
+interface ParamsProps {
+  searchParams: {
+    email: string;
+  };
+}
+
+function LoginPage({ searchParams: { email } }: ParamsProps) {
+  console.log(email);
+  return <LoginForm email={email} />;
 }
 
 export default LoginPage;

@@ -1,33 +1,30 @@
 'use client';
+import InputAuth from '@/components/inputs/InputAuth';
+import { useFormik } from 'formik';
 import Link from 'next/link';
 import { useState } from 'react';
-import * as Yup from 'yup';
-import { useFormik } from 'formik';
+import { signIn } from 'next-auth/react';
 import { HiOutlineEye, HiOutlineEyeOff } from 'react-icons/hi';
-import axios from 'axios';
-import InputAuth from '@/components/inputs/InputAuth';
+import * as Yup from 'yup';
 import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 
-interface UserType {
-  name: string;
+type Data = {
   email: string;
   password: string;
-}
-function AuthForm() {
-  const router = useRouter();
+};
+
+function LoginForm({ email }: { email: string }) {
   const [toggle, setToggle] = useState<boolean>(false);
+  const router = useRouter();
 
   function toggleHandler() {
     setToggle((prev) => !prev);
   }
-
-  const initialValues: UserType = {
-    name: '',
-    email: '',
+  const initialValues = {
+    email: email ?? '',
     password: '',
   };
-
   const formik = useFormik({
     initialValues,
     onSubmit: onSubmitHandler,
@@ -39,33 +36,23 @@ function AuthForm() {
       password: Yup.string()
         .min(6, 'Too Short!')
         .required('Password is required'),
-      name: Yup.string().required('Name is required'),
     }),
   });
 
-  async function onSubmitHandler(value: UserType) {
-    const data = {
-      name: value.name,
-      email: value.email.toLowerCase().trim(),
-      password: value.password.toLowerCase().trim(),
-    };
-
+  async function onSubmitHandler(value: Data) {
     try {
-      const res = await axios.post('/api/auth/fungua-account', data);
+      const res = await signIn('credentials', {
+        email: value.email,
+        password: value.password,
+        redirect: false,
+      });
 
-      if (res.status == 201) {
-        router.push('/verify');
-        toast.success(res.data.msg);
-      } else {
-        console.log(res.status);
-        toast.error('fail', res.data);
+      if (res?.ok) {
+        toast.success('logged in');
+        router.push('/');
       }
-    } catch (errors: any) {
-      console.log('errors', errors.response);
-
-      toast.error(errors.response.data.error);
-    } finally {
-      // setIsLoading(false);
+    } catch (error: any) {
+      toast.error(error.message);
     }
   }
 
@@ -74,17 +61,8 @@ function AuthForm() {
       onSubmit={formik.handleSubmit}
       className={`dark:shadow-none bg-neutral w-[100%] rounded-lg py-20  md:w-[60%] m-auto items-center gap-8 flex flex-col`}>
       <h1 className='text-3xl font-semibold self-center  text-primary'>
-        Create Your Account
+        Login to Your Account
       </h1>
-
-      <div className='sm:w-[60%] w-[80%]'>
-        <InputAuth name='name' type='text' formik={formik} hint='Full Name' />
-        {formik.errors && (
-          <p className='text-rose-600 font-semibold text-base'>
-            {formik.errors && formik.touched.name && formik.errors.name}
-          </p>
-        )}
-      </div>
       <div className='sm:w-[60%] w-[80%]'>
         <InputAuth name='email' type='email' formik={formik} hint='Email' />
         {formik.errors && (
@@ -127,18 +105,17 @@ function AuthForm() {
           </p>
         )}
       </div>
-
       <div className='flex flex-col gap-3'>
-        <button type='submit' className={`btn btn-primary btn-lg`}>
-          Sign up
+        <button type='submit' className={`btn btn-primary`}>
+          Log in
         </button>
         <Link className='self-center' href='/login'>
           <span>Already a member? </span>
-          <span className='font-bold text-primary'> Login</span>
+          <span className='font-bold text-primary'> sigup</span>
         </Link>
       </div>
     </form>
   );
 }
 
-export default AuthForm;
+export default LoginForm;
