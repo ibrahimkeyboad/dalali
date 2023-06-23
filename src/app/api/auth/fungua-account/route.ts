@@ -13,19 +13,23 @@ const transporter = nodemailer.createTransport({
     user: process.env.USER,
     pass: process.env.PASS,
   },
+  tls: {
+    rejectUnauthorized: false,
+  },
+});
+
+transporter.verify((error, sucess) => {
+  if (error) {
+    console.log('error', error);
+  } else {
+    console.log('message');
+
+    console.log('sucess', sucess);
+  }
 });
 
 export async function POST(req: Request) {
-  connetDB();
-
-  transporter.verify((err, success) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log('message');
-      console.log(success);
-    }
-  });
+  await connetDB();
 
   try {
     const body = await req.json();
@@ -91,7 +95,7 @@ async function sendEmailVerification(user: User) {
         <p>This link expires in <strong>6 hours. </strong> </p> <div> 
           <p>Press</p> 
           <a 
-            href=${currentUrl}/api/>verify?userId=${user._id}&uniqueString=${uniqueString}
+            href=${currentUrl}/verify/email?userId=${user._id}&uniqueString=${uniqueString}
             >
             here
             </a> 

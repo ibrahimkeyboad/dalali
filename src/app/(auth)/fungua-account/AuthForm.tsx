@@ -7,14 +7,16 @@ import { HiOutlineEye, HiOutlineEyeOff } from 'react-icons/hi';
 import axios from 'axios';
 import InputAuth from '@/components/inputs/InputAuth';
 import { toast } from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
 
+interface UserType {
+  name: string;
+  email: string;
+  password: string;
+}
 function AuthForm() {
+  const router = useRouter();
   const [toggle, setToggle] = useState<boolean>(false);
-  interface UserType {
-    name: string;
-    email: string;
-    password: string;
-  }
 
   function toggleHandler() {
     setToggle((prev) => !prev);
@@ -52,6 +54,7 @@ function AuthForm() {
       const res = await axios.post('/api/auth/fungua-account', data);
 
       if (res.status == 201) {
+        router.push('/verify');
         toast.success(res.data.msg);
       } else {
         console.log(res.status);

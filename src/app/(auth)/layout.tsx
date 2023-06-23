@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-import style from './signup.module.css';
 
 export const metadata: Metadata = {
   title: 'Fungua account yako',

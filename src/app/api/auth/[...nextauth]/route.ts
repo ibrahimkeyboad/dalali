@@ -2,23 +2,19 @@ import clientPromise from '@/db/mongodb';
 import User from '@/models/user';
 import { MongoDBAdapter } from '@next-auth/mongodb-adapter';
 import NextAuth, { AuthOptions } from 'next-auth';
+
 import CredentialsProvider from 'next-auth/providers/credentials';
 import bcrypt from 'bcryptjs';
-import GoogleProvider from 'next-auth/providers/google';
 import validator from 'validator';
 
 export const authOptions: AuthOptions = {
   adapter: MongoDBAdapter(clientPromise),
   providers: [
-    GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    }),
     CredentialsProvider({
       name: 'credentials',
       credentials: {
         email: { label: 'email', type: 'email' },
-        password: { label: 'password' },
+        password: { label: 'password', type: 'text' },
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials.password) {

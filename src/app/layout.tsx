@@ -1,6 +1,5 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
-import UploadImageModal from './profile/post/create/components/UploadImageModal';
 import ToasterProvider from '@/providers/ToasterProvider';
 
 const inter = Inter({ subsets: ['latin'] });
