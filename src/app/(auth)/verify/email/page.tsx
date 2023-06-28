@@ -1,6 +1,11 @@
 import axios from 'axios';
+import { Metadata } from 'next';
 import Link from 'next/link';
 import React from 'react';
+
+export const metadata: Metadata = {
+  title: 'Hakikisha email yako',
+};
 
 interface ParamsProps {
   searchParams: {

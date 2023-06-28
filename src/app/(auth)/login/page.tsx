@@ -1,5 +1,9 @@
-import React from 'react';
 import LoginForm from './LoginForm';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Ingia kwenye account Yako',
+};
 
 interface ParamsProps {
   searchParams: {
@@ -8,7 +12,6 @@ interface ParamsProps {
 }
 
 function LoginPage({ searchParams: { email } }: ParamsProps) {
-  console.log(email);
   return <LoginForm email={email} />;
 }
 

@@ -6,7 +6,6 @@ async function Page() {
   // const res = await fetch('http://localhost:3000/api/posts');
   // const resData = await res.json();
   const resData = await getPosts();
-  console.log('resData', resData);
   return (
     <main
       className='

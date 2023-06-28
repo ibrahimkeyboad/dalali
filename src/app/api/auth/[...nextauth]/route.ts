@@ -21,23 +21,11 @@ export const authOptions: AuthOptions = {
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials.password) {
-          return NextResponse.json(
-            {
-              msg: 'Invalid crendential.',
-              error: 'Please fill all the field',
-            },
-            { status: 401 }
-          );
+          throw new Error('Invalid crendential.');
         }
 
         if (!validator.isEmail(credentials.email)) {
-          return NextResponse.json(
-            {
-              msg: 'Invalid crendential.',
-              error: 'Your email is not valid',
-            },
-            { status: 403 }
-          );
+          throw new Error('Invalid crendential.');
         }
 
         const user = await User.findOne({
@@ -49,13 +37,7 @@ export const authOptions: AuthOptions = {
 
           await sendEmailVerification(user);
 
-          return NextResponse.json(
-            {
-              msg: 'Your email is not verified.',
-              error: 'Please check your email ',
-            },
-            { status: 401 }
-          );
+          throw new Error('Your email is not verified.');
         }
 
         const isCorrectPassword = await bcrypt.compare(
@@ -64,18 +46,20 @@ export const authOptions: AuthOptions = {
         );
 
         if (!user || !isCorrectPassword) {
-          return NextResponse.json(
-            {
-              msg: 'Invalid crendential.',
-              error: 'Make sure you add correct value',
-            },
-            { status: 401 }
-          );
+          throw new Error('Invalid crendential.');
         }
         return user;
       },
     }),
   ],
+
+  callbacks: {
+    async signIn(params) {
+      console.log('params', params);
+      return true;
+    },
+  },
+
   pages: {
     signIn: '/',
   },

@@ -59,14 +59,14 @@ function LoginForm({ email }: { email: string }) {
   return (
     <form
       onSubmit={formik.handleSubmit}
-      className={`dark:shadow-none bg-neutral w-[100%] rounded-lg py-20  md:w-[60%] m-auto items-center gap-8 flex flex-col`}>
-      <h1 className='text-3xl font-semibold self-center  text-primary'>
+      className={`dark:shadow-none capitalize bg-neutral w-[100%] rounded-lg py-20  md:w-[60%] m-auto items-center gap-8 flex flex-col`}>
+      <h1 className='lg:text-3xl text-xl px-4 font-semibold self-center  text-primary'>
         Login to Your Account
       </h1>
-      <div className='sm:w-[60%] w-[80%]'>
+      <div className='sm:w-[60%] w-[90%]'>
         <InputAuth name='email' type='email' formik={formik} hint='Email' />
         {formik.errors && (
-          <p className='text-rose-600 font-semibold text-base'>
+          <p className='text-error ml-3 text-sm p-1'>
             {formik.errors && formik.touched.email && formik.errors.email}
           </p>
         )}
@@ -96,7 +96,7 @@ function LoginForm({ email }: { email: string }) {
         </span>
 
         {formik.errors && formik.touched.password && formik.errors.password ? (
-          <p className='text-rose-600 font-bold text-base'>
+          <p className='error'>
             {formik.errors && formik.touched.password && formik.errors.password}
           </p>
         ) : (
@@ -109,7 +109,7 @@ function LoginForm({ email }: { email: string }) {
         <button type='submit' className={`btn btn-primary`}>
           Log in
         </button>
-        <Link className='self-center' href='/login'>
+        <Link className='self-center' href='/fungua-account'>
           <span>Already a member? </span>
           <span className='font-bold text-primary'> sigup</span>
         </Link>

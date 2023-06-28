@@ -80,7 +80,7 @@ function AuthForm() {
       <div className='sm:w-[60%] w-[80%]'>
         <InputAuth name='name' type='text' formik={formik} hint='Full Name' />
         {formik.errors && (
-          <p className='text-rose-600 font-semibold text-base'>
+          <p className='text-error font-semibold text-base'>
             {formik.errors && formik.touched.name && formik.errors.name}
           </p>
         )}
