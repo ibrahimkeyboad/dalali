@@ -1,69 +1,39 @@
 'use client';
-import React, { useState, useRef } from 'react';
-import { useForm } from 'react-hook-form';
-import cloudinary from 'cloudinary-react';
 
-const Form = () => {
-  const [formState, setFormState] = useState<{
-    name: string;
-    email: string;
-    images: File[];
-  }>({
-    name: '',
-    email: '',
-    images: [],
-  });
+import React, { useEffect, useState } from 'react';
 
-  const { register, setValue } = useForm();
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.name, event.target.value);
+interface NavigatorWithConnection extends Navigator {
+  connection?: {
+    downlink: number;
   };
+}
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+const InternetSpeedMeter: React.FC = () => {
+  const [speed, setSpeed] = useState<number | null>(null);
 
-    uploadImages(formState.images);
-  };
+  useEffect(() => {
+    const calculateInternetSpeed = () => {
+      const nav: NavigatorWithConnection = navigator;
+      if (nav && nav.connection) {
+        const { downlink } = nav.connection;
+        const megabitsPerSecond = downlink * 1024 * 1024;
+        setSpeed(megabitsPerSecond);
+      }
+      console.log(nav);
+    };
 
-  const uploadImages = async (images: File[]) => {
-    try {
-      const responses = await Promise.all(
-        images.map((image) => cloudinary.upload(image))
-      );
-      const imageUrls = responses.map((response) => response.secure_url);
-      setFormState({
-        ...formState,
-        imageUrls,
-      });
-    } catch (error) {
-      console.error(error);
-    }
-  };
+    calculateInternetSpeed();
+  }, []);
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type='text'
-        ref={register('name')}
-        placeholder='Name'
-        onChange={handleChange}
-      />
-      <input
-        type='email'
-        ref={register('email')}
-        placeholder='Email'
-        onChange={handleChange}
-      />
-      <input
-        type='file'
-        multiple
-        ref={register('images')}
-        onChange={handleChange}
-      />
-      <button type='submit'>Submit</button>
-    </form>
+    <div>
+      {speed ? (
+        <p>Internet Speed: {speed.toFixed(2)} Mbps</p>
+      ) : (
+        <p>Calculating internet speed...</p>
+      )}
+    </div>
   );
 };
 
-export default Form;
+export default InternetSpeedMeter;
