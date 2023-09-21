@@ -1,7 +1,7 @@
 import { hash } from 'bcryptjs';
 import User from '@/models/user';
 import { NextResponse } from 'next/server';
-import connetDB from '@/db';
+import connetDB from '@/db/mongose';
 import validator from 'validator';
 import sendEmailVerification from '@/utils/sendEmail';
 

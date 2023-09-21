@@ -1,4 +1,4 @@
-import connectDB from '@/db';
+// import connectDB from '@/db';
 import VerificationToken from '@/models/token';
 import User from '@/models/user';
 import { NextResponse } from 'next/server';
@@ -10,7 +10,7 @@ export async function GET(req: Request) {
   console.log(userId, uniqueString);
 
   try {
-    await connectDB();
+    // await connectDB();
     const userVerification = await VerificationToken.findOne({
       identifier: userId,
     });

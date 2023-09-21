@@ -1,8 +1,9 @@
-import './bootstrap.min.css';
 import './globals.css';
 
 import { Inter } from 'next/font/google';
 import ToasterProvider from '@/providers/ToasterProvider';
+import UseClient from '@/components/UseClient';
+import Header from '@/components/header/Header';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,6 +21,7 @@ export default function RootLayout({
     <html lang='en' data-theme='night'>
       <body className={inter.className}>
         <ToasterProvider />
+        <Header />
         {children}
       </body>
     </html>

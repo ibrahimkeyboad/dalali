@@ -1,9 +1,9 @@
-import connectDB from '@/db';
+// import connectDB from '@/db';
 import User from '@/models/user';
 
 async function getUsers() {
   try {
-    connectDB();
+    // connectDB();
     const user = await User.find();
 
     if (!user) {

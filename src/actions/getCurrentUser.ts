@@ -1,8 +1,8 @@
 import User from '@/models/user';
 import getSession from './getSession';
-import connectDB from '@/db';
+// import connectDB from '@/db';
 
-connectDB();
+// connectDB();
 async function getCurrentUser() {
   try {
     const session = await getSession();

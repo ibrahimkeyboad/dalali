@@ -1,6 +1,6 @@
 import Accommodation from '@/models/accommodation';
 import { NextResponse } from 'next/server';
-import connetDB from '@/db';
+import connetDB from '@/db/mongose';
 import { FormData } from '@/app/profile/post/create/components/StepContainer';
 
 export async function Post(request: Request) {

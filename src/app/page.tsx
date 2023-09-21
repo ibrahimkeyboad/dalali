@@ -1,11 +1,31 @@
-import getPosts from '@/actions/getPosts';
+import getPosts from '@/actions/getAllPosts';
 import Posts from '@/components/posts/Posts';
 import Accommodation from '@/models/accommodation';
+import { House } from '@prisma/client';
 
 async function Page() {
   // const res = await fetch('http://localhost:3000/api/posts');
   // const resData = await res.json();
-  const resData = await getPosts();
+  // const resData = await getPosts();
+
+  const resData: House[] = [
+    {
+      id: 'faf1',
+      images: '/images/cover.webp',
+      duration: 'siku',
+      Description: 'ddfa',
+      bathrooms: 1,
+      bedrooms: 2,
+      city: 'Arusha',
+      street: 'Ngulelo',
+      country: 'Tanzania',
+      offers: 'umeme',
+      price: 3233,
+      purpose: 'kukodishwa',
+      userId: 'ie',
+      category: 'house',
+    },
+  ];
   return (
     <main
       className='
@@ -22,8 +42,8 @@ async function Page() {
         xl:gap-x-4
         xl:gap-y-8
     '>
-      {resData.map((data: Accommodation) => (
-        <Posts data={data} key={`${data._id}`} />
+      {resData.map((data: House) => (
+        <Posts data={data} key={`${data.id}`} />
       ))}
     </main>
   );
