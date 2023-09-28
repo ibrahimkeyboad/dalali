@@ -1,22 +1,13 @@
+import HouseRooms from '@/app/houses/components/HouseRooms';
 import ImageFigure from '@/components/ImageFigure';
 import UserAvatar from '@/components/UserAvatar';
 import Card from '@/components/posts/Card';
 import React from 'react';
-import HouseRooms from '../components/HouseRooms';
 
-export function generateMetadata({ params }: { params: { houseId: string } }) {
-  return {
-    title: `Home: ${params.houseId}`,
-  };
-}
-
-async function Apartment({ params }: { params: { houseId: string } }) {
-  // const res = await fetch('http://localhost:3000/api/apartment');
-  // const data = await res.json();
-
+function page() {
   const data: any = {
     id: 'faf1',
-    images: ['/images/home.jpg'],
+    images: ['/images/cover3.jpg'],
     duration: 'mwezi',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium hic quia labore corrupti est, optio tenetur culpa quis quibusdam esse sunt minima ipsam repellendus eligendi incidunt aliquam quam dolores sit deserunt beatae possimus pariatur eveniet repudiandae qui. Porro beatae corrupti nisi maxime nam laboriosam doloribus dignissimos id voluptatem quae corporis natus dolorum, repellendus, totam facilis! Odio accusantium laboriosam cupiditate optio illo aliquid. Ut corrupti dolorem ab provident quo numquam quae.',
@@ -24,8 +15,8 @@ async function Apartment({ params }: { params: { houseId: string } }) {
     city: 'Arusha',
     street: 'Ngulelo',
     country: 'Tanzania',
-    offers: 'umeme',
-    price: 500000,
+    offers: ['umeme', 'maji', 'geti'],
+    price: 50000,
     purpose: 'kukodishwa',
     userId: 'ie',
     category: 'house',
@@ -91,9 +82,9 @@ async function Apartment({ params }: { params: { houseId: string } }) {
           </h3>
           <div className='flex p-4 gap-5 flex-col'>
             <ul className='flex flex-wrap gap-10 ml-10'>
-              {data?.tags?.map((tag: any) => (
-                <li className='capitalize' key={tag?.id}>
-                  {tag?.value}
+              {data?.offers?.map((tag: any) => (
+                <li className='capitalize' key={tag}>
+                  {tag}
                 </li>
               ))}
             </ul>
@@ -113,4 +104,4 @@ async function Apartment({ params }: { params: { houseId: string } }) {
   );
 }
 
-export default Apartment;
+export default page;

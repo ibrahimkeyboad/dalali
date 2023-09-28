@@ -18,6 +18,7 @@ function Posts({ data }: PostsProps) {
           className='rounded-lg object-cover bg-black h-52'
           width={400}
           height={300}
+          priority
         />
         <div
           className='
@@ -32,9 +33,13 @@ function Posts({ data }: PostsProps) {
           </div>
           <div className='flex flex-col'>
             {/* <h3 className='dark:text-#ccd6f6] text-[#122c2e] font-medium flex tracking-wide'>{data.</h3> */}
-            <h4 className='text-base font-semibold'>{`Tsh ${data.price
-              .toString()
-              .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}/${data.duration}`}</h4>
+            <h3 className='flex items-center gap-1'>
+              <span>Tsh</span>
+              <span className='font-extrabold'>
+                {data?.price?.toString()?.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+              </span>
+              <span>{data.duration}</span>
+            </h3>
             <h4 className='dark:text-[#b6bac1] font-normal text-[#2e5458] text-sm'>
               {data.street} {data.city}
             </h4>

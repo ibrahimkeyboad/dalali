@@ -1,44 +1,29 @@
+import HouseRooms from '@/app/houses/components/HouseRooms';
 import ImageFigure from '@/components/ImageFigure';
 import UserAvatar from '@/components/UserAvatar';
 import Card from '@/components/posts/Card';
 import React from 'react';
-import HouseRooms from '../components/HouseRooms';
 
-export function generateMetadata({ params }: { params: { houseId: string } }) {
-  return {
-    title: `Home: ${params.houseId}`,
-  };
-}
-
-async function Apartment({ params }: { params: { houseId: string } }) {
-  // const res = await fetch('http://localhost:3000/api/apartment');
-  // const data = await res.json();
-
-  const data: any = {
-    id: 'faf1',
-    images: ['/images/home.jpg'],
-    duration: 'mwezi',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium hic quia labore corrupti est, optio tenetur culpa quis quibusdam esse sunt minima ipsam repellendus eligendi incidunt aliquam quam dolores sit deserunt beatae possimus pariatur eveniet repudiandae qui. Porro beatae corrupti nisi maxime nam laboriosam doloribus dignissimos id voluptatem quae corporis natus dolorum, repellendus, totam facilis! Odio accusantium laboriosam cupiditate optio illo aliquid. Ut corrupti dolorem ab provident quo numquam quae.',
-    bedrooms: 2,
-    city: 'Arusha',
-    street: 'Ngulelo',
-    country: 'Tanzania',
-    offers: 'umeme',
+function FrameDetailPage() {
+  const data = {
     price: 500000,
-    purpose: 'kukodishwa',
-    userId: 'ie',
-    category: 'house',
+    Image: ['/images/cover3.jpg'],
+    purpose: 'Kukodishwa',
+    duration: 'mwezi',
+    street: 'Kijenge',
+    city: 'Arusha',
+    country: 'Tanzania',
     owner: {
-      name: 'Pisi Kali',
-      phoneNumber: '+255620179067',
+      name: 'Zahara',
+      phoneNumber: '+2355629179067',
     },
+    description:
+      ' Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore provident veniam delectus dolorum officiis, ullam vitae id corporis magni quia corrupti velit eum, quidem harum ut culpa. Aliquam qui ex numquam cum. Officia nulla ullam possimus iure. Odit, commodi quasi?',
   };
 
   const datas = {
-    images: data.images,
+    images: data.Image,
   };
-
   return (
     <div className='bg-slate-50 dark:bg-[#0a192f]'>
       <section className='max-w-[1120px] px-3 md:px-10 m-auto'>
@@ -47,8 +32,8 @@ async function Apartment({ params }: { params: { houseId: string } }) {
           className={`dark:bg-[#112240] p-3 my-4 bg-white rounded-sm divide-y`}>
           <div className='flex items-center justify-between p-5'>
             <h2 className='tracking-widest font-bold text-3xl'>Overview</h2>
-            <span className='bg-[#49b69c] p-1 rounded-md uppercase text-sm m-1 inline-block text-[#FFF]'>
-              For {data?.purpose}
+            <span className='bg-[#0f7d63] p-1 rounded-md uppercase text-sm m-1 inline-block text-[#FFF]'>
+              {data?.purpose}
             </span>
           </div>
           <div>
@@ -63,6 +48,7 @@ async function Apartment({ params }: { params: { houseId: string } }) {
                   </span>
                   <span>{data.duration}</span>
                 </h3>
+                <h4>609 sqft</h4>
                 <h3 className=''>
                   {`${data.street}, ${data.city} ${data.country}`}
                 </h3>
@@ -83,23 +69,6 @@ async function Apartment({ params }: { params: { houseId: string } }) {
           </div>
         </div>
 
-        <HouseRooms />
-
-        <Card>
-          <h3 className='dark:text-[#e6f1ff] tracking-widest p-4 font-bold text-xl'>
-            What this place offers
-          </h3>
-          <div className='flex p-4 gap-5 flex-col'>
-            <ul className='flex flex-wrap gap-10 ml-10'>
-              {data?.tags?.map((tag: any) => (
-                <li className='capitalize' key={tag?.id}>
-                  {tag?.value}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </Card>
-
         <div className='dark:bg-[#112240] p-3 my-4 bg-white rounded-sm divide-y'>
           <h3 className='dark:text-[#e6f1ff] tracking-widest font-bold text-xl p-3'>
             Description
@@ -113,4 +82,4 @@ async function Apartment({ params }: { params: { houseId: string } }) {
   );
 }
 
-export default Apartment;
+export default FrameDetailPage;
