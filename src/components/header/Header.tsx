@@ -4,10 +4,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import Searching from './Searching';
-import Theme from './Theme';
 import UserAvatar from '../UserAvatar';
 import Nav from './Nav';
 import { usePathname } from 'next/navigation';
+import { ModeToggle } from './Theme';
 
 function Header() {
   const data: any = {};
@@ -23,7 +23,7 @@ function Header() {
         <Searching />
 
         <nav className='flex items-center gap-3'>
-          <Theme />
+          <ModeToggle />
           {data ? (
             <Link href='/profile'>
               <UserAvatar />

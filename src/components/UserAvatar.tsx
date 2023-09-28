@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import React from 'react';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 type Props = {
   user?: User;
@@ -7,16 +7,10 @@ type Props = {
 
 const UserAvatar = ({ user }: Props) => {
   return (
-    <Image
-      placeholder='blur'
-      blurDataURL='/images/pisi.jpg'
-      src='/images/pisi.jpg'
-      className='rounded-full h-10 w-10 object-cover'
-      alt={''}
-      height={100}
-      width={100}
-      priority
-    />
+    <Avatar>
+      <AvatarImage src='/images/pisi.jpg' alt='@shadcn' />
+      <AvatarFallback>CN</AvatarFallback>
+    </Avatar>
   );
 };
 
