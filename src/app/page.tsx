@@ -1,7 +1,7 @@
 import getPosts from '@/actions/getAllPosts';
+import Header from '@/components/header/Header';
 import Posts from '@/components/posts/Posts';
 import Accommodation from '@/models/accommodation';
-import { House } from '@prisma/client';
 
 async function Page() {
   // const res = await fetch('http://localhost:3000/api/posts');
@@ -62,8 +62,10 @@ async function Page() {
     },
   ];
   return (
-    <main
-      className='
+    <>
+      <Header />
+      <main
+        className='
         px-8 
         grid 
         grid-cols-1 
@@ -77,10 +79,11 @@ async function Page() {
         xl:gap-x-4
         xl:gap-y-8
     '>
-      {resData.map((data: House) => (
-        <Posts data={data} key={`${data.id}`} />
-      ))}
-    </main>
+        {resData.map((data: any) => (
+          <Posts data={data} key={`${data.id}`} />
+        ))}
+      </main>
+    </>
   );
 }
 

@@ -1,3 +1,5 @@
+'use client';
+
 import { useCallback } from 'react';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 
@@ -43,7 +45,7 @@ function Counter({ onChange, subtitle, title, value }: CounterProps) {
         transition'>
           <AiOutlineMinus />
         </button>
-        <span className='font-light text-xl text-neutral-300'>{value}</span>
+        <span className='font-light text-xl text-primary'>{value}</span>
         <button
           onClick={onAdd}
           type='button'

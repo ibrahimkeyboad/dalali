@@ -9,6 +9,9 @@ interface User {
   name: string;
   email: string;
   password: string;
+  street: string;
+  city: string;
+  country: string;
   role?: String;
   iEmailVerified?: boolean;
 }

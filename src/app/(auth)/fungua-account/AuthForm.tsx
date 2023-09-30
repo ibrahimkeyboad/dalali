@@ -5,18 +5,51 @@ import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import { HiOutlineEye, HiOutlineEyeOff } from 'react-icons/hi';
 import axios from 'axios';
-import InputAuth from '@/components/inputs/InputAuth';
 import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 interface UserType {
   name: string;
   email: string;
   password: string;
 }
+
+const FormSchema = z.object({
+  firstName: z.string().min(2, {
+    message: 'Username must be at least 2 characters.',
+  }),
+  lastName: z.string().min(2, {
+    message: 'Username must be at least 2 characters.',
+  }),
+  email: z.string().email('Invalid email').min(2, {
+    message: 'Username must be at least 2 characters.',
+  }),
+  password: z.string().min(2, {
+    message: 'Username must be at least 2 characters.',
+  }),
+});
+
 function AuthForm() {
   const router = useRouter();
   const [toggle, setToggle] = useState<boolean>(false);
+
+  const form = useForm<z.infer<typeof FormSchema>>({
+    resolver: zodResolver(FormSchema),
+  });
 
   function toggleHandler() {
     setToggle((prev) => !prev);
@@ -70,74 +103,97 @@ function AuthForm() {
   }
 
   return (
-    <form
-      onSubmit={formik.handleSubmit}
-      className={`dark:shadow-none bg-neutral w-[100%] rounded-lg py-20  md:w-[60%] m-auto items-center gap-8 flex flex-col`}>
-      <h1 className='text-3xl font-semibold self-center  text-primary'>
-        Create Your Account
-      </h1>
+    <Form {...form}>
+      <form
+        onSubmit={formik.handleSubmit}
+        className=' bg-card w-[100%] shadow-lg shadow-gray-200 dark:shadow-none rounded-lg py-10  md:w-[45%] px-10 m-auto gap-6 flex flex-col items-stretch'>
+        <h1 className='text-3xl font-semibold self-center  text-primary'>
+          Create Your Account
+        </h1>
 
-      <div className='sm:w-[60%] w-[80%]'>
-        <InputAuth name='name' type='text' formik={formik} hint='Full Name' />
-        {formik.errors && (
-          <p className='text-error font-semibold text-base'>
-            {formik.errors && formik.touched.name && formik.errors.name}
-          </p>
-        )}
-      </div>
-      <div className='sm:w-[60%] w-[80%]'>
-        <InputAuth name='email' type='email' formik={formik} hint='Email' />
-        {formik.errors && (
-          <p className='text-rose-600 font-semibold text-base'>
-            {formik.errors && formik.touched.email && formik.errors.email}
-          </p>
-        )}
-      </div>
-
-      <div className='sm:w-[60%] w-[80%]'>
-        <span className='flex items-center'>
-          <InputAuth
-            type={toggle ? 'text' : 'password'}
-            name='password'
-            formik={formik}
-            hint='Password'
-          />
-          {!toggle ? (
-            <HiOutlineEyeOff
-              onClick={toggleHandler}
-              size={25}
-              className='-m-7 cursor-pointer'
-            />
-          ) : (
-            <HiOutlineEye
-              onClick={toggleHandler}
-              size={25}
-              className='-m-7 cursor-pointer'
-            />
+        <FormField
+          control={form.control}
+          name='firstName'
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>First Name</FormLabel>
+              <FormControl>
+                <Input placeholder='Ibra' {...field} />
+              </FormControl>
+              <FormDescription>Your first name</FormDescription>
+              <FormMessage />
+            </FormItem>
           )}
-        </span>
+        />
+        <FormField
+          control={form.control}
+          name='lastName'
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Last Name</FormLabel>
+              <FormControl>
+                <Input placeholder='Doe' {...field} />
+              </FormControl>
+              <FormDescription>Your second name</FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name='email'
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input placeholder='ibradoe@example.com' {...field} />
+              </FormControl>
+              <FormDescription>Your email address</FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name='password'
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Password</FormLabel>
+              <FormControl>
+                <Input type='password' placeholder='password' {...field} />
+              </FormControl>
+              <FormDescription>Create a strong password </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        {/* <FormField
+          control={form.control}
+          name='username'
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Username</FormLabel>
+              <FormControl>
+                <Input placeholder='shadcn' {...field} />
+              </FormControl>
+              <FormDescription>
+                This is your public display name.
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        /> */}
 
-        {formik.errors && formik.touched.password && formik.errors.password ? (
-          <p className='text-rose-600 font-bold text-base'>
-            {formik.errors && formik.touched.password && formik.errors.password}
-          </p>
-        ) : (
-          <p className='text-gray-400 text-sm ml-2'>
-            Please enter atleast 6 character
-          </p>
-        )}
-      </div>
+        <Button type='submit'>Submit</Button>
 
-      <div className='flex flex-col gap-3'>
-        <button type='submit' className={`btn btn-primary btn-lg`}>
-          Sign up
-        </button>
-        <Link className='self-center' href='/login'>
-          <span>Already a member? </span>
-          <span className='font-bold text-primary'> Login</span>
-        </Link>
-      </div>
-    </form>
+        <div className='flex flex-col gap-3'>
+          <Link className='self-center' href='/login'>
+            <span>Already a member? </span>
+            <span className='font-bold text-primary'> Login</span>
+          </Link>
+        </div>
+      </form>
+    </Form>
   );
 }
 

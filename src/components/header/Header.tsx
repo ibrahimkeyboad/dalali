@@ -8,19 +8,20 @@ import UserAvatar from '../UserAvatar';
 import Nav from './Nav';
 import { usePathname } from 'next/navigation';
 import { ModeToggle } from './Theme';
+import { SelectForm } from './search';
 
 function Header() {
   const data: any = {};
   const path = usePathname();
 
   return (
-    <header className='px-5 py-6 max-w-7xl m-auto flex flex-col divide-y'>
+    <header className='px-5 py-6 m-auto flex flex-col divide-y'>
       <nav className='flex justify-between pb-6 items-center flex-wrap place-content-around md:px-9'>
         <Link className={`font-bold text-2xl dark:text-[#CCD6F6] `} href='/'>
           Dalali
         </Link>
 
-        <Searching />
+        <SelectForm />
 
         <nav className='flex items-center gap-3'>
           <ModeToggle />

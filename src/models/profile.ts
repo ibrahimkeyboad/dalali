@@ -2,16 +2,10 @@ import moongose from 'mongoose';
 
 const { Schema, model, models } = moongose;
 
-enum Role {
-  admin = 'admin',
-  user = 'user',
-}
-
-const userSchema = new Schema<User>({
-  name: {
+const userSchema = new Schema({
+  image: {
     type: String,
     required: true,
-    trim: true,
   },
 
   email: {
@@ -42,12 +36,6 @@ const userSchema = new Schema<User>({
     type: String,
     required: true,
     minlength: 6,
-  },
-
-  role: {
-    type: String,
-    required: true,
-    default: Role.user,
   },
 });
 

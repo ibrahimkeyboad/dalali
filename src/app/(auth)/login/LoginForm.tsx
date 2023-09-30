@@ -59,7 +59,7 @@ function LoginForm({ email }: { email: string }) {
   return (
     <form
       onSubmit={formik.handleSubmit}
-      className={`dark:shadow-none capitalize bg-neutral w-[100%] rounded-lg py-20  md:w-[60%] m-auto items-center gap-8 flex flex-col`}>
+      className={`dark:shadow-none capitalize bg-card w-[100%] rounded-lg py-20  md:w-[60%] m-auto items-center gap-8 flex flex-col`}>
       <h1 className='lg:text-3xl text-xl px-4 font-semibold self-center  text-primary'>
         Login to Your Account
       </h1>

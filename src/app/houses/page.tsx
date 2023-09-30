@@ -1,7 +1,12 @@
+import Header from '@/components/header/Header';
 import React from 'react';
 
 function page() {
-  return <div>page</div>;
+  return (
+    <>
+      <Header />
+    </>
+  );
 }
 
 export default page;
