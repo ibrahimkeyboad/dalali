@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
@@ -9,10 +8,8 @@ import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from '@/components/ui/form';
 import {
@@ -26,13 +23,10 @@ import { toast } from '@/components/ui/use-toast';
 import { Input } from '../ui/input';
 import { IoIosSearch } from 'react-icons/io';
 import { DropdownMenuProperty } from './dropdown';
+import { useRouter } from 'next/navigation';
 
 const FormSchema = z.object({
-  location: z
-    .string({
-      required_error: 'Please select an email to display.',
-    })
-    .email(),
+  location: z.string(),
   beds: z.number(),
   bathrooms: z.number(),
   bedrooms: z.number(),
@@ -42,6 +36,7 @@ const FormSchema = z.object({
 type ID = 'bedrooms' | 'bathrooms' | 'beds';
 
 export function SelectForm() {
+  const router = useRouter();
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -52,14 +47,9 @@ export function SelectForm() {
   });
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    toast({
-      title: 'You submitted the following values:',
-      description: (
-        <pre className='mt-2 w-[340px] rounded-md bg-slate-950 p-4'>
-          <code className='text-white'>{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
+    router.push(
+      `/search/${data.category}?bed=${data.beds}&bathrooms=${data.bathrooms}&bedrooms=${data.bedrooms}&location=${data.location}`
+    );
   }
 
   const bedrooms = form.watch('bedrooms');
@@ -79,7 +69,7 @@ export function SelectForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className='w-2/3 gap-4 flex items-center'>
+        className='gap-4 flex items-center relative'>
         <FormField
           control={form.control}
           name='location'

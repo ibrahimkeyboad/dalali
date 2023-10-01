@@ -43,11 +43,13 @@ const FormSchema = z.object({
   }),
 });
 
+type MakeOfferFormValues = z.infer<typeof FormSchema>;
+
 function AuthForm() {
   const router = useRouter();
   const [toggle, setToggle] = useState<boolean>(false);
 
-  const form = useForm<z.infer<typeof FormSchema>>({
+  const form = useForm<MakeOfferFormValues>({
     resolver: zodResolver(FormSchema),
   });
 
@@ -61,24 +63,10 @@ function AuthForm() {
     password: '',
   };
 
-  const formik = useFormik({
-    initialValues,
-    onSubmit: onSubmitHandler,
-
-    validationSchema: Yup.object({
-      email: Yup.string()
-        .required('Email is required')
-        .email('Invalid email address'),
-      password: Yup.string()
-        .min(6, 'Too Short!')
-        .required('Password is required'),
-      name: Yup.string().required('Name is required'),
-    }),
-  });
-
-  async function onSubmitHandler(value: UserType) {
+  async function onSubmitHandler(value: MakeOfferFormValues) {
     const data = {
-      name: value.name,
+      firstName: value.firstName,
+      lastName: value.lastName,
       email: value.email.toLowerCase().trim(),
       password: value.password.toLowerCase().trim(),
     };
@@ -105,7 +93,7 @@ function AuthForm() {
   return (
     <Form {...form}>
       <form
-        onSubmit={formik.handleSubmit}
+        onSubmit={form.handleSubmit(onSubmitHandler)}
         className=' bg-card w-[100%] shadow-lg shadow-gray-200 dark:shadow-none rounded-lg py-10  md:w-[45%] px-10 m-auto gap-6 flex flex-col items-stretch'>
         <h1 className='text-3xl font-semibold self-center  text-primary'>
           Create Your Account

@@ -22,46 +22,44 @@ function Counter({ onChange, subtitle, title, value }: CounterProps) {
     onChange(value - 1);
   }, [value, onChange]);
   return (
-    <div className='flex items-center justify-between'>
+    <div className='flex items-center gap-4'>
       <div className='flex flex-col'>
         <h3 className='font-medium text-gray-300'>{title}</h3>
         <h4 className='font-light text-gray-400'>{subtitle}</h4>
       </div>
-      <div className='flex items-center gap-4 text-gray-50'>
+      <div className='flex items-center gap-2'>
         <button
           type='button'
           onClick={onReduce}
           className='
-        w-10 
-        h-10 
+          p-1
         rounded-full 
-        border-[1px] 
-        border-neutral-400
+        border-2
+        border-primary
         flex
         items-center
         justify-center
         cursor-pointer
         hover:opacity-80
         transition'>
-          <AiOutlineMinus />
+          <AiOutlineMinus className='text-primary' />
         </button>
-        <span className='font-light text-xl text-primary'>{value}</span>
+        <span className='font-medium text-xl text-primary'>{value}</span>
         <button
           onClick={onAdd}
           type='button'
-          className='
-            w-10 
-            h-10 
+          className=' 
+            p-1
             rounded-full 
-            border-[1px] 
-            border-neutral-400
+            border-2
+            border-primary
             flex
             items-center
             justify-center
             cursor-pointer
             hover:opacity-80
             transition'>
-          <AiOutlinePlus />
+          <AiOutlinePlus className='text-primary' />
         </button>
       </div>
     </div>
