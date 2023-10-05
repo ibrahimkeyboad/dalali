@@ -1,4 +1,4 @@
-import Card from '@/components/posts/Card';
+import { Card, CardContent } from '@/components/ui/card';
 import React from 'react';
 import { IoIosBed } from 'react-icons/io';
 import { MdOutlineBathroom } from 'react-icons/md';
@@ -30,34 +30,34 @@ function HouseRooms() {
         What is room contain
       </h2>
       <div className='flex gap-4 p-4 flex-wrap'>
-        <article className='border p-4 rounded-md flex gap-3'>
+        <CardContent className='border p-4 rounded-md flex gap-3'>
           {/* <IoIosBed size={25} /> */}
           <p>
             {bedrooms} bedroom{bedrooms > 1 ? 's' : null}
           </p>
-        </article>
-        <article className='border p-4 rounded-md flex gap-3'>
+        </CardContent>
+        <CardContent className='border p-4 rounded-md flex gap-3'>
           <MdOutlineBathroom size={25} />
           <p>
             {bath.length} bath{bath.length > 1 ? 's' : null}
           </p>
-        </article>
-        <article className='border p-4 rounded-md flex gap-3'>
+        </CardContent>
+        <CardContent className='border p-4 rounded-md flex gap-3'>
           {/* <MdOutlineBathroom size={25} /> */}
           <p>Kitchen</p>
-        </article>
-        <article className='border p-4 rounded-md flex gap-3'>
+        </CardContent>
+        <CardContent className='border p-4 rounded-md flex gap-3'>
           {/* <MdOutlineBathroom size={25} /> */}
           <p>seatrooms</p>
-        </article>
-        <article className='border p-4 rounded-md flex gap-3'>
+        </CardContent>
+        <CardContent className='border p-4 rounded-md flex gap-3'>
           {/* <MdOutlineBathroom size={25} /> */}
           <p>dinner</p>
-        </article>
-        <article className='border p-4 rounded-md flex gap-3'>
+        </CardContent>
+        <CardContent className='border p-4 rounded-md flex gap-3'>
           {/* <MdOutlineBathroom size={25} /> */}
           <p>Place to work or start</p>
-        </article>
+        </CardContent>
       </div>
     </Card>
   );

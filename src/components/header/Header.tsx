@@ -9,6 +9,8 @@ import Nav from './Nav';
 import { usePathname } from 'next/navigation';
 import { ModeToggle } from './Theme';
 import { SelectForm } from './search';
+import { PiFadersHorizontalFill } from 'react-icons/pi';
+import { Button } from '../ui/button';
 
 function Header() {
   const data: any = {};
@@ -24,6 +26,10 @@ function Header() {
         <SelectForm />
 
         <nav className='flex items-center gap-3'>
+          <Button variant='outline'>
+            <PiFadersHorizontalFill size={20} />
+          </Button>
+
           <ModeToggle />
           {data ? (
             <Link href='/profile'>

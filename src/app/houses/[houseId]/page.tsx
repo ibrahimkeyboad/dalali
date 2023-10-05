@@ -10,6 +10,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import Header from '@/components/header/Header';
+import { Badge } from '@/components/ui/badge';
 
 export function generateMetadata({ params }: { params: { houseId: string } }) {
   return {
@@ -33,7 +34,7 @@ async function Apartment({ params }: { params: { houseId: string } }) {
     country: 'Tanzania',
     offers: ['umeme', 'maji', 'geti', 'majirani'],
     price: 500000,
-    purpose: 'kukodishwa',
+    purpose: 'inakodishwa',
     userId: 'ie',
     category: 'house',
     owner: {
@@ -55,12 +56,12 @@ async function Apartment({ params }: { params: { houseId: string } }) {
           <div className={`bg-card p-3 my-4  rounded-sm divide-y`}>
             <div className='flex items-center justify-between p-5'>
               <h2 className='tracking-widest font-bold text-3xl'>Overview</h2>
-              <span className='bg-secondary-foreground p-1 rounded-md uppercase text-sm m-1 inline-block text-accent'>
-                For {data?.purpose}
-              </span>
+              <Badge className='capitalize' variant='secondary'>
+                {data?.purpose}
+              </Badge>
             </div>
             <div>
-              <div className='p-4 flex gap-8 md:items-center flex-col md:flex-row items-start justify-between'>
+              <Card className='p-4 flex gap-8 md:items-center flex-col md:flex-row items-start justify-between'>
                 <div className='md:flex gap-2 flex-col'>
                   <h3 className='flex items-center gap-1'>
                     <span>Tsh</span>
@@ -79,20 +80,18 @@ async function Apartment({ params }: { params: { houseId: string } }) {
                   <UserAvatar />
                   <figcaption className='flex flex-col'>
                     <span
-                      className={`dark:text-[#e6f1ff] font-bold tracking-wide text-lg`}>
+                      className={`dark:text-[#e6f1ff] font-bold tracking-wide text-base`}>
                       {data?.owner?.name}
                     </span>
-                    <span className={`dark:text-[#ccd6f6] font-bold`}>
+                    <span className={`dark:text-[#ccd6f6] font-bold text-base`}>
                       {data?.owner?.phoneNumber}
                     </span>
                   </figcaption>
                 </figure>
-              </div>
+              </Card>
             </div>
           </div>
-
-          <HouseRooms />
-
+          <HouseRooms />/
           <Card>
             <CardHeader>
               <CardTitle>What this place offers</CardTitle>
@@ -109,7 +108,6 @@ async function Apartment({ params }: { params: { houseId: string } }) {
               </div>
             </CardContent>
           </Card>
-
           <Card>
             <CardHeader>
               <CardTitle>Description</CardTitle>

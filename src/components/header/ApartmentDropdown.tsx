@@ -1,7 +1,8 @@
 'use client';
 
 import Counter from '../Counter';
-import { Card, CardContent } from '../ui/card';
+import { Button } from '../ui/button';
+import { Card, CardContent, CardFooter } from '../ui/card';
 import { useCallback, useState } from 'react';
 
 interface Props {
@@ -12,7 +13,7 @@ interface Props {
   onHandlerBathRoom: (value: number) => void;
 }
 
-export function DropdownMenuProperty({
+export function ApartmentDropdown({
   bathrooms,
   bedrooms,
   onHandlerBathRoom,
@@ -50,6 +51,12 @@ export function DropdownMenuProperty({
               subtitle='How many bedrooms?'
             />
           </CardContent>
+
+          <CardFooter>
+            <Button variant='outline' type='button' onClick={toggleHandler}>
+              Done
+            </Button>
+          </CardFooter>
         </Card>
       )}
     </div>

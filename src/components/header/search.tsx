@@ -19,11 +19,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { toast } from '@/components/ui/use-toast';
 import { Input } from '../ui/input';
 import { IoIosSearch } from 'react-icons/io';
-import { DropdownMenuProperty } from './dropdown';
 import { useRouter } from 'next/navigation';
+import { ApartmentDropdown } from './ApartmentDropdown';
+import { HomeDropdown } from './HomeDropdown';
+import { DropdownMenuProperty } from './LodgeDropdown';
+import { FrameDropdown } from './FrameDropdown';
 
 const FormSchema = z.object({
   location: z.string(),
@@ -31,9 +33,10 @@ const FormSchema = z.object({
   bathrooms: z.number(),
   bedrooms: z.number(),
   category: z.string(),
+  size: z.number(),
 });
 
-type ID = 'bedrooms' | 'bathrooms' | 'beds';
+type ID = 'bedrooms' | 'bathrooms' | 'beds' | 'size';
 
 export function SelectForm() {
   const router = useRouter();
@@ -55,6 +58,8 @@ export function SelectForm() {
   const bedrooms = form.watch('bedrooms');
   const bathrooms = form.watch('bathrooms');
   const beds = form.watch('beds');
+  const category = form.watch('category');
+  const size = form.watch('size');
 
   function setCustomValue(id: ID, value: any) {
     console.log('value', value);
@@ -69,7 +74,7 @@ export function SelectForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className='gap-4 flex items-center relative'>
+        className='gap-4 md:flex items-center hidden  relative'>
         <FormField
           control={form.control}
           name='location'
@@ -95,24 +100,73 @@ export function SelectForm() {
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  <SelectItem value='apartment'>apartment</SelectItem>
-                  <SelectItem value='geust house'>geust house</SelectItem>
-                  <SelectItem value='house'>house</SelectItem>
-                  <SelectItem value='hostel'>hostel</SelectItem>
-                  <SelectItem value='Frame'>frame</SelectItem>
+                  <SelectItem value='apartment'>Apartment</SelectItem>
+                  {/* <SelectItem value='geusthouse'>Geust house</SelectItem> */}
+                  <SelectItem value='house'>House</SelectItem>
+                  <SelectItem value='hostel'>Hostel</SelectItem>
+                  <SelectItem value='frame'>Frame</SelectItem>
                 </SelectContent>
               </Select>
               <FormMessage />
             </FormItem>
           )}
         />
-        <DropdownMenuProperty
-          bedrooms={bedrooms}
-          bathrooms={bathrooms}
-          beds={beds}
-          onHandlerBathRoom={(value) => setCustomValue('bathrooms', value)}
-          onHandlerBedRoom={(value) => setCustomValue('bedrooms', value)}
-        />
+
+        {category === 'apartment' && (
+          <ApartmentDropdown
+            bedrooms={bedrooms}
+            bathrooms={bathrooms}
+            beds={beds}
+            onHandlerBathRoom={(value) => setCustomValue('bathrooms', value)}
+            onHandlerBedRoom={(value) => setCustomValue('bedrooms', value)}
+          />
+        )}
+        {category === 'house' && (
+          <HomeDropdown
+            bedrooms={bedrooms}
+            bathrooms={bathrooms}
+            beds={beds}
+            onHandlerBathRoom={(value) => setCustomValue('bathrooms', value)}
+            onHandlerBedRoom={(value) => setCustomValue('bedrooms', value)}
+          />
+        )}
+        {category === 'hostel' && (
+          <DropdownMenuProperty
+            bedrooms={bedrooms}
+            bathrooms={bathrooms}
+            beds={beds}
+            onHandlerBathRoom={(value) => setCustomValue('bathrooms', value)}
+            onHandlerBedRoom={(value) => setCustomValue('bedrooms', value)}
+            onHandlerBed={(value) => setCustomValue('beds', value)}
+          />
+        )}
+        {category === 'lodge' && (
+          <DropdownMenuProperty
+            bedrooms={bedrooms}
+            bathrooms={bathrooms}
+            beds={beds}
+            onHandlerBathRoom={(value) => setCustomValue('bathrooms', value)}
+            onHandlerBedRoom={(value) => setCustomValue('bedrooms', value)}
+            onHandlerBed={(value) => setCustomValue('beds', value)}
+          />
+        )}
+        {category === 'geusthouse' && (
+          <DropdownMenuProperty
+            bedrooms={bedrooms}
+            bathrooms={bathrooms}
+            beds={beds}
+            onHandlerBathRoom={(value) => setCustomValue('bathrooms', value)}
+            onHandlerBedRoom={(value) => setCustomValue('bedrooms', value)}
+            onHandlerBed={(value) => setCustomValue('beds', value)}
+          />
+        )}
+        {category === 'frame' && (
+          <FrameDropdown
+            size={size}
+            onHandlerSize={(value) => setCustomValue('size', value)}
+          />
+        )}
+
         <Button type='submit'>
           <IoIosSearch size={25} />
         </Button>
