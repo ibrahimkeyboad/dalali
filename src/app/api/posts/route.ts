@@ -1,4 +1,4 @@
-import Accommodation from '@/models/accommodation';
+import Accommodation from '@/models/apartment';
 import { NextResponse } from 'next/server';
 import connetDB from '@/db/mongose';
 import { FormData } from '@/app/profile/post/create/components/StepContainer';

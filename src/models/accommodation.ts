@@ -28,7 +28,7 @@ interface Accommodation {
   description: string;
 }
 
-const accommodationSchema = new Schema<Accommodation>(
+const accommodationSchema = new Schema(
   {
     _id: {
       type: Schema.Types.ObjectId,
@@ -41,10 +41,6 @@ const accommodationSchema = new Schema<Accommodation>(
       trim: true,
     },
 
-    area: {
-      type: Number,
-      required: true,
-    },
     bathrooms: {
       type: Number,
       required: true,
@@ -53,15 +49,17 @@ const accommodationSchema = new Schema<Accommodation>(
       type: Number,
       required: true,
     },
-    beds: {
-      type: Number,
-      required: true,
-    },
+
     city: {
       type: String,
       required: true,
     },
     description: {
+      type: String,
+      required: true,
+    },
+
+    purpose: {
       type: String,
       required: true,
     },
@@ -101,8 +99,17 @@ const accommodationSchema = new Schema<Accommodation>(
       type: Number,
       required: true,
     },
-    purpose: {},
     street: {
+      type: String,
+      required: true,
+    },
+
+    category: {
+      type: String,
+      required: true,
+    },
+
+    country: {
       type: String,
       required: true,
     },

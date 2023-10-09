@@ -1,9 +1,9 @@
-import HouseRooms from '@/app/houses/components/HouseRooms';
 import ImageFigure from '@/components/ImageFigure';
 import UserAvatar from '@/components/UserAvatar';
 import Header from '@/components/header/Header';
 import Card from '@/components/posts/Card';
 import React from 'react';
+import HouseRooms from '../../../houses/components/HouseRooms';
 
 function page() {
   const data: any = {

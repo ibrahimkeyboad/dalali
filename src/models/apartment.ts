@@ -1,9 +1,38 @@
 import { Schema, model, models } from 'mongoose';
 
-const accommodationSchema = new Schema(
+interface Apartment {
+  _id: Schema.Types.ObjectId;
+  type: string;
+  price: number;
+  bedrooms: number;
+  beds: number;
+  sofa: number;
+  street: string;
+  city: string;
+  bathrooms: number;
+  duration: string;
+  purpose: string;
+  isAvailable: boolean;
+  area: number;
+  tags: string[];
+  imageCover: {
+    uri: string;
+    public_id: string;
+  };
+  images: [
+    {
+      uri: string;
+      public_id: string;
+    }
+  ];
+  description: string;
+}
+
+const apartmentSchema = new Schema<Apartment>(
   {
     _id: {
       type: Schema.Types.ObjectId,
+      required: false,
     },
 
     type: {
@@ -12,6 +41,22 @@ const accommodationSchema = new Schema(
       trim: true,
     },
 
+    area: {
+      type: Number,
+      required: true,
+    },
+    bathrooms: {
+      type: Number,
+      required: true,
+    },
+    bedrooms: {
+      type: Number,
+      required: true,
+    },
+    beds: {
+      type: Number,
+      required: true,
+    },
     city: {
       type: String,
       required: true,
@@ -19,20 +64,6 @@ const accommodationSchema = new Schema(
     description: {
       type: String,
       required: true,
-    },
-
-    size: {
-      type: Number,
-      required: true,
-    },
-
-    purpose: {
-      type: String,
-      required: true,
-    },
-
-    located: {
-      type: String,
     },
 
     duration: {
@@ -70,17 +101,8 @@ const accommodationSchema = new Schema(
       type: Number,
       required: true,
     },
+    purpose: {},
     street: {
-      type: String,
-      required: true,
-    },
-
-    category: {
-      type: String,
-      required: true,
-    },
-
-    country: {
       type: String,
       required: true,
     },
@@ -90,7 +112,6 @@ const accommodationSchema = new Schema(
   }
 );
 
-const Accommodation =
-  models.Accommodation || model('Accommodation', accommodationSchema);
+const Apartment = models.Apartment || model('Apartment', apartmentSchema);
 
-export default Accommodation;
+export default Apartment;

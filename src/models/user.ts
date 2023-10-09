@@ -7,49 +7,52 @@ enum Role {
   user = 'user',
 }
 
-const userSchema = new Schema<User>({
-  name: {
-    type: String,
-    required: true,
-    trim: true,
-  },
+const userSchema = new Schema<User>(
+  {
+    name: {
+      type: String,
+      required: true,
+      trim: true,
+    },
 
-  email: {
-    type: String,
-    required: true,
-  },
+    email: {
+      type: String,
+      required: true,
+    },
 
-  street: {
-    type: String,
-    required: true,
-  },
+    street: {
+      type: String,
+      required: true,
+    },
 
-  city: {
-    type: String,
-    required: true,
-  },
+    city: {
+      type: String,
+      required: true,
+    },
 
-  country: {
-    type: String,
-    required: true,
-  },
+    country: {
+      type: String,
+      required: true,
+    },
 
-  iEmailVerified: {
-    type: Boolean,
-    default: false,
-  },
-  password: {
-    type: String,
-    required: true,
-    minlength: 6,
-  },
+    iEmailVerified: {
+      type: Boolean,
+      default: false,
+    },
+    password: {
+      type: String,
+      required: true,
+      minlength: 6,
+    },
 
-  role: {
-    type: String,
-    required: true,
-    default: Role.user,
+    role: {
+      type: String,
+      required: true,
+      default: Role.user,
+    },
   },
-});
+  { timestamps: true }
+);
 
 const User = models.User || model('User', userSchema);
 

@@ -1,4 +1,4 @@
-import Accommodation from '@/models/accommodation';
+import Accommodation from '@/models/apartment';
 import { House } from '@prisma/client';
 import Image from 'next/image';
 import Link from 'next/link';

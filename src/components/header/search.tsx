@@ -74,7 +74,7 @@ export function SelectForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className='gap-4 md:flex items-center hidden  relative'>
+        className='gap-4 lg:flex items-center hidden relative'>
         <FormField
           control={form.control}
           name='location'

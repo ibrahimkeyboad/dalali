@@ -37,7 +37,9 @@ const userSchema = new Schema({
     required: true,
     minlength: 6,
   },
-});
+},
+{ timestamps: true }
+);
 
 const User = models.User || model('User', userSchema);
 

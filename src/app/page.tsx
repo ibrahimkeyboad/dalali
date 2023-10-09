@@ -1,7 +1,7 @@
 import getPosts from '@/actions/getAllPosts';
 import Header from '@/components/header/Header';
 import Posts from '@/components/posts/Posts';
-import Accommodation from '@/models/accommodation';
+import Accommodation from '@/models/apartment';
 
 async function Page() {
   // const res = await fetch('http://localhost:3000/api/posts');

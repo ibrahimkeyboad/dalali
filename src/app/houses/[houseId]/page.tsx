@@ -24,7 +24,12 @@ async function Apartment({ params }: { params: { houseId: string } }) {
 
   const data: any = {
     id: 'faf1',
-    images: ['/images/home.jpg'],
+    images: [
+      '/images/home.jpg',
+      '/images/cover1.jpg',
+      '/images/cover2.jpg',
+      '/images/cover3.jpg',
+    ],
     duration: 'mwezi',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium hic quia labore corrupti est, optio tenetur culpa quis quibusdam esse sunt minima ipsam repellendus eligendi incidunt aliquam quam dolores sit deserunt beatae possimus pariatur eveniet repudiandae qui. Porro beatae corrupti nisi maxime nam laboriosam doloribus dignissimos id voluptatem quae corporis natus dolorum, repellendus, totam facilis! Odio accusantium laboriosam cupiditate optio illo aliquid. Ut corrupti dolorem ab provident quo numquam quae.',

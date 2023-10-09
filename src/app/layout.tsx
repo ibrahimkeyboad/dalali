@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en' data-theme='night'>
+    <html lang='sw' data-theme='night'>
       <body className={inter.className}>
         <ToasterProvider />
         <ThemeProvider attribute='class' defaultTheme='system' enableSystem>

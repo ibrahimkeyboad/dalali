@@ -11,10 +11,14 @@ import { ModeToggle } from './Theme';
 import { SelectForm } from './search';
 import { PiFadersHorizontalFill } from 'react-icons/pi';
 import { Button } from '../ui/button';
+import { IoIosSearch } from 'react-icons/io';
+import { useState } from 'react';
 
 function Header() {
   const data: any = {};
   const path = usePathname();
+
+  const [toggle, setToggle] = useState();
 
   return (
     <header className='px-5 py-6 m-auto flex flex-col divide-y'>
@@ -26,6 +30,9 @@ function Header() {
         <SelectForm />
 
         <nav className='flex items-center gap-3'>
+          <Button className='lg:hidden' variant='outline' size='icon'>
+            <IoIosSearch size={25} />
+          </Button>
           <Button variant='outline'>
             <PiFadersHorizontalFill size={20} />
           </Button>
