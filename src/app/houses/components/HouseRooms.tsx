@@ -1,6 +1,6 @@
 import { Card, CardContent } from '@/components/ui/card';
 import React from 'react';
-import { IoIosBed } from 'react-icons/io';
+import { IoIosBed, IoMdBed } from 'react-icons/io';
 import { MdOutlineBathroom } from 'react-icons/md';
 
 const bedrooms = 2;
@@ -18,7 +18,7 @@ function HouseRooms() {
       <h2 className='dark:text-[#e6f1ff] tracking-widest font-bold text-xl p-3 pb-5 '>
         What is house contain
       </h2>
-      <div className='flex  w-2/3 gap-4 p-4 flex-wrap'>
+      <div className='flex gap-4 p-4 flex-wrap'>
         <CardContent className='border rounded-md '>
           <h3 className='text-center'>Bedroom</h3>
 
@@ -27,7 +27,7 @@ function HouseRooms() {
             <p>Master bedroom</p>
           </article>
           <article className='flex gap-3'>
-            <IoIosBed size={25} />
+            <IoMdBed size={25} />
             <p>single bedroom</p>
           </article>
         </CardContent>
