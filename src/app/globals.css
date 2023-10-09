@@ -78,8 +78,7 @@
 
 
 .swiper {
-  width: 100%;
-  height: 40rem;
+  @apply relative max-w-[90%] h-[300px] md:h-[600px];
 }
 
 .swiper-slide {
@@ -98,4 +97,10 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+
+.swiper-button-prev,
+.swiper-button-next {
+  @apply bg-slate-950 p-4 rounded-full shadow-sm
 }
