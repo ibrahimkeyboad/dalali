@@ -7,15 +7,20 @@ import { useDispatch } from 'react-redux';
 import UserAvatar from '../UserAvatar';
 import Nav from './Nav';
 import { usePathname } from 'next/navigation';
-import { ModeToggle } from './Theme';
 import { PiFadersHorizontalFill } from 'react-icons/pi';
 import { Button } from '../ui/button';
+import { useCallback } from 'react';
+import ModeToggle from './Theme';
 
 function Header() {
   const data: any = {};
   const path = usePathname();
 
   const dispatch = useDispatch();
+
+  const handlerToggle = useCallback(() => {
+    dispatch(ModeToggle());
+  }, [dispatch]);
 
   return (
     <header className='px-5 py-6 m-auto flex flex-col divide-y'>
@@ -30,10 +35,7 @@ function Header() {
           {/* <Button className='lg:hidden' variant='outline' size='icon'>
             <IoIosSearch size={25} />
           </Button> */}
-          <Button
-            variant='outline'
-            type='button'
-            onClick={() => dispatch(ModeToggle())}>
+          <Button variant='outline' type='button' onClick={handlerToggle}>
             <PiFadersHorizontalFill size={20} />
           </Button>
 
