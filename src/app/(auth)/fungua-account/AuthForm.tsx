@@ -94,7 +94,7 @@ function AuthForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmitHandler)}
-        className=' bg-card w-[100%] shadow-lg shadow-gray-200 dark:shadow-none rounded-lg py-10  md:w-[45%] px-10 m-auto gap-6 flex flex-col items-stretch'>
+        className=' bg-card w-[90%] shadow-lg shadow-gray-200 dark:shadow-none rounded-lg md:w-[70%] lg:w-[45%] px-10 m-auto gap-6 flex flex-col items-stretch border'>
         <h1 className='text-3xl font-semibold self-center  text-primary'>
           Create Your Account
         </h1>

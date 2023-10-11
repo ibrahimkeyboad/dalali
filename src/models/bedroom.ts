@@ -8,8 +8,12 @@ const bedroomSchema = new Schema(
       default: 'normal',
     },
 
+    description: {
+      type: String,
+    },
+
     bed: {
-      type: Schema.Types.ObjectId,
+      type: [Schema.Types.ObjectId],
       ref: Bed,
     },
   },

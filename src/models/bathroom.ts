@@ -7,6 +7,8 @@ const bathroomSchema = new Schema(
       default: 'public',
     },
 
+    description: String,
+
     shower: {
       type: String,
       default: 'hot water',

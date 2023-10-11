@@ -2,6 +2,8 @@ import './globals.css';
 
 import { Inter } from 'next/font/google';
 import ToasterProvider, { ThemeProvider } from '@/providers/ToasterProvider';
+import FilterModal from '@/components/FilterModal';
+import ReduxProvider from '@/providers/ReduxProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,7 +22,10 @@ export default function RootLayout({
       <body className={inter.className}>
         <ToasterProvider />
         <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
-          {children}
+          <ReduxProvider>
+            {children}
+            <FilterModal />
+          </ReduxProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -3,5 +3,5 @@ export default function AuthLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <main className='grid h-screen'>{children}</main>;
+  return <main className='flex h-screen'>{children}</main>;
 }

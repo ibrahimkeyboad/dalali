@@ -22,7 +22,7 @@ async function Apartment({ params }: { params: { houseId: string } }) {
   // const res = await fetch('http://localhost:3000/api/apartment');
   // const data = await res.json();
 
-  const data: any = {
+  const data = {
     id: 'faf1',
     images: [
       '/images/home.jpg',
@@ -33,11 +33,11 @@ async function Apartment({ params }: { params: { houseId: string } }) {
     duration: 'mwezi',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium hic quia labore corrupti est, optio tenetur culpa quis quibusdam esse sunt minima ipsam repellendus eligendi incidunt aliquam quam dolores sit deserunt beatae possimus pariatur eveniet repudiandae qui. Porro beatae corrupti nisi maxime nam laboriosam doloribus dignissimos id voluptatem quae corporis natus dolorum, repellendus, totam facilis! Odio accusantium laboriosam cupiditate optio illo aliquid. Ut corrupti dolorem ab provident quo numquam quae.',
-    bedrooms: 2,
+    // bedrooms: 2,
     city: 'Arusha',
     street: 'Ngulelo',
     country: 'Tanzania',
-    offers: ['umeme', 'maji', 'geti', 'majirani'],
+    offers: ['umeme', 'maji', 'geti', 'parking', 'makabati'],
     price: 500000,
     purpose: 'inakodishwa',
     userId: 'ie',
@@ -45,6 +45,36 @@ async function Apartment({ params }: { params: { houseId: string } }) {
     owner: {
       name: 'Pisi Kali',
       phoneNumber: '+255620179067',
+    },
+
+    bedrooms: [
+      {
+        sort: 'Master bedroom',
+        description: 'Big room which contain alot of space',
+      },
+      {
+        sort: 'Master bedroom',
+        description: 'Big room which contain alot of space',
+      },
+    ],
+
+    bathroom: [
+      {
+        sort: 'Public bathroom',
+        description: 'Shared bathroom',
+        shower: 'hot cold',
+      },
+      {
+        sort: 'Private bathroom',
+        description: 'bathroom that is inside of bedroom',
+        shower: 'hot water',
+      },
+    ],
+    kitchen: {
+      sort: 'Big space',
+      fidge: 'Place to put fidge',
+      washing: 'Place to washes dishes',
+      cook: 'Place to cook food',
     },
   };
 
@@ -61,7 +91,7 @@ async function Apartment({ params }: { params: { houseId: string } }) {
           <div className={`bg-card p-3 my-4  rounded-sm divide-y`}>
             <div className='flex items-center justify-between p-5'>
               <h2 className='tracking-widest font-bold text-3xl'>Overview</h2>
-              <Badge className='capitalize' variant='secondary'>
+              <Badge className='capitalize font-bold' variant='secondary'>
                 {data?.purpose}
               </Badge>
             </div>
@@ -96,7 +126,12 @@ async function Apartment({ params }: { params: { houseId: string } }) {
               </Card>
             </div>
           </div>
-          <HouseRooms />/
+          <HouseRooms
+            bedrooms={data.bedrooms}
+            bathrooms={data.bathroom}
+            kitchen={data.kitchen}
+          />
+          /
           <Card>
             <CardHeader>
               <CardTitle>What this place offers</CardTitle>

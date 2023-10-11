@@ -2,7 +2,7 @@
 
 import { ReactElement, useCallback, useEffect, useState } from 'react';
 import { IoMdClose } from 'react-icons/io';
-import Button from './Button';
+import { Button } from './ui/button';
 
 interface ModalProps {
   isOpen?: boolean;
@@ -66,9 +66,8 @@ function Modal({
   }
 
   return (
-    <>
-      <div
-        className='
+    <div
+      className='
           justify-center 
           items-center 
           flex 
@@ -80,8 +79,8 @@ function Modal({
           outline-none 
           focus:outline-none 
         bg-neutral-800/70'>
-        <div
-          className='
+      <div
+        className='
           relative 
           w-full 
           md:w-4/6 
@@ -91,16 +90,16 @@ function Modal({
           mx-auto 
           h-full
           md:h-auto'>
-          <div
-            className={`
+        <div
+          className={`
             translate 
             duration-300
             h-full
             ${showModal ? 'translate-y-0' : 'translate-y-full'}
             ${showModal ? 'opacity-100' : 'opacity-0'}
             `}>
-            <div
-              className='
+          <div
+            className='
                 translate 
                 h-full 
                 md:h-auto
@@ -111,12 +110,12 @@ function Modal({
                 flex
                 flex-col
                 w-full
-                bg-white
+                bg-background
                 outline-none
                 focus:outline-none'>
-              {/* Header */}
-              <div
-                className='
+            {/* Header */}
+            <div
+              className='
                   flex
                   items-center
                   justify-center
@@ -125,48 +124,49 @@ function Modal({
                   relative
                   border-b-[1px]
               '>
-                <button
-                  onClick={handleClose}
-                  className='
+              <button
+                onClick={handleClose}
+                className='
                     p-1
                     hover:opacity-70
                     transition
                     absolute
                     left-9
                     '>
-                  <IoMdClose size={18} />
-                </button>
-                <h2 className='text-lg  font-semibold'>{title}</h2>
-              </div>
-              {/* Body */}
-              <div className='relative p-6 flex-auto'>{body}</div>
-              {/* footer */}
-              <div className='flex flex-col gap-2 p-6'>
-                <div className='flex items-center gap-4 w-full'>
-                  {secondaryAction && secondaryLabel && (
-                    <Button
-                      // outline
-                      // disabled={disable}
-                      title='cancel'
-                      // label={secondaryLabel}
-                      onClick={handleSecondaryAction}
-                    />
-                  )}
-
+                <IoMdClose size={18} />
+              </button>
+              <h2 className='text-lg text-primary  font-semibold'>{title}</h2>
+            </div>
+            {/* Body */}
+            <div className='relative p-6 flex-auto'>{body}</div>
+            {/* footer */}
+            <div className='flex flex-col gap-2 p-6'>
+              <div className='flex items-center gap-4 w-full'>
+                {secondaryAction && secondaryLabel && (
                   <Button
-                    onClick={handleSubmint}
+                    type='button'
+                    variant='outline'
+                    // outline
                     // disabled={disable}
-                    title='ok'
-                    // label={actionLabel}
+                    title='cancel'
+                    // label={secondaryLabel}
+                    onClick={handleSecondaryAction}
                   />
-                </div>
-                {footer}
+                )}
+
+                <Button
+                  onClick={handleSubmint}
+                  // disabled={disable}
+                  title='ok'
+                  // label={actionLabel}
+                />
               </div>
+              {footer}
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

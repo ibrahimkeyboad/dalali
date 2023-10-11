@@ -2,23 +2,20 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { useDispatch } from 'react-redux';
 
-import Searching from './Searching';
 import UserAvatar from '../UserAvatar';
 import Nav from './Nav';
 import { usePathname } from 'next/navigation';
 import { ModeToggle } from './Theme';
-import { SelectForm } from './search';
 import { PiFadersHorizontalFill } from 'react-icons/pi';
 import { Button } from '../ui/button';
-import { IoIosSearch } from 'react-icons/io';
-import { useState } from 'react';
 
 function Header() {
   const data: any = {};
   const path = usePathname();
 
-  const [toggle, setToggle] = useState();
+  const dispatch = useDispatch();
 
   return (
     <header className='px-5 py-6 m-auto flex flex-col divide-y'>
@@ -27,13 +24,16 @@ function Header() {
           Dalali
         </Link>
 
-        <SelectForm />
+        {/* <SelectForm /> */}
 
         <nav className='flex items-center gap-3'>
-          <Button className='lg:hidden' variant='outline' size='icon'>
+          {/* <Button className='lg:hidden' variant='outline' size='icon'>
             <IoIosSearch size={25} />
-          </Button>
-          <Button variant='outline'>
+          </Button> */}
+          <Button
+            variant='outline'
+            type='button'
+            onClick={() => dispatch(ModeToggle())}>
             <PiFadersHorizontalFill size={20} />
           </Button>
 
