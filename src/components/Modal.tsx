@@ -43,7 +43,7 @@ function Modal({
 
   const handleSubmint = useCallback(() => {
     onSubmit();
-    onClose();
+    // onClose();
   }, [onSubmit, onClose]);
 
   useEffect(() => {
@@ -159,7 +159,7 @@ function Modal({
                   type='submit'
                   onClick={(e) => {
                     e.stopPropagation();
-                    handleSubmint;
+                    handleSubmint();
                   }}
                   disabled={disable}>
                   {actionLabel}

@@ -22,6 +22,7 @@ import { RootState } from '@/contexts/store';
 import { modalToggle } from '@/contexts/globalState';
 import { useRouter } from 'next/navigation';
 import RoomContain from './inputs/RoomContain';
+import RangePrice from '@/contexts/rage';
 
 const FormSchema = z.object({
   minPrice: z.number(),
@@ -92,43 +93,17 @@ function FilterModal() {
   );
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
+    console.log('hello');
     router.push(
-      `/search/${data.category}?bed=${data.bed}&bathrooms=${data.bathrooms}&bedrooms=${data.bedrooms}&location=${data.location}`
+      `${data.category}?bed=${data.bed}&bathrooms=${data.bathrooms}&bedrooms=${data.bedrooms}&location=${data.location}`
     );
   }
 
   const body = (
     <Form {...form}>
-      <form
-        className='flex flex-col divide-y'
-        onSubmit={form.handleSubmit(onSubmit)}>
+      <div className='flex flex-col divide-y'>
         <div className='flex gap-6 justify-center pb-6'>
-          <FormField
-            control={form?.control}
-            name='minPrice'
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Minimum price</FormLabel>
-                <FormControl>
-                  <Input placeholder='minimum' {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form?.control}
-            name='maxPrice'
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>max price</FormLabel>
-                <FormControl>
-                  <Input placeholder='maxmam' {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          <RangePrice />
         </div>
 
         <div className='py-6'>
@@ -221,18 +196,18 @@ function FilterModal() {
         )}
 
         {/* <RoomContain title='Size' /> */}
-      </form>
+      </div>
     </Form>
   );
 
   return (
     <Modal
-      actionLabel='helo'
+      actionLabel='Search'
       secondaryLabel='toka'
       secondaryAction={() => dispatch(modalToggle())}
       onClose={() => dispatch(modalToggle())}
-      onSubmit={() => {}}
       body={body}
+      onSubmit={form.handleSubmit(onSubmit)}
       title='Filter'
       isOpen={isOpen}
     />
