@@ -1,25 +1,26 @@
+'use client';
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
-export interface CounterState {
+export interface ModalState {
   modalValue: boolean;
 }
 
-const initialState: CounterState = {
+const initialState: ModalState = {
   modalValue: false,
 };
 
 export const counterSlice = createSlice({
-  name: 'counter',
+  name: 'global',
   initialState,
   reducers: {
-    ModalToggle: (state) => {
+    modalToggle: (state) => {
       state.modalValue = !state.modalValue;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { ModalToggle } = counterSlice.actions;
+export const { modalToggle } = counterSlice.actions;
 
 export default counterSlice.reducer;

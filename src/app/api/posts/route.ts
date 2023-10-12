@@ -1,38 +1,31 @@
-import Accommodation from '@/models/apartment';
-import { NextResponse } from 'next/server';
-import connetDB from '@/db/mongose';
-import { FormData } from '@/app/profile/post/create/components/StepContainer';
+import { NextRequest, NextResponse } from 'next/server';
 
-export async function Post(request: Request) {
-  try {
-    connetDB();
-    const body: FormData = await request.json();
+import {
+  S3Client,
+  ListObjectsCommand,
+  PutObjectCommand,
+} from '@aws-sdk/client-s3';
 
-    const { bathrooms, bedrooms, beds, imageCover, images, sofa } = body;
+const Bucket = process.env.AMPLIFY_BUCKET;
+const s3 = new S3Client({
+  region: process.env.AWS_REGION,
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID as string,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY as string,
+  },
+});
 
-    await Accommodation.create({
-      bathrooms,
-      bedrooms,
-      beds,
-      imageCover,
-      images,
-      sofa,
-    });
-  } catch (err: any) {
-    return new NextResponse(err, { status: 500 });
-  }
-}
+export async function POST(request: NextRequest) {
+  const formData = await request.formData();
+  const files = formData.getAll('file') as File[];
 
-export async function GET(req: Request) {
-  try {
-    connetDB();
+  const response = await Promise.all(
+    files.map(async (file) => {
+      // not sure why I have to override the types here
+      const Body = (await file.arrayBuffer()) as Buffer;
+      s3.send(new PutObjectCommand({ Bucket, Key: file.name, Body }));
+    })
+  );
 
-    const data = await Accommodation.find();
-
-    console.log(data);
-
-    return NextResponse.json(data);
-  } catch (err) {
-    return new NextResponse(`${err}`, { status: 500 });
-  }
+  return NextResponse.json(response);
 }

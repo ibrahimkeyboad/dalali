@@ -1,16 +1,20 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { useDispatch } from 'react-redux';
 
 import UserAvatar from '../UserAvatar';
-import Nav from './Nav';
 import { usePathname } from 'next/navigation';
 import { PiFadersHorizontalFill } from 'react-icons/pi';
 import { Button } from '../ui/button';
 import { useCallback } from 'react';
 import ModeToggle from './Theme';
+import { modalToggle } from '@/contexts/globalState';
+import dynamic from 'next/dynamic';
+
+const Nav = dynamic(() => import('./Nav'), {
+  loading: () => <p>Loading...</p>,
+});
 
 function Header() {
   const data: any = {};
@@ -19,7 +23,7 @@ function Header() {
   const dispatch = useDispatch();
 
   const handlerToggle = useCallback(() => {
-    dispatch(ModeToggle());
+    dispatch(modalToggle());
   }, [dispatch]);
 
   return (

@@ -42,13 +42,9 @@ function Modal({
   }, [disable, onClose]);
 
   const handleSubmint = useCallback(() => {
-    if (disable) {
-      return;
-    }
-
     onSubmit();
     onClose();
-  }, [disable, onSubmit, onClose]);
+  }, [onSubmit, onClose]);
 
   useEffect(() => {
     setShowModal(isOpen);
@@ -67,15 +63,14 @@ function Modal({
 
   return (
     <div
+      onClick={handleClose}
       className='
           justify-center 
           items-center 
           flex 
-          overflow-x-hidden 
-          overflow-y-auto 
           fixed 
           inset-0 
-          z-50 
+          z-30 
           outline-none 
           focus:outline-none 
         bg-neutral-800/70'>
@@ -87,26 +82,27 @@ function Modal({
           lg:w-3/6 
           xl:/2/5 
           my-6 
+          bg-red
           mx-auto 
-          h-full
           md:h-auto'>
         <div
           className={`
             translate 
             duration-300
-            h-full
             ${showModal ? 'translate-y-0' : 'translate-y-full'}
             ${showModal ? 'opacity-100' : 'opacity-0'}
             `}>
           <div
             className='
                 translate 
-                h-full 
-                md:h-auto
+              h-[90vh]
+                z-50
                 border-0
                 rounded-lg
                 shadow-lg
                 relative
+                overflow-x-hidden 
+                overflow-y-auto 
                 flex
                 flex-col
                 w-full
@@ -114,7 +110,7 @@ function Modal({
                 outline-none
                 focus:outline-none'>
             {/* Header */}
-            <div
+            <header
               className='
                   flex
                   items-center
@@ -136,33 +132,41 @@ function Modal({
                 <IoMdClose size={18} />
               </button>
               <h2 className='text-lg text-primary  font-semibold'>{title}</h2>
-            </div>
+            </header>
             {/* Body */}
-            <div className='relative p-6 flex-auto'>{body}</div>
+            <main
+              className='relative p-6 flex-auto  overflow-x-hidden 
+                overflow-y-auto '>
+              {body}
+            </main>
             {/* footer */}
-            <div className='flex flex-col gap-2 p-6'>
-              <div className='flex items-center gap-4 w-full'>
+            <footer className='flex flex-col gap-2 p-6'>
+              <div className='flex items-center justify-between w-full'>
                 {secondaryAction && secondaryLabel && (
                   <Button
                     type='button'
                     variant='outline'
-                    // outline
-                    // disabled={disable}
-                    title='cancel'
-                    // label={secondaryLabel}
-                    onClick={handleSecondaryAction}
-                  />
+                    disabled={disable}
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      handleSecondaryAction;
+                    }}>
+                    {secondaryLabel}
+                  </Button>
                 )}
 
                 <Button
-                  onClick={handleSubmint}
-                  // disabled={disable}
-                  title='ok'
-                  // label={actionLabel}
-                />
+                  type='submit'
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleSubmint;
+                  }}
+                  disabled={disable}>
+                  {actionLabel}
+                </Button>
               </div>
               {footer}
-            </div>
+            </footer>
           </div>
         </div>
       </div>

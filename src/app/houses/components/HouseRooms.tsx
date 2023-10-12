@@ -35,7 +35,7 @@ function HouseRooms({ bathrooms, bedrooms, kitchen }: Props) {
       <h2 className='dark:text-[#e6f1ff] tracking-widest font-bold text-xl p-3 pb-5 '>
         What is house contain
       </h2>
-      <div className='flex gap-4 p-4 flex-wrap'>
+      <div className='flex gap-6 p-4 flex-wrap'>
         {bedrooms && (
           <CardContent className='border p-3 rounded-md '>
             <h3 className='text-center font-semibold pb-1'>
@@ -91,7 +91,7 @@ function HouseRooms({ bathrooms, bedrooms, kitchen }: Props) {
 
             <article className='flex  items-start justify-start gap-3'>
               <TbToolsKitchen2 size={40} />
-              <div className='flex flex-col gap-2'>
+              <div className='flex flex-col text-sm gap-1'>
                 <p>{kitchen.sort}</p>
                 <p>{kitchen.cook}</p>
                 <p>{kitchen.washing}</p>

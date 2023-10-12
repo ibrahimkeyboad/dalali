@@ -1,7 +1,6 @@
 import ImageFigure from '@/components/ImageFigure';
 import UserAvatar from '@/components/UserAvatar';
 import React from 'react';
-import HouseRooms from '../components/HouseRooms';
 import {
   Card,
   CardContent,
@@ -9,14 +8,21 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import Header from '@/components/header/Header';
 import { Badge } from '@/components/ui/badge';
+import dynamic from 'next/dynamic';
 
 export function generateMetadata({ params }: { params: { houseId: string } }) {
   return {
     title: `Home: ${params.houseId}`,
   };
 }
+
+const Header = dynamic(() => import('@/components/header/Header'), {
+  loading: () => <p>Loading...</p>,
+});
+const HouseRooms = dynamic(() => import('../components/HouseRooms'), {
+  loading: () => <p>Loading...</p>,
+});
 
 async function Apartment({ params }: { params: { houseId: string } }) {
   // const res = await fetch('http://localhost:3000/api/apartment');

@@ -21,12 +21,12 @@ export default function RootLayout({
     <html lang='sw' data-theme='night'>
       <body className={inter.className}>
         <ToasterProvider />
-        <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
-          <ReduxProvider>
+        <ReduxProvider>
+          <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
             {children}
             <FilterModal />
-          </ReduxProvider>
-        </ThemeProvider>
+          </ThemeProvider>
+        </ReduxProvider>
       </body>
     </html>
   );

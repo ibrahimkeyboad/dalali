@@ -15,20 +15,27 @@ function CategoryInput({
 }: CategoryProps) {
   return (
     <article
-      onClick={() => onClick(label)}
+      onClick={(event) => {
+        event.stopPropagation();
+        onClick(label);
+      }}
       className={`
         grid 
+        cursor-pointer
         border-2
         hover:border-black 
-        transition c
-        ursor-pointer 
+        transition 
+        capitalize
         dark:hover:border-white 
         rounded-xl  
-        p-6 
+        p-4 
         gap-3 
-        py-3
-        ${selected ? 'border-black dark:border-white' : 'border-neutral-500'}`}>
-      <Icon size={30} />
+        ${
+          selected
+            ? 'border-black dark:border-white'
+            : 'border-neutral-500 text-gray-300'
+        }`}>
+      <Icon size={25} />
       <h4 className='font-semibold'>{label} </h4>
     </article>
   );
