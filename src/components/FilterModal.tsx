@@ -1,15 +1,7 @@
 'use client';
 import React, { useCallback } from 'react';
 import Modal from './Modal';
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from './ui/form';
-import { Input } from './ui/input';
+import { Form } from './ui/form';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -25,39 +17,40 @@ import RoomContain from './inputs/RoomContain';
 import RangePrice from '@/contexts/rage';
 
 const FormSchema = z.object({
-  minPrice: z.number(),
-  maxPrice: z.number(),
+  // minPrice: z.number().
+  // maxPrice: z.number(),
   category: z.string(),
-  location: z.string(),
+  // location: z.string(),
   bathrooms: z.number(),
   bedrooms: z.number(),
   bed: z.number(),
-  size: z.number(),
+  // size: z.number(),
 });
 
 type MakeOfferFormValues = z.infer<typeof FormSchema>;
 
 const categories = [
   {
-    label: 'house',
+    label: 'houses',
     icon: IoHomeSharp,
   },
   {
-    label: 'apartment',
+    label: 'apartments',
     icon: MdApartment,
   },
   {
-    label: 'hostel',
+    label: 'hostels',
     icon: TbBuildingCommunity,
   },
 
   {
-    label: 'frame',
+    label: 'frames',
     icon: IoHomeSharp,
   },
 ];
 
-type ID = 'category' | 'bed' | 'bedrooms' | 'bathrooms' | 'size';
+// type ID = 'category' | 'bed' | 'bedrooms' | 'bathrooms' | 'size';
+type ID = 'category' | 'bed' | 'bedrooms' | 'bathrooms';
 
 function FilterModal() {
   const router = useRouter();
@@ -66,7 +59,7 @@ function FilterModal() {
   const form = useForm<MakeOfferFormValues>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      bed: 1,
+      bed: 0,
       bedrooms: 1,
       bathrooms: 1,
     },
@@ -76,10 +69,7 @@ function FilterModal() {
   const bed = form.watch('bed');
   const bedrooms = form.watch('bedrooms');
   const bathrooms = form.watch('bathrooms');
-  const size = form.watch('size');
-
-  console.log(category);
-  console.log(category === 'apartment');
+  // const size = form.watch('size');
 
   const setCustomValue = useCallback(
     (id: ID, value: any) => {
@@ -92,24 +82,32 @@ function FilterModal() {
     [form]
   );
 
+  console.log(form.formState.errors);
+
   function onSubmit(data: z.infer<typeof FormSchema>) {
     console.log('hello');
     router.push(
-      `${data.category}?bed=${data.bed}&bathrooms=${data.bathrooms}&bedrooms=${data.bedrooms}&location=${data.location}`
+      // `${data.category}?bed=${data.bed}&bathrooms=${data.bathrooms}&bedrooms=${data.bedrooms}&location=${data.location}`
+      `${data.category}?bed=${data.bed}&bathrooms=${data.bathrooms}&bedrooms=${data.bedrooms}`
     );
+    if (!bed) {
+      router.push(
+        `${data.category}?bathrooms=${data.bathrooms}&bedrooms=${data.bedrooms}`
+      );
+    }
   }
 
   const body = (
-    <Form {...form}>
-      <div className='flex flex-col divide-y'>
-        <div className='flex gap-6 justify-center pb-6'>
-          <RangePrice />
-        </div>
+    // <Form {...form}>
+    <div className='flex flex-col divide-y'>
+      <div className='flex gap-6 justify-center pb-6'>
+        <RangePrice />
+      </div>
 
-        <div className='py-6'>
-          <h3>Property category</h3>
-          <div
-            className='
+      <div className='py-6'>
+        <h3>Property category</h3>
+        <div
+          className='
               grid
               grid-cols-2
               p-4
@@ -118,86 +116,86 @@ function FilterModal() {
               gap-3
               max-h-[50vh]
               overflow-y-auto'>
-            {categories.map((item) => (
-              <div key={item.label} className='col-span-1'>
-                <CategoryInput
-                  onClick={(value) => setCustomValue('category', value)}
-                  selected={category === item.label}
-                  label={item.label}
-                  icon={item.icon}
-                />
-              </div>
-            ))}
+          {categories.map((item) => (
+            <div key={item.label} className='col-span-1'>
+              <CategoryInput
+                onClick={(value) => setCustomValue('category', value)}
+                selected={category === item.label}
+                label={item.label}
+                icon={item.icon}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {category === 'houses' && (
+        <div className='py-6'>
+          <h3>Rooms</h3>
+          <div className='flex gap-4 flex-col py-6'>
+            <RoomContain
+              title='Bedrooms'
+              onClick={(value) => setCustomValue('bedrooms', value)}
+              value={bedrooms}
+            />
+            <RoomContain
+              title='Bathrooms'
+              onClick={(value) => setCustomValue('bathrooms', value)}
+              value={bathrooms}
+            />
           </div>
         </div>
+      )}
+      {category === 'apartments' && (
+        <div className=' py-6'>
+          <h3>Rooms</h3>
 
-        {category === 'house' && (
-          <div className='py-6'>
-            <h3>Rooms</h3>
-            <div className='flex gap-4 flex-col py-6'>
-              <RoomContain
-                title='Bedrooms'
-                onClick={(value) => setCustomValue('bedrooms', value)}
-                value={bedrooms}
-              />
-              <RoomContain
-                title='Bathrooms'
-                onClick={(value) => setCustomValue('bathrooms', value)}
-                value={bathrooms}
-              />
-            </div>
+          <div className='flex gap-4 flex-col'>
+            <RoomContain
+              title='Bedrooms'
+              onClick={(value) => setCustomValue('bedrooms', value)}
+              value={bedrooms}
+            />
+            <RoomContain
+              title='Bathrooms'
+              onClick={(value) => setCustomValue('bathrooms', value)}
+              value={bathrooms}
+            />
+            <RoomContain
+              title='Bed'
+              onClick={(value) => setCustomValue('bed', value)}
+              value={bed}
+            />
           </div>
-        )}
-        {category === 'apartment' && (
-          <div className=' py-6'>
-            <h3>Rooms</h3>
+        </div>
+      )}
+      {category === 'hostels' && (
+        <div className=' py-6'>
+          <h3>Rooms</h3>
 
-            <div className='flex gap-4 flex-col'>
-              <RoomContain
-                title='Bedrooms'
-                onClick={(value) => setCustomValue('bedrooms', value)}
-                value={bedrooms}
-              />
-              <RoomContain
-                title='Bathrooms'
-                onClick={(value) => setCustomValue('bathrooms', value)}
-                value={bathrooms}
-              />
-              <RoomContain
-                title='Bed'
-                onClick={(value) => setCustomValue('bed', value)}
-                value={bed}
-              />
-            </div>
+          <div className='flex gap-4 flex-col'>
+            <RoomContain
+              title='Bedrooms'
+              onClick={(value) => setCustomValue('bedrooms', value)}
+              value={bedrooms}
+            />
+            <RoomContain
+              title='Bathrooms'
+              onClick={(value) => setCustomValue('bathrooms', value)}
+              value={bathrooms}
+            />
+            <RoomContain
+              title='Bed'
+              onClick={(value) => setCustomValue('bed', value)}
+              value={bed}
+            />
           </div>
-        )}
-        {category === 'hostel' && (
-          <div className=' py-6'>
-            <h3>Rooms</h3>
+        </div>
+      )}
 
-            <div className='flex gap-4 flex-col'>
-              <RoomContain
-                title='Bedrooms'
-                onClick={(value) => setCustomValue('bedrooms', value)}
-                value={bedrooms}
-              />
-              <RoomContain
-                title='Bathrooms'
-                onClick={(value) => setCustomValue('bathrooms', value)}
-                value={bathrooms}
-              />
-              <RoomContain
-                title='Bed'
-                onClick={(value) => setCustomValue('bed', value)}
-                value={bed}
-              />
-            </div>
-          </div>
-        )}
-
-        {/* <RoomContain title='Size' /> */}
-      </div>
-    </Form>
+      {/* <RoomContain title='Size' /> */}
+    </div>
+    // </Form>
   );
 
   return (

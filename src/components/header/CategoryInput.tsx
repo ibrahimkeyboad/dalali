@@ -15,10 +15,7 @@ function CategoryInput({
 }: CategoryProps) {
   return (
     <article
-      onClick={(event) => {
-        event.stopPropagation();
-        onClick(label);
-      }}
+      onClick={() => onClick(label)}
       className={`
         grid 
         cursor-pointer
@@ -33,7 +30,7 @@ function CategoryInput({
         ${
           selected
             ? 'border-black dark:border-white'
-            : 'border-neutral-500 text-gray-300'
+            : 'border-neutral-500 dark:text-gray-300'
         }`}>
       <Icon size={25} />
       <h4 className='font-semibold'>{label} </h4>

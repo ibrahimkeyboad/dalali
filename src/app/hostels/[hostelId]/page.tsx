@@ -3,7 +3,7 @@ import UserAvatar from '@/components/UserAvatar';
 import Header from '@/components/header/Header';
 import Card from '@/components/posts/Card';
 import React from 'react';
-import HouseRooms from '../../../houses/components/HouseRooms';
+import HouseRooms from '../../houses/components/HouseRooms';
 
 function page() {
   const data: any = {
@@ -77,7 +77,7 @@ function page() {
             </div>
           </div>
 
-          <HouseRooms />
+          {/* <HouseRooms /> */}
 
           <Card>
             <h3 className='dark:text-[#e6f1ff] tracking-widest p-4 font-bold text-xl'>

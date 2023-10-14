@@ -1,6 +1,5 @@
-import clientPromise from '@/db/mongodb';
 import User from '@/models/user';
-import { MongoDBAdapter } from '@next-auth/mongodb-adapter';
+// import { MongoDBAdapter } from '@next-auth/mongodb-adapter';
 import NextAuth, { AuthOptions } from 'next-auth';
 
 import CredentialsProvider from 'next-auth/providers/credentials';
@@ -10,7 +9,7 @@ import VerificationToken from '@/models/token';
 import sendEmailVerification from '@/utils/sendEmail';
 
 export const authOptions: AuthOptions = {
-  adapter: MongoDBAdapter(clientPromise),
+  // adapter: MongoDBAdapter(clientPromise),
   providers: [
     CredentialsProvider({
       name: 'credentials',

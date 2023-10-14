@@ -42,8 +42,9 @@ function Modal({
   }, [disable, onClose]);
 
   const handleSubmint = useCallback(() => {
+    console.log('modal');
     onSubmit();
-    // onClose();
+    onClose();
   }, [onSubmit, onClose]);
 
   useEffect(() => {
@@ -75,6 +76,7 @@ function Modal({
           focus:outline-none 
         bg-neutral-800/70'>
       <div
+        onClick={(e) => e.stopPropagation()}
         className='
           relative 
           w-full 
@@ -147,23 +149,12 @@ function Modal({
                     type='button'
                     variant='outline'
                     disabled={disable}
-                    onClick={(event) => {
-                      event.stopPropagation();
-                      handleSecondaryAction;
-                    }}>
+                    onClick={handleSecondaryAction}>
                     {secondaryLabel}
                   </Button>
                 )}
 
-                <Button
-                  type='submit'
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleSubmint();
-                  }}
-                  disabled={disable}>
-                  {actionLabel}
-                </Button>
+                <Button onClick={handleSubmint}>{actionLabel}</Button>
               </div>
               {footer}
             </footer>

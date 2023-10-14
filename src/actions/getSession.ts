@@ -1,4 +1,4 @@
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { authOptions } from '@/app/api/auth/fungua-account/[...nextauth]/route';
 import { getServerSession } from 'next-auth';
 
 async function getSession() {

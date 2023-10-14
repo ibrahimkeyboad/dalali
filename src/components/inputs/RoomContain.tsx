@@ -19,13 +19,12 @@ function RoomContain({ title, onClick, value }: Props) {
           <button
             key={item}
             type='button'
-            onClick={(event) => {
-              event.stopPropagation();
-              onClick(item);
-            }}
+            onClick={() => onClick(item)}
             className={`px-6 text-lg py-2 rounded-2xl ${
-              item === value ? 'bg-white text-black border-white' : ''
-            } border-slate-500 hover:border-slate-50 border-2`}>
+              item === value
+                ? 'bg-primary text-primary-foreground border-primary-foreground'
+                : ''
+            } border-slate-400 hover:border-primary border-2`}>
             {item}
           </button>
         ))}

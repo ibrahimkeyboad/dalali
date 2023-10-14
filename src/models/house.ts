@@ -1,5 +1,6 @@
 import { Schema, model, models } from 'mongoose';
 import User from './user';
+import Bedroom from './bedroom';
 
 const houseSchema = new Schema(
   {
@@ -9,19 +10,23 @@ const houseSchema = new Schema(
     },
 
     type: {
-      type: String,
+      type: String, //single double self -s
       required: true,
       trim: true,
     },
 
-    bathrooms: {
-      type: Number,
-      required: true,
-    },
-    bedrooms: {
-      type: Number,
-      required: true,
-    },
+    bedroom: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: Bedroom,
+      },
+    ],
+    bathroom: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: Bedroom,
+      },
+    ],
 
     city: {
       type: String,
@@ -41,32 +46,34 @@ const houseSchema = new Schema(
       type: String,
       required: true,
     },
-    imageCover: {
-      uri: {
-        type: String,
-        required: true,
-      },
-      public_id: {
-        type: String,
-        required: true,
-      },
-    },
-    images: [
-      {
-        uri: {
-          type: String,
-          required: true,
-        },
-        public_id: {
-          type: String,
-          required: true,
-        },
-      },
-    ],
-    isAvailable: {
-      type: Boolean,
-      default: true,
-    },
+
+    payFormDuration: {},
+    // imageCover: {
+    //   uri: {
+    //     type: String,
+    //     required: true,
+    //   },
+    //   public_id: {
+    //     type: String,
+    //     required: true,
+    //   },
+    // },
+    // images: [
+    //   {
+    //     uri: {
+    //       type: String,
+    //       required: true,
+    //     },
+    //     public_id: {
+    //       type: String,
+    //       required: true,
+    //     },
+    //   },
+    // ],
+    // isAvailable: {
+    //   type: Boolean,
+    //   default: true,
+    // },
     owner: {
       type: Schema.Types.ObjectId,
       ref: User,

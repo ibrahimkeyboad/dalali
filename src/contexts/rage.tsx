@@ -5,7 +5,6 @@ const PriceRangeSlider = () => {
   const [maxPrice, setMaxPrice] = useState(10000);
 
   const handleMinChange = (e: ChangeEvent<HTMLInputElement>) => {
-    e.stopPropagation();
     const value = parseInt(e.target.value, 10);
     if (!isNaN(value)) {
       setMinPrice(value);
@@ -13,8 +12,6 @@ const PriceRangeSlider = () => {
   };
 
   const handleMaxChange = (e: ChangeEvent<HTMLInputElement>) => {
-    e.stopPropagation();
-
     const value = parseInt(e.target.value, 10);
     if (!isNaN(value)) {
       setMaxPrice(value);
@@ -28,7 +25,6 @@ const PriceRangeSlider = () => {
           type='range'
           step='100'
           min='0'
-          onClick={(e) => e.stopPropagation()}
           max='10000'
           onChange={handleMinChange}
           value={minPrice}
@@ -40,7 +36,6 @@ const PriceRangeSlider = () => {
           step='100'
           min='0'
           max='10000'
-          onClick={(e) => e.stopPropagation()}
           onChange={handleMaxChange}
           value={maxPrice}
           className='absolute pointer-events-none appearance-none z-20 h-2 w-full opacity-0 cursor-pointer'
@@ -57,13 +52,13 @@ const PriceRangeSlider = () => {
             }}></div>
 
           <div
-            className='absolute z-30 w-6 h-6 top-0 left-0 bg-green-300 rounded-full -mt-2'
+            className='absolute z-30 w-6 h-6 top-0 left-0 bg-primary rounded-full -mt-2'
             style={{
               left: ((minPrice - 0) / (10000 - 0)) * 100 + '%',
             }}></div>
 
           <div
-            className='absolute z-30 w-6 h-6 top-0 right-0 bg-green-300 rounded-full -mt-2'
+            className='absolute z-30 w-6 h-6 top-0 right-0 bg-primary rounded-full -mt-2'
             style={{
               right: ((maxPrice - 0) / (10000 - 0)) * 100 + '%',
             }}></div>
@@ -75,7 +70,6 @@ const PriceRangeSlider = () => {
           <input
             type='text'
             maxLength={5}
-            onClick={(e) => e.stopPropagation()}
             onChange={handleMinChange}
             value={minPrice}
             className='w-24 px-3 py-2 text-center border border-gray-200 rounded-lg bg-gray-50 focus:border-yellow-400 focus:outline-none'
@@ -85,7 +79,6 @@ const PriceRangeSlider = () => {
           <input
             type='text'
             maxLength={5}
-            onClick={(e) => e.stopPropagation()}
             onChange={handleMaxChange}
             value={maxPrice}
             className='w-24 px-3 py-2 text-center border border-gray-200 rounded-lg bg-gray-50 focus:border-yellow-400 focus:outline-none'

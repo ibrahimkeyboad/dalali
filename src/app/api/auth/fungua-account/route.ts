@@ -1,7 +1,6 @@
 import { hash } from 'bcryptjs';
 import User from '@/models/user';
-import { NextResponse } from 'next/server';
-import connetDB from '@/db/mongose';
+import connetDB from '@/db';
 import validator from 'validator';
 import sendEmailVerification from '@/utils/sendEmail';
 
@@ -11,19 +10,18 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
 
+    console.log(body);
+
     const { name, email, password }: bodyData = body;
 
     if (!validator.isEmail(email)) {
-      return NextResponse.json(
-        { error: 'Invalid crendential' },
-        { status: 422 }
-      );
+      return Response.json({ error: 'Invalid crendential' }, { status: 422 });
     }
 
     const exist = await User.findOne({ email: email.trim() });
 
     if (exist) {
-      return NextResponse.json(
+      return Response.json(
         { error: 'User already exist' },
         {
           status: 403,
@@ -41,7 +39,7 @@ export async function POST(req: Request) {
 
     await sendEmailVerification(user);
 
-    return NextResponse.json(
+    return Response.json(
       {
         status: 'PENDING',
         msg: 'Verification Email sent',
@@ -50,9 +48,6 @@ export async function POST(req: Request) {
     );
   } catch (error) {
     console.log('API error', error);
-    return NextResponse.json(
-      { error: 'Something went wrong' },
-      { status: 500 }
-    );
+    return Response.json({ error: 'Something went wrong' }, { status: 500 });
   }
 }
