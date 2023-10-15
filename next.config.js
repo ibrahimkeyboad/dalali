@@ -1,8 +1,7 @@
+const million = require('million/compiler');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // typescript: {
-  //   ignoreBuildErrors: true,
-  // },
   images: {
     domains: [
       'res.cloudinary.com',
@@ -12,4 +11,10 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+const millionConfig = {
+  auto: true,
+  // if you're using RSC:
+  // auto: { rsc: true },
+};
+
+module.exports = million.next(nextConfig, millionConfig);

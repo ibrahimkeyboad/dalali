@@ -1,11 +1,10 @@
 import Accommodation from '@/models/apartment';
-import { House } from '@prisma/client';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
 interface PostsProps {
-  data: House;
+  data: any;
 }
 
 function Posts({ data }: PostsProps) {
