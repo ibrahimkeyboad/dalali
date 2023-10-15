@@ -9,7 +9,9 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 type Props = {
-  data: [images: string[]];
+  data: {
+    images: any[];
+  };
 };
 
 const ImageFigure = ({ data }: Props) => {
@@ -26,8 +28,7 @@ const ImageFigure = ({ data }: Props) => {
         overflow: 'hidden',
         borderRadius: '7px',
       }}>
-      {/* @ts-ignore */}
-      {data?.images?.map((img: any, i: number) => (
+      {data?.images?.map((img, i) => (
         <SwiperSlide key={i}>
           <Image
             quality={100}

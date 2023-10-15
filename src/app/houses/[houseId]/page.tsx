@@ -93,6 +93,7 @@ async function Apartment({ params }: { params: { houseId: string } }) {
       <Header />
       <div className='bg-background'>
         <section className='max-w-[1120px] px-3 md:px-10 m-auto'>
+          {/*  @ts-ignore */}
           <ImageFigure data={datas} />
           <div className={`bg-card p-3 my-4  rounded-sm divide-y`}>
             <div className='flex items-center justify-between p-5'>
@@ -132,11 +133,12 @@ async function Apartment({ params }: { params: { houseId: string } }) {
               </Card>
             </div>
           </div>
-          <HouseRooms
+          {/*  @ts-ignore */}
+          {/* <HouseRooms
             bedrooms={data.bedrooms}
             bathrooms={data.bathroom}
             kitchen={data.kitchen}
-          />
+          /> */}
           /
           <Card>
             <CardHeader>

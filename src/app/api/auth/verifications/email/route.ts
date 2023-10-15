@@ -35,8 +35,8 @@ export async function POST(req: Request) {
 
   const user = await User.findOneAndUpdate({ email: body.email }, {});
 
-  const token = await new Token({
-    userId: user._id,
-    token: crypto.randomBytes(32).toString('hex'),
-  }).save();
+  // const token = await new Token({
+  //   userId: user._id,
+  //   token: crypto.randomBytes(32).toString('hex'),
+  // }).save();
 }

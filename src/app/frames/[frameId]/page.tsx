@@ -21,7 +21,7 @@ async function Apartment({ params }: { params: { houseId: string } }) {
   // const res = await fetch('http://localhost:3000/api/apartment');
   // const data = await res.json();
 
-  const data: any = {
+  const data = {
     id: 'faf1',
     images: ['/images/home.jpg'],
     duration: 'mwezi',
@@ -51,6 +51,8 @@ async function Apartment({ params }: { params: { houseId: string } }) {
       <Header />
       <div className='bg-background'>
         <section className='max-w-[1120px] px-3 md:px-10 m-auto'>
+          {/*  @ts-ignore */}
+
           <ImageFigure data={datas} />
           <Card className={`bg-card divide-y mt-3`}>
             <div className='flex items-center justify-between p-5'>

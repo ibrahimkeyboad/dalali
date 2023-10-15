@@ -1,4 +1,3 @@
-import getPosts from '@/actions/getAllPosts';
 import Header from '@/components/header/Header';
 import Posts from '@/components/posts/Posts';
 import Accommodation from '@/models/apartment';

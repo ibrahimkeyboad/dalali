@@ -53,6 +53,8 @@ function page() {
       <Header />
       <div className='bg-slate-50 dark:bg-[#0a192f]'>
         <section className='max-w-[1120px] px-3 md:px-10 m-auto'>
+        {/*  @ts-ignore */}
+
           <ImageFigure data={datas} />
           <div
             className={`dark:bg-[#112240] p-3 my-4 bg-white rounded-sm divide-y`}>
