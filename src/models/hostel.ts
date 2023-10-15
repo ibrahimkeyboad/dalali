@@ -2,10 +2,6 @@ import { Schema, model, models } from 'mongoose';
 
 const accommodationSchema = new Schema(
   {
-    _id: {
-      type: Schema.Types.ObjectId,
-    },
-
     type: {
       type: String,
       required: true,

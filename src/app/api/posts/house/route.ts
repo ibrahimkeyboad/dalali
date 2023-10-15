@@ -1,39 +1,55 @@
 import connectDB from '@/db';
 import House from '@/models/house';
-import { NextResponse } from 'next/server';
 
-export async function Post(req: Request) {
-  connectDB();
+export async function POST(req: Request) {
   try {
+    connectDB();
     const body = await req.json();
+
+    console.log('body', body);
 
     const {
       type,
       price,
       purpose,
       duration,
-      desctiption,
+      description,
       street,
       city,
       country,
       payFormDuration,
       category,
+      bedroom,
     } = body;
     const house = await House.create({
       type,
       price,
       purpose,
       duration,
-      desctiption,
+      description,
       street,
       city,
       country,
       payFormDuration,
       category,
+      bedroom,
     });
 
-    return NextResponse.json({ house }, { status: 200 });
+    return Response.json({ house }, { status: 201 });
   } catch (err) {
-    new NextResponse('something went wrong', { status: 500 });
+    console.log(err);
+    return new Response('something went wrong', { status: 500 });
+  }
+}
+
+export async function GET(req: Request) {
+  try {
+    connectDB();
+
+    const houses = await House.find();
+
+    return Response.json({ houses }, { status: 201 });
+  } catch (err) {
+    return new Response('something went wrong', { status: 500 });
   }
 }

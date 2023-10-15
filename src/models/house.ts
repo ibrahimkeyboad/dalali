@@ -4,21 +4,28 @@ import Bedroom from './bedroom';
 
 const houseSchema = new Schema(
   {
-    _id: {
-      type: Schema.Types.ObjectId,
-      required: false,
-    },
-
     type: {
       type: String, //single double self -s
       required: true,
       trim: true,
     },
 
+    // bedroom: [
+    //   {
+    //     type: Schema.Types.ObjectId,
+    //     ref: Bedroom,
+    //   },
+    // ],
     bedroom: [
       {
-        type: Schema.Types.ObjectId,
-        ref: Bedroom,
+        sort: {
+          type: String,
+          default: 'normal',
+        },
+
+        description: {
+          type: String,
+        },
       },
     ],
     bathroom: [

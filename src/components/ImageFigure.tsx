@@ -9,9 +9,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 type Props = {
-  data: {
-    images: any[];
-  };
+  data: [images: string[]];
 };
 
 const ImageFigure = ({ data }: Props) => {
@@ -20,6 +18,7 @@ const ImageFigure = ({ data }: Props) => {
       navigation={true}
       modules={[Navigation]}
       style={{
+        // @ts-ignore
         '--swiper-navigation-color': '#fff',
         '--swiper-navigation-size': '15px',
         fontWeight: 'bolder',
@@ -27,7 +26,8 @@ const ImageFigure = ({ data }: Props) => {
         overflow: 'hidden',
         borderRadius: '7px',
       }}>
-      {data?.images?.map((img, i) => (
+      {/* @ts-ignore */}
+      {data?.images?.map((img: any, i: number) => (
         <SwiperSlide key={i}>
           <Image
             quality={100}

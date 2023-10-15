@@ -1,20 +1,20 @@
-// import connectDB from '@/db';
-import User from '@/models/user';
+// // import connectDB from '@/db';
+// import User from '@/models/user';
 
-async function getUsers() {
-  try {
-    // connectDB();
-    const user = await User.find();
+// async function getUsers() {
+//   try {
+//     // connectDB();
+//     const user = await User.find();
 
-    if (!user) {
-      return [];
-    }
+//     if (!user) {
+//       return [];
+//     }
 
-    return user;
-  } catch (error) {
-    console.log('error', error);
-    return [];
-  }
-}
+//     return user;
+//   } catch (error) {
+//     console.log('error', error);
+//     return [];
+//   }
+// }
 
-export default getUsers;
+// export default getUsers;

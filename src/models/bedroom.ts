@@ -12,10 +12,12 @@ const bedroomSchema = new Schema(
       type: String,
     },
 
-    bed: {
-      type: [Schema.Types.ObjectId],
-      ref: Bed,
-    },
+    bed: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: Bed,
+      },
+    ],
   },
   { timestamps: true }
 );

@@ -1,7 +1,7 @@
 import { Schema, model, models } from 'mongoose';
 
 interface Apartment {
-  _id: Schema.Types.ObjectId;
+  _id?: Schema.Types.ObjectId;
   type: string;
   price: number;
   bedrooms: number;
@@ -30,10 +30,7 @@ interface Apartment {
 
 const apartmentSchema = new Schema<Apartment>(
   {
-    _id: {
-      type: Schema.Types.ObjectId,
-      required: false,
-    },
+   
 
     type: {
       type: String,
