@@ -36,10 +36,6 @@ const apartmentSchema = new Schema<Apartment>(
       trim: true,
     },
 
-    beds: {
-      type: Number,
-      required: true,
-    },
     city: {
       type: String,
       required: true,

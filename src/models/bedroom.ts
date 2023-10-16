@@ -1,5 +1,7 @@
 import { Schema, model, models } from 'mongoose';
 import Bed from './bed';
+import House from './house';
+import Apartment from './apartment';
 
 const bedroomSchema = new Schema(
   {
@@ -11,6 +13,17 @@ const bedroomSchema = new Schema(
     description: {
       type: String,
     },
+
+    house: {
+      type: Schema.Types.ObjectId,
+      required: true,
+      ref: House,
+    },
+    // apartment: {
+    //   type: Schema.Types.ObjectId,
+    //   required: true,
+    //   ref: Apartment,
+    // },
 
     bed: [
       {

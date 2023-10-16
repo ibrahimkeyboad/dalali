@@ -41,15 +41,6 @@ const accommodationSchema = new Schema(
       trim: true,
     },
 
-    bathrooms: {
-      type: Number,
-      required: true,
-    },
-    bedrooms: {
-      type: Number,
-      required: true,
-    },
-
     city: {
       type: String,
       required: true,

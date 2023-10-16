@@ -10,31 +10,6 @@ const houseSchema = new Schema(
       trim: true,
     },
 
-    // bedroom: [
-    //   {
-    //     type: Schema.Types.ObjectId,
-    //     ref: Bedroom,
-    //   },
-    // ],
-    bedroom: [
-      {
-        sort: {
-          type: String,
-          default: 'normal',
-        },
-
-        description: {
-          type: String,
-        },
-      },
-    ],
-    bathroom: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: Bedroom,
-      },
-    ],
-
     city: {
       type: String,
       required: true,

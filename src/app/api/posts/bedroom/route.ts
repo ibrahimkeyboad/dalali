@@ -8,13 +8,14 @@ export async function POST(req: Request) {
 
     console.log('body', body);
 
-    const { sort, description } = body;
-    const house = await Bedroom.create({
+    const { sort, description, house } = body;
+    const bedroom = await Bedroom.create({
       sort,
       description,
+      house,
     });
 
-    return Response.json({ house }, { status: 201 });
+    return Response.json({ bedroom }, { status: 201 });
   } catch (err) {
     console.log(err);
     return new Response('something went wrong', { status: 500 });

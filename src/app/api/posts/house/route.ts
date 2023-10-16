@@ -19,7 +19,6 @@ export async function POST(req: Request) {
       country,
       payFormDuration,
       category,
-      bedroom,
     } = body;
     const house = await House.create({
       type,
@@ -32,7 +31,6 @@ export async function POST(req: Request) {
       country,
       payFormDuration,
       category,
-      bedroom,
     });
 
     return Response.json({ house }, { status: 201 });
