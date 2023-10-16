@@ -30,26 +30,12 @@ interface Apartment {
 
 const apartmentSchema = new Schema<Apartment>(
   {
-   
-
     type: {
-      type: String,
+      type: String, //single doudle self
       required: true,
       trim: true,
     },
 
-    area: {
-      type: Number,
-      required: true,
-    },
-    bathrooms: {
-      type: Number,
-      required: true,
-    },
-    bedrooms: {
-      type: Number,
-      required: true,
-    },
     beds: {
       type: Number,
       required: true,
