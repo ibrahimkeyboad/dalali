@@ -1,7 +1,10 @@
+import { getHouses } from '@/actions/getHouses';
 import Header from '@/components/header/Header';
 import React from 'react';
 
-function page() {
+async function page() {
+  const houses = await getHouses();
+  console.log(houses);
   return (
     <>
       <Header />

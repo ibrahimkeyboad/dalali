@@ -46,7 +46,7 @@ export async function GET(req: Request) {
 
     const houses = await House.find();
 
-    return Response.json({ houses }, { status: 201 });
+    return Response.json(houses, { status: 201 });
   } catch (err) {
     return new Response('something went wrong', { status: 500 });
   }

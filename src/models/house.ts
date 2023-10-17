@@ -14,6 +14,53 @@ const houseSchema = new Schema(
       type: String,
       required: true,
     },
+
+    located: {
+      type: String,
+      required: true,
+    },
+
+    kitchen: [String],
+
+    bedroom: [
+      {
+        sort: {
+          type: String,
+          default: 'normal',
+          required: true,
+        },
+
+        description: {
+          type: String,
+        },
+
+        bed: [
+          {
+            sort: {
+              type: String,
+              default: 'normal',
+            },
+          },
+        ],
+      },
+    ],
+
+    bathroom: [
+      {
+        sort: {
+          type: String,
+          default: 'public',
+        },
+
+        description: String,
+
+        shower: {
+          type: String,
+          default: 'hot water',
+        },
+      },
+    ],
+
     description: {
       type: String,
       required: true,

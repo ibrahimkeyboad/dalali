@@ -14,17 +14,6 @@ const bedroomSchema = new Schema(
       type: String,
     },
 
-    house: {
-      type: Schema.Types.ObjectId,
-      required: true,
-      ref: House,
-    },
-    // apartment: {
-    //   type: Schema.Types.ObjectId,
-    //   required: true,
-    //   ref: Apartment,
-    // },
-
     bed: [
       {
         type: Schema.Types.ObjectId,
