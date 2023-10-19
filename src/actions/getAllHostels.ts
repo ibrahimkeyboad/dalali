@@ -1,9 +1,10 @@
-import House from '@/models/house';
-
 export async function getHouse(id: string) {
-  const res = await House.findById({ _id: id });
-
-  // console.log(res);
-
-  return res;
+  console.log(id);
+  const res = await fetch(`http://localhost:3000/api/posts/house/${id}`);
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch data')
+  }
+ 
+  return res.json()
 }
