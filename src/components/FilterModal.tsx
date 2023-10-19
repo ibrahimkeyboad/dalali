@@ -15,6 +15,8 @@ import { modalToggle } from '@/contexts/globalState';
 import { useRouter } from 'next/navigation';
 import RoomContain from './inputs/RoomContain';
 import RangePrice from '@/contexts/rage';
+import { CheckboxWithText } from './inputs/chek';
+import RoomCheck from './header/RoomCheck';
 
 const FormSchema = z.object({
   // minPrice: z.number().
@@ -192,6 +194,8 @@ function FilterModal() {
           </div>
         </div>
       )}
+
+      <RoomCheck />
 
       {/* <RoomContain title='Size' /> */}
     </div>
