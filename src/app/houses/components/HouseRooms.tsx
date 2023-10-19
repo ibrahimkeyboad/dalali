@@ -6,37 +6,37 @@ import { MdOutlineDinnerDining, MdOutlineShower } from 'react-icons/md';
 import { TbToolsKitchen2 } from 'react-icons/tb';
 
 interface Props {
-  bedrooms: [
+  bedroom: [
     {
+      _id: string;
       sort: string;
       description: string;
     }
   ];
-  bathrooms: [
+  bathroom: [
     {
+      _id: string;
+
       sort: string;
       description: string;
       shower: string;
     }
   ];
-  kitchen: {
-    sort: string;
-    fidge: string;
-    washing: string;
-    cook: string;
-  };
+  kitchen: [string];
 }
 
-function HouseRooms({ bathrooms, bedrooms, kitchen }: Props) {
-  const bedroomLength = bedrooms.length;
-  const bathroomLength = bedrooms.length;
+function HouseRooms({ bathroom, bedroom, kitchen }: Props) {
+  const bedroomLength = bedroom.length;
+  const bathroomLength = bedroom.length;
+
+  console.log(bedroom, bathroom);
   return (
     <Card>
       <h2 className='dark:text-[#e6f1ff] tracking-widest font-bold text-xl p-3 pb-5 '>
         What is house contain
       </h2>
       <div className='flex gap-6 p-4 flex-wrap'>
-        {bedrooms && (
+        {bedroom && (
           <CardContent className='border p-3 rounded-md '>
             <h3 className='text-center font-semibold pb-1'>
               {bedroomLength} {`Bedroom${bedroomLength > 1 ? 's' : null}`}
@@ -45,8 +45,8 @@ function HouseRooms({ bathrooms, bedrooms, kitchen }: Props) {
             <article className='flex items-start gap-3'>
               <BiSolidDoorOpen size={40} />
               <div className='flex flex-col gap-2'>
-                {bedrooms.map((bedroom) => (
-                  <p className='flex flex-col' key={bedroom.sort}>
+                {bedroom.map((bedroom) => (
+                  <p className='flex flex-col' key={bedroom._id}>
                     <span>{bedroom.sort}</span>
                     <span className='text-sm text-gray-300'>
                       {bedroom.description}
@@ -58,7 +58,7 @@ function HouseRooms({ bathrooms, bedrooms, kitchen }: Props) {
           </CardContent>
         )}
 
-        {bathrooms && (
+        {bathroom && (
           <CardContent className='border p-4 rounded-md '>
             <h3 className='text-center font-semibold pb-1'>
               {bathroomLength} {`Bathroom${bathroomLength > 1 ? 's' : null}`}
@@ -67,7 +67,7 @@ function HouseRooms({ bathrooms, bedrooms, kitchen }: Props) {
             <article className='flex  items-start justify-start gap-3'>
               <MdOutlineShower size={40} />
               <div className='flex flex-col gap-2'>
-                {bathrooms.map((bathroom) => (
+                {bathroom.map((bathroom) => (
                   <p className='flex flex-col' key={bathroom.sort}>
                     <span>{bathroom.sort}</span>
                     {bathroom.shower && (
@@ -92,10 +92,9 @@ function HouseRooms({ bathrooms, bedrooms, kitchen }: Props) {
             <article className='flex  items-start justify-start gap-3'>
               <TbToolsKitchen2 size={40} />
               <div className='flex flex-col text-sm gap-1'>
-                <p>{kitchen.sort}</p>
-                <p>{kitchen.cook}</p>
-                <p>{kitchen.washing}</p>
-                <p>{kitchen.fidge}</p>
+                {kitchen.map((item) => (
+                  <p key={item}>{item}</p>
+                ))}
               </div>
             </article>
           </CardContent>

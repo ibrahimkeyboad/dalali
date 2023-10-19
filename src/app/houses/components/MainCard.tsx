@@ -9,6 +9,7 @@ import {
 } from '@/components/ui/card';
 import { Badge } from 'lucide-react';
 import React from 'react';
+import HouseRooms from './HouseRooms';
 
 interface Props {
   data: any;
@@ -19,12 +20,12 @@ function MainCard({ data }: Props) {
     <div className='bg-background'>
       <section className='max-w-[1120px] px-3 md:px-10 m-auto'>
         {/*  @ts-ignore */}
-        <ImageFigure data={data.images} />
+        <ImageFigure images={data.images} />
         <div className={`bg-card p-3 my-4  rounded-sm divide-y`}>
           <div className='flex items-center justify-between p-5'>
             <h2 className='tracking-widest font-bold text-3xl'>Overview</h2>
             <Badge className='capitalize font-bold' variant='secondary'>
-              {data?.purpose}
+              {`${data.purpose}`}
             </Badge>
           </div>
           <div>
@@ -58,13 +59,12 @@ function MainCard({ data }: Props) {
             </Card>
           </div>
         </div>
-        {/*  @ts-ignore */}
-        {/* <HouseRooms
-            bedrooms={data.bedrooms}
-            bathrooms={data.bathroom}
-            kitchen={data.kitchen}
-          /> */}
-        /
+        <HouseRooms
+          bedroom={data.bedroom}
+          bathroom={data.bathroom}
+          kitchen={data.kitchen}
+        />
+
         <Card>
           <CardHeader>
             <CardTitle>What this place offers</CardTitle>

@@ -9,17 +9,15 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 type Props = {
-  data: {
-    images: [
-      {
-        uri: string;
-        public_id: string;
-      }
-    ];
-  };
+  images: [
+    {
+      uri: string;
+      public_id: string;
+    }
+  ];
 };
 
-const ImageFigure = ({ data }: Props) => {
+const ImageFigure = ({ images }: Props) => {
   return (
     <Swiper
       navigation={true}
@@ -33,14 +31,14 @@ const ImageFigure = ({ data }: Props) => {
         overflow: 'hidden',
         borderRadius: '7px',
       }}>
-      {data?.images?.map((img, i) => (
+      {images?.map((img, i) => (
         <SwiperSlide key={i}>
           <Image
             quality={100}
             alt=''
             className='object-cover'
             priority={true}
-            src={img.uri}
+            src={`/images/${img.uri}`}
             sizes='100vw'
             fill
           />
