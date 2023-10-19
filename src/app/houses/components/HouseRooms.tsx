@@ -39,7 +39,7 @@ function HouseRooms({ bathroom, bedroom, kitchen }: Props) {
         {bedroom && (
           <CardContent className='border p-3 rounded-md '>
             <h3 className='text-center font-semibold pb-1'>
-              {bedroomLength} {`Bedroom${bedroomLength > 1 ? 's' : null}`}
+              {bedroomLength} {`Bedroom${bedroomLength > 1 ? 's' : ''}`}
             </h3>
 
             <article className='flex items-start gap-3'>
@@ -61,7 +61,7 @@ function HouseRooms({ bathroom, bedroom, kitchen }: Props) {
         {bathroom && (
           <CardContent className='border p-4 rounded-md '>
             <h3 className='text-center font-semibold pb-1'>
-              {bathroomLength} {`Bathroom${bathroomLength > 1 ? 's' : null}`}
+              {bathroomLength} {`Bathroom${bathroomLength > 1 ? 's' : ''}`}
             </h3>
 
             <article className='flex  items-start justify-start gap-3'>
