@@ -24,6 +24,7 @@ function MainCard({ data }: Props) {
         <div className={`bg-card p-3 my-4  rounded-sm divide-y`}>
           <div className='flex items-center justify-between p-5'>
             <h2 className='tracking-widest font-bold text-3xl'>Overview</h2>
+            {/* @ts-ignore  */}
             <Badge className='capitalize font-bold' variant='secondary'>
               {`${data.purpose}`}
             </Badge>
