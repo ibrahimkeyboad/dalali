@@ -19,6 +19,11 @@ export async function POST(req: Request) {
       country,
       payFormDuration,
       category,
+      located,
+      kitchen,
+      images,
+      bedroom,
+      bathroom,
     } = body;
     const house = await House.create({
       type,
@@ -31,6 +36,11 @@ export async function POST(req: Request) {
       country,
       payFormDuration,
       category,
+      located,
+      images,
+      bedroom,
+      kitchen,
+      bathroom,
     });
 
     return Response.json({ house }, { status: 201 });
@@ -48,6 +58,6 @@ export async function GET(req: Request) {
 
     return Response.json(houses, { status: 201 });
   } catch (err) {
-    return new Response('something went wrong', { status: 500 });
+    return new Response(`something went wrong ${err}`, { status: 500 });
   }
 }

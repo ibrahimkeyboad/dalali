@@ -10,10 +10,10 @@ interface PostsProps {
 function Posts({ data }: PostsProps) {
   return (
     <article className='relative overflow-hidden'>
-      <Link href={`/${data.category}s/${data.id}`}>
+      <Link href={`/${data.category}s/${data._id}`}>
         <Image
           alt='image'
-          src={data.images}
+          src={`/images/${data.images[0].uri}`}
           className='rounded-lg object-cover bg-black h-52'
           width={400}
           height={300}
@@ -26,8 +26,14 @@ function Posts({ data }: PostsProps) {
             overflow-hidden
             p-2'>
           <div className='flex gap-2 text-sm text-[#9da3ac]'>
-            <span>{data.bathrooms} bathrooms</span>
-            <span>{data.bedrooms} bedrooms</span>
+            <span>
+              {data.bathroom.length}
+              {` bathroom${data.bathroom > 1 ? 's' : ''}`}
+            </span>
+            <span>
+              {data.bedroom.length}
+              {` bedroom${data.bedroom > 1 ? 's' : ''}`}
+            </span>
             {/* <span>{data.area} (sqft)</span> */}
           </div>
           <div className='flex flex-col'>

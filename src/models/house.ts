@@ -76,7 +76,10 @@ const houseSchema = new Schema(
       required: true,
     },
 
-    payFormDuration: {},
+    payFormDuration: {
+      type: String,
+      required: true,
+    },
     // imageCover: {
     //   uri: {
     //     type: String,
@@ -87,18 +90,18 @@ const houseSchema = new Schema(
     //     required: true,
     //   },
     // },
-    // images: [
-    //   {
-    //     uri: {
-    //       type: String,
-    //       required: true,
-    //     },
-    //     public_id: {
-    //       type: String,
-    //       required: true,
-    //     },
-    //   },
-    // ],
+    images: [
+      {
+        uri: {
+          type: String,
+          required: true,
+        },
+        public_id: {
+          type: String,
+          required: true,
+        },
+      },
+    ],
     // isAvailable: {
     //   type: Boolean,
     //   default: true,

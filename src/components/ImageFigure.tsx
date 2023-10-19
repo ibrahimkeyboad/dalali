@@ -10,7 +10,12 @@ import 'swiper/css/navigation';
 
 type Props = {
   data: {
-    images: any[];
+    images: [
+      {
+        uri: string;
+        public_id: string;
+      }
+    ];
   };
 };
 
@@ -35,7 +40,7 @@ const ImageFigure = ({ data }: Props) => {
             alt=''
             className='object-cover'
             priority={true}
-            src={img}
+            src={img.uri}
             sizes='100vw'
             fill
           />
