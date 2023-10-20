@@ -195,7 +195,7 @@ function FilterModal() {
         </div>
       )}
 
-      <RoomCheck />
+      {category === 'houses' && <RoomCheck />}
 
       {/* <RoomContain title='Size' /> */}
     </div>

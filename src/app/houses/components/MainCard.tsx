@@ -26,7 +26,7 @@ function MainCard({ data }: Props) {
             <h2 className='tracking-widest font-bold text-3xl'>Overview</h2>
             {/* @ts-ignore  */}
             <Badge className='capitalize font-bold' variant='secondary'>
-              {`${data.purpose}`}
+              {data.purpose}
             </Badge>
           </div>
           <div>
