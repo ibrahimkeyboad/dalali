@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic';
 import Header from '@/components/header/Header';
 import MainCard from '../components/MainCard';
+import { baseUrl } from '@/actions/url';
 
 export function generateMetadata({ params }: { params: { houseId: string } }) {
   return {
@@ -10,7 +11,7 @@ export function generateMetadata({ params }: { params: { houseId: string } }) {
 
 async function getHouse(id: string) {
   console.log(id);
-  const res = await fetch(`http://localhost:3000/api/posts/house/${id}`);
+  const res = await fetch(`${baseUrl}/posts/house/${id}`);
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
     throw new Error('Failed to fetch data');

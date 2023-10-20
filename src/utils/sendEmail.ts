@@ -2,6 +2,7 @@ import nodemailer from 'nodemailer';
 import { v4 as uuid } from 'uuid';
 import VerificationToken from '@/models/token';
 import { hash } from 'bcryptjs';
+import { baseUrl } from '@/actions/url';
 
 const transporter = nodemailer.createTransport({
   service: process.env.SERVICE,
@@ -25,7 +26,7 @@ transporter.verify((error, sucess) => {
 });
 
 async function sendEmailVerification(user: User) {
-  const currentUrl = 'http://localhost:3000/';
+  const currentUrl = baseUrl;
 
   const uniqueString = uuid() + user._id;
 

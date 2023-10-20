@@ -1,3 +1,4 @@
+import { baseUrl } from '@/actions/url';
 import axios from 'axios';
 import { Metadata } from 'next';
 import Link from 'next/link';
@@ -22,7 +23,7 @@ interface Data {
 
 async function page({ searchParams: { uniqueString, userId } }: ParamsProps) {
   const res = await fetch(
-    `http://localhost:3000/api/verify?userId=${userId}&uniqueString=${uniqueString}`,
+    `${baseUrl}/verify?userId=${userId}&uniqueString=${uniqueString}`,
     { cache: 'no-store' }
   );
 
