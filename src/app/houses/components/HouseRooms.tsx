@@ -36,7 +36,7 @@ function HouseRooms({ bathroom, bedroom, kitchen }: Props) {
         What is house contain
       </h2>
       <div className='flex gap-6 p-4 flex-wrap'>
-        {bedroom && (
+        {bedroom.length > 0 && (
           <CardContent className='border p-3 rounded-md '>
             <h3 className='text-center font-semibold pb-1'>
               {bedroomLength} {`Bedroom${bedroomLength > 1 ? 's' : ''}`}
@@ -58,7 +58,7 @@ function HouseRooms({ bathroom, bedroom, kitchen }: Props) {
           </CardContent>
         )}
 
-        {bathroom && (
+        {bathroom.length > 0 && (
           <CardContent className='border p-4 rounded-md '>
             <h3 className='text-center font-semibold pb-1'>
               {bathroomLength} {`Bathroom${bathroomLength > 1 ? 's' : ''}`}
@@ -85,7 +85,7 @@ function HouseRooms({ bathroom, bedroom, kitchen }: Props) {
           </CardContent>
         )}
 
-        {kitchen && (
+        {kitchen.length > 0 && (
           <CardContent className='border p-4 rounded-md '>
             <h3 className='text-center font-semibold pb-1'>Kitchen</h3>
 

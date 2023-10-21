@@ -41,6 +41,7 @@ function MainCard({ data }: Props) {
                   </span>
                   <span>{data.duration}</span>
                 </h3>
+                <h4></h4>
                 <h3 className=''>
                   {`${data.street}, ${data.city} ${data.country}`}
                 </h3>

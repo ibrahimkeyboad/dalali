@@ -69,6 +69,7 @@ function Modal({
           justify-center 
           items-center 
           flex 
+        
           fixed 
           inset-0 
           z-30 
@@ -83,6 +84,9 @@ function Modal({
           md:w-4/6 
           lg:w-3/6 
           xl:/2/5 
+          max-h-[60vh]
+          overflow-x-hidden 
+          overflow-y-auto 
           my-6 
           bg-red
           mx-auto 
@@ -97,14 +101,11 @@ function Modal({
           <div
             className='
                 translate 
-              h-[90vh]
                 z-50
                 border-0
                 rounded-lg
                 shadow-lg
                 relative
-                overflow-x-hidden 
-                overflow-y-auto 
                 flex
                 flex-col
                 w-full
