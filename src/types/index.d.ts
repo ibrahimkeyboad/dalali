@@ -23,14 +23,15 @@ type Token = {
 };
 
 interface Accommodation {
-  _id: Schema.Types.ObjectId;
+  _id?: Schema.Types.ObjectId;
+  located: string;
   type: string;
   price: number;
-  bedrooms: number;
   beds: number;
   sofa: number;
   street: string;
   city: string;
+  country: string;
   bathrooms: number;
   duration: string;
   purpose: string;
@@ -41,11 +42,28 @@ interface Accommodation {
     uri: string;
     public_id: string;
   };
+  kitchen: [string];
+  bedroom: [
+    {
+      sort: string;
+      description: string;
+    }
+  ];
+  bathroom: [
+    {
+      sort: string;
+      description: string;
+      shower: string;
+    }
+  ];
   images: [
     {
       uri: string;
       public_id: string;
     }
   ];
+  owner?: string;
   description: string;
+  payFormDuration: string;
+  category: string;
 }

@@ -1,10 +1,9 @@
-import Accommodation from '@/models/apartment';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
 interface PostsProps {
-  data: any;
+  data: Accommodation;
 }
 
 function Posts({ data }: PostsProps) {
@@ -28,11 +27,11 @@ function Posts({ data }: PostsProps) {
           <div className='flex gap-2 text-sm text-[#9da3ac]'>
             <span>
               {data.bathroom.length}
-              {` bathroom${data.bathroom > 1 ? 's' : ''}`}
+              {` bathroom${data.bathroom.length > 1 ? 's' : ''}`}
             </span>
             <span>
               {data.bedroom.length}
-              {` bedroom${data.bedroom > 1 ? 's' : ''}`}
+              {` bedroom${data.bedroom.length > 1 ? 's' : ''}`}
             </span>
             {/* <span>{data.area} (sqft)</span> */}
           </div>

@@ -1,35 +1,7 @@
 import { Schema, model, models } from 'mongoose';
 import User from './user';
 
-interface Accommodation {
-  _id?: Schema.Types.ObjectId;
-  type: string;
-  price: number;
-  bedrooms: number;
-  beds: number;
-  sofa: number;
-  street: string;
-  city: string;
-  bathrooms: number;
-  duration: string;
-  purpose: string;
-  isAvailable: boolean;
-  area: number;
-  tags: string[];
-  imageCover: {
-    uri: string;
-    public_id: string;
-  };
-  images: [
-    {
-      uri: string;
-      public_id: string;
-    }
-  ];
-  description: string;
-}
-
-const accommodationSchema = new Schema(
+const accommodationSchema = new Schema<Accommodation>(
   {
     type: {
       type: String, //single double self -s

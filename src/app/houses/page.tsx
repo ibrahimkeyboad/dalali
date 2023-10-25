@@ -4,7 +4,7 @@ import Posts from '@/components/posts/Posts';
 import React from 'react';
 
 async function HomePage() {
-  const houses = await getHouses();
+  const houses: Accommodation[] = await getHouses();
   return (
     <>
       <Header />
