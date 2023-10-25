@@ -3,15 +3,15 @@ import Accommodation from '@/models/accommodation';
 
 export async function GET(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: { category: string } }
 ) {
   try {
     connectDB();
-    const id = params.id;
+    const category = params.category;
 
-    console.log(id);
+    console.log(category);
 
-    const house = await Accommodation.findById({ _id: id });
+    const house = await Accommodation.find({ category: category });
 
     return Response.json(house, { status: 200 });
   } catch (err) {
