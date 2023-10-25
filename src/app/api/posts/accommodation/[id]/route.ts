@@ -1,5 +1,5 @@
 import connectDB from '@/db';
-import House from '@/models/house';
+import Accommodation from '@/models/accommodation';
 
 export async function GET(
   request: Request,
@@ -11,7 +11,7 @@ export async function GET(
 
     console.log(id);
 
-    const house = await House.findById({ _id: id });
+    const house = await Accommodation.findById({ _id: id });
 
     return Response.json(house, { status: 201 });
   } catch (err) {

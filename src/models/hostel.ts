@@ -1,6 +1,6 @@
 import { Schema, model, models } from 'mongoose';
 
-const accommodationSchema = new Schema(
+const hostelSchema = new Schema(
   {
     type: {
       type: String,
@@ -86,7 +86,6 @@ const accommodationSchema = new Schema(
   }
 );
 
-const Accommodation =
-  models.Accommodation || model('Accommodation', accommodationSchema);
+const Hostel = models.Hostel || model('Hostel', hostelSchema);
 
-export default Accommodation;
+export default Hostel;

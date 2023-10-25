@@ -24,7 +24,7 @@ export async function POST(req: Request) {
       images,
       bedroom,
       bathroom,
-    } = body;
+    }: Accommodation = body;
     const house = await Accommodation.create({
       type,
       price,
