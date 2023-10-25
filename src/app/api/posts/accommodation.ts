@@ -1,5 +1,5 @@
 import connectDB from '@/db';
-import Accommodation from '@/models/accommodation';
+import Accommodation from '@/models/hostel';
 
 export async function POST(req: Request) {
   try {
@@ -24,7 +24,7 @@ export async function POST(req: Request) {
       images,
       bedroom,
       bathroom,
-    } = body;
+    }: Accommodation = body;
     const house = await Accommodation.create({
       type,
       price,
