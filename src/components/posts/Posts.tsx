@@ -36,6 +36,7 @@ function Posts({ data }: PostsProps) {
             </span>
             {/* <span>{data.area} (sqft)</span> */}
           </div>
+          <h4>{data.type}</h4>
           <div className='flex flex-col'>
             {/* <h3 className='dark:text-#ccd6f6] text-[#122c2e] font-medium flex tracking-wide'>{data.</h3> */}
             <h3 className='flex items-center gap-1'>
@@ -48,6 +49,7 @@ function Posts({ data }: PostsProps) {
             <h4 className='dark:text-[#b6bac1] font-normal text-[#2e5458] text-sm'>
               {data.street} {data.city}
             </h4>
+            <h4>{data.located}</h4>
           </div>
         </div>
       </Link>
