@@ -3,7 +3,7 @@ import Header from '@/components/header/Header';
 import Posts from '@/components/posts/Posts';
 import React from 'react';
 
-async function page() {
+async function HomePage() {
   const houses = await getHouses();
   return (
     <>
@@ -31,4 +31,4 @@ async function page() {
   );
 }
 
-export default page;
+export default HomePage;

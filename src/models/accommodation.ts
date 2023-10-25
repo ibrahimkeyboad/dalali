@@ -1,7 +1,8 @@
 import { Schema, model, models } from 'mongoose';
+import User from './user';
 
 interface Accommodation {
-  _id: Schema.Types.ObjectId;
+  _id?: Schema.Types.ObjectId;
   type: string;
   price: number;
   bedrooms: number;
@@ -30,13 +31,8 @@ interface Accommodation {
 
 const accommodationSchema = new Schema(
   {
-    _id: {
-      type: Schema.Types.ObjectId,
-      required: false,
-    },
-
     type: {
-      type: String,
+      type: String, //single double self -s
       required: true,
       trim: true,
     },
@@ -45,6 +41,53 @@ const accommodationSchema = new Schema(
       type: String,
       required: true,
     },
+
+    located: {
+      type: String,
+      required: true,
+    },
+
+    kitchen: [String],
+
+    bedroom: [
+      {
+        sort: {
+          type: String,
+          default: 'normal',
+          required: true,
+        },
+
+        description: {
+          type: String,
+        },
+
+        bed: [
+          {
+            sort: {
+              type: String,
+              default: 'normal',
+            },
+          },
+        ],
+      },
+    ],
+
+    bathroom: [
+      {
+        sort: {
+          type: String,
+          default: 'public',
+        },
+
+        description: String,
+
+        shower: {
+          type: String,
+          default: 'hot water',
+        },
+      },
+    ],
+
     description: {
       type: String,
       required: true,
@@ -59,16 +102,21 @@ const accommodationSchema = new Schema(
       type: String,
       required: true,
     },
-    imageCover: {
-      uri: {
-        type: String,
-        required: true,
-      },
-      public_id: {
-        type: String,
-        required: true,
-      },
+
+    payFormDuration: {
+      type: String,
+      required: true,
     },
+    // imageCover: {
+    //   uri: {
+    //     type: String,
+    //     required: true,
+    //   },
+    //   public_id: {
+    //     type: String,
+    //     required: true,
+    //   },
+    // },
     images: [
       {
         uri: {
@@ -81,11 +129,14 @@ const accommodationSchema = new Schema(
         },
       },
     ],
-    isAvailable: {
-      type: Boolean,
-      default: true,
+    // isAvailable: {
+    //   type: Boolean,
+    //   default: true,
+    // },
+    owner: {
+      type: Schema.Types.ObjectId,
+      ref: User,
     },
-    // owner: {},
     price: {
       type: Number,
       required: true,
