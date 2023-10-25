@@ -1,4 +1,4 @@
-import { getHouses } from '@/actions/getHouses';
+import { getHouses } from '@/actions/Accommodation';
 import Header from '@/components/header/Header';
 import Posts from '@/components/posts/Posts';
 import React from 'react';

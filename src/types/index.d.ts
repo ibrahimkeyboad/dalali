@@ -38,10 +38,7 @@ interface Accommodation {
   isAvailable: boolean;
   area: number;
   tags: string[];
-  imageCover: {
-    uri: string;
-    public_id: string;
-  };
+
   kitchen: [string];
   bedroom: [
     {
