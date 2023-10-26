@@ -42,7 +42,6 @@ const accommodationSchema = new Schema<Accommodation>(
           {
             sort: {
               type: String,
-              default: 'normal',
             },
           },
         ],
@@ -53,10 +52,14 @@ const accommodationSchema = new Schema<Accommodation>(
       {
         sort: {
           type: String,
-          default: 'public',
+          required: true,
         },
 
         description: String,
+        toilet: {
+          type: String,
+          required: true,
+        },
 
         shower: {
           type: String,

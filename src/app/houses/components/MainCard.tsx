@@ -62,8 +62,8 @@ function MainCard({ data }: Props) {
           </div>
         </div>
         <HouseRooms
-          bedroom={data.room}
-          bathroom={data.bath}
+          room={data.room}
+          bath={data.bath}
           kitchen={data.kitchen}
         />
 

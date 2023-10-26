@@ -36,11 +36,11 @@ function Posts({ data, yes }: PostsProps) {
           <div className='flex gap-2 text-sm text-[#9da3ac]'>
             <span>
               {data.bath.length}
-              {` bathroom${data.bath.length > 1 ? 's' : ''}`}
+              {` bath${data.bath.length > 1 ? 's' : ''}`}
             </span>
             <span>
               {data.room.length}
-              {` bedroom${data.room.length > 1 ? 's' : ''}`}
+              {` room${data.room.length > 1 ? 's' : ''}`}
             </span>
             {/* <span>{data.area} (sqft)</span> */}
           </div>
