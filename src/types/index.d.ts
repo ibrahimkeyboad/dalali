@@ -37,27 +37,11 @@ interface Accommodation {
   purpose: string;
   isAvailable: boolean;
   area: number;
-  tags: string[];
+  offers: string[];
 
-  kitchen: {
-    size?: string;
-    washing?: string;
-    fidge?: string;
-  };
-  room: [
-    {
-      sort: string; // bed sitting
-      description: string; // where you can sit and relax
-    }
-  ];
-  bath: [
-    {
-      sort: string;
-      description: string;
-      shower: string;
-      toilet: string;
-    }
-  ];
+  kitchen: Kitchen;
+  room: Room[];
+  bath: Bath[];
   images: [
     {
       uri: string;
@@ -68,4 +52,22 @@ interface Accommodation {
   description: string;
   payFormDuration: string;
   category: string;
+}
+
+interface Bath {
+  sort: string;
+  description: string;
+  shower: string;
+  toilet: string;
+}
+
+interface Room {
+  sort: string; // bed sitting
+  description: string; // where you can sit and relax
+}
+
+interface Kitchen {
+  size?: string;
+  washing?: string;
+  fidge?: string;
 }

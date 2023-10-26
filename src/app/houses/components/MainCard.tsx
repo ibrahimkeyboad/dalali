@@ -12,7 +12,7 @@ import React from 'react';
 import HouseRooms from './HouseRooms';
 
 interface Props {
-  data: any;
+  data: Accommodation;
 }
 
 function MainCard({ data }: Props) {
@@ -62,8 +62,8 @@ function MainCard({ data }: Props) {
           </div>
         </div>
         <HouseRooms
-          bedroom={data.bedroom}
-          bathroom={data.bathroom}
+          bedroom={data.room}
+          bathroom={data.bath}
           kitchen={data.kitchen}
         />
 

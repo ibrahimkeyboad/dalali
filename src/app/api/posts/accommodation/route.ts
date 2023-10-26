@@ -22,8 +22,8 @@ export async function POST(req: Request) {
       located,
       kitchen,
       images,
-      bedroom,
-      bathroom,
+      room,
+      bath,
     }: Accommodation = body;
     const house = await Accommodation.create({
       type,
@@ -38,9 +38,9 @@ export async function POST(req: Request) {
       category,
       located,
       images,
-      bedroom,
+      room,
       kitchen,
-      bathroom,
+      bath,
     });
 
     return Response.json({ house }, { status: 201 });

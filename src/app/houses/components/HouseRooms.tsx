@@ -6,23 +6,9 @@ import { MdOutlineDinnerDining, MdOutlineShower } from 'react-icons/md';
 import { TbToolsKitchen2 } from 'react-icons/tb';
 
 interface Props {
-  bedroom: [
-    {
-      _id: string;
-      sort: string;
-      description: string;
-    }
-  ];
-  bathroom: [
-    {
-      _id: string;
-
-      sort: string;
-      description: string;
-      shower: string;
-    }
-  ];
-  kitchen: [string];
+  bedroom: Room[];
+  bathroom: Bath[];
+  kitchen?: Kitchen;
 }
 
 function HouseRooms({ bathroom, bedroom, kitchen }: Props) {
@@ -46,7 +32,7 @@ function HouseRooms({ bathroom, bedroom, kitchen }: Props) {
               <BiSolidDoorOpen size={40} />
               <div className='flex flex-col gap-2'>
                 {bedroom.map((bedroom) => (
-                  <p className='flex flex-col' key={bedroom._id}>
+                  <p className='flex flex-col' key={bedroom.sort}>
                     <span>{bedroom.sort}</span>
                     <span className='text-sm text-gray-300'>
                       {bedroom.description}
@@ -85,16 +71,16 @@ function HouseRooms({ bathroom, bedroom, kitchen }: Props) {
           </CardContent>
         )}
 
-        {kitchen.length > 0 && (
+        {kitchen && (
           <CardContent className='border p-4 rounded-md '>
             <h3 className='text-center font-semibold pb-1'>Kitchen</h3>
 
             <article className='flex  items-start justify-start gap-3'>
               <TbToolsKitchen2 size={40} />
               <div className='flex flex-col text-sm gap-1'>
-                {kitchen.map((item) => (
-                  <p key={item}>{item}</p>
-                ))}
+                <p>{kitchen.size}</p>
+                <p>{kitchen.washing}</p>
+                <p>{kitchen.fidge}</p>
               </div>
             </article>
           </CardContent>

@@ -24,6 +24,8 @@ const accommodationSchema = new Schema<Accommodation>(
       washing: String,
       fidge: String,
     },
+
+    offers: [String],
     room: [
       {
         sort: {
