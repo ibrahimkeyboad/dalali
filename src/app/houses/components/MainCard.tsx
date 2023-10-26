@@ -19,7 +19,6 @@ function MainCard({ data }: Props) {
   return (
     <div className='bg-background'>
       <section className='max-w-[1120px] px-3 md:px-10 m-auto'>
-        {/*  @ts-ignore */}
         <ImageFigure images={data.images} />
         <div className={`bg-card p-3 my-4  rounded-sm divide-y`}>
           <div className='flex items-center justify-between p-5'>
@@ -51,9 +50,13 @@ function MainCard({ data }: Props) {
                 <figcaption className='flex flex-col'>
                   <span
                     className={`dark:text-[#e6f1ff] font-bold tracking-wide text-base`}>
+                    {/* @ts-ignore  */}
+
                     {data?.owner?.name}
                   </span>
+
                   <span className={`dark:text-[#ccd6f6] font-bold text-base`}>
+                    {/* @ts-ignore  */}
                     {data?.owner?.phoneNumber}
                   </span>
                 </figcaption>
@@ -61,11 +64,7 @@ function MainCard({ data }: Props) {
             </Card>
           </div>
         </div>
-        <HouseRooms
-          room={data.room}
-          bath={data.bath}
-          kitchen={data.kitchen}
-        />
+        <HouseRooms room={data.room} bath={data.bath} kitchen={data.kitchen} />
 
         <Card>
           <CardHeader>

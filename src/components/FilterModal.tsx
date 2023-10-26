@@ -17,6 +17,7 @@ import RoomContain from './inputs/RoomContain';
 import RangePrice from '@/contexts/rage';
 import { CheckboxWithText } from './inputs/chek';
 import RoomCheck from './header/RoomCheck';
+import { ComboboxDemo } from './Chombobox';
 
 const FormSchema = z.object({
   // minPrice: z.number().
@@ -171,6 +172,7 @@ function FilterModal() {
           </div>
         </div>
       )}
+
       {category === 'hostels' && (
         <div className=' py-6'>
           <h3>Rooms</h3>
@@ -196,6 +198,8 @@ function FilterModal() {
       )}
 
       {category === 'houses' && <RoomCheck />}
+
+      <ComboboxDemo />
 
       {/* <RoomContain title='Size' /> */}
     </div>
