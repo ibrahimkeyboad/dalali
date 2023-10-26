@@ -39,7 +39,11 @@ interface Accommodation {
   area: number;
   tags: string[];
 
-  kitchen: [string];
+  kitchen: {
+    size?: string;
+    washing?: string;
+    fidge?: string;
+  };
   room: [
     {
       sort: string; // bed sitting

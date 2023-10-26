@@ -19,8 +19,11 @@ const accommodationSchema = new Schema<Accommodation>(
       required: true,
     },
 
-    kitchen: [String],
-
+    kitchen: {
+      size: String,
+      washing: String,
+      fidge: String,
+    },
     room: [
       {
         sort: {
