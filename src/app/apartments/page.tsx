@@ -1,10 +1,9 @@
-import { getAllAccommodation } from '@/actions/Accommodation';
+import { getHouses } from '@/actions/Accommodation';
 import Header from '@/components/header/Header';
 import Posts from '@/components/posts/Posts';
 
-async function Page() {
-  const data: Accommodation[] = await getAllAccommodation();
-
+async function ApartmentPage() {
+  const houses: Accommodation[] = await getHouses('apartment');
   return (
     <>
       <Header />
@@ -23,12 +22,12 @@ async function Page() {
         xl:gap-x-4
         xl:gap-y-8
     '>
-        {data.map((data) => (
-          <Posts data={data} yes key={`${data._id}`} />
+        {houses.map((data) => (
+          <Posts data={data} key={`${data._id}`} />
         ))}
       </main>
     </>
   );
 }
 
-export default Page;
+export default ApartmentPage;

@@ -23,7 +23,7 @@ async function HomePage() {
         xl:gap-x-4
         xl:gap-y-8
     '>
-        {houses.map((data: any) => (
+        {houses.map((data) => (
           <Posts data={data} key={`${data._id}`} />
         ))}
       </main>

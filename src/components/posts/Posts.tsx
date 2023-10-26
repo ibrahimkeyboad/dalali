@@ -1,23 +1,32 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import { Badge } from '../ui/badge';
 
 interface PostsProps {
   data: Accommodation;
+  yes?: boolean;
 }
 
-function Posts({ data }: PostsProps) {
+function Posts({ data, yes }: PostsProps) {
   return (
     <article className='relative overflow-hidden'>
       <Link href={`/${data.category}s/${data._id}`}>
-        <Image
-          alt='image'
-          src={`/images/${data.images[0].uri}`}
-          className='rounded-lg object-cover bg-black h-52'
-          width={400}
-          height={300}
-          priority
-        />
+        <div className='relative'>
+          <Image
+            alt='image'
+            src={`/images/${data.images[0].uri}`}
+            className='rounded-lg object-cover bg-black h-52'
+            width={400}
+            height={300}
+            priority
+          />
+          {yes && (
+            <Badge className='absolute top-1 right-1 border capitalize font-bold border-primary-foreground'>
+              {data.category}
+            </Badge>
+          )}
+        </div>
         <div
           className='
             flex
@@ -45,7 +54,7 @@ function Posts({ data }: PostsProps) {
               </span>
               <span>{data.duration}</span>
             </h3>
-            <h4 className='dark:text-[#b6bac1] font-normal text-[#2e5458] text-sm'>
+            <h4 className='dark:text-[#b6bac1] '>
               {data.street} {data.city}
             </h4>
             <h4>{data.located}</h4>
