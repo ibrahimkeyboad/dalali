@@ -40,17 +40,18 @@ interface Accommodation {
   tags: string[];
 
   kitchen: [string];
-  bedroom: [
+  room: [
     {
-      sort: string;
-      description: string;
+      sort: string; // bed sitting
+      description: string; // where you can sit and relax
     }
   ];
-  bathroom: [
+  bath: [
     {
       sort: string;
       description: string;
       shower: string;
+      toilet: string;
     }
   ];
   images: [

@@ -21,7 +21,7 @@ const accommodationSchema = new Schema<Accommodation>(
 
     kitchen: [String],
 
-    bedroom: [
+    room: [
       {
         sort: {
           type: String,
@@ -44,7 +44,7 @@ const accommodationSchema = new Schema<Accommodation>(
       },
     ],
 
-    bathroom: [
+    bath: [
       {
         sort: {
           type: String,
@@ -55,7 +55,6 @@ const accommodationSchema = new Schema<Accommodation>(
 
         shower: {
           type: String,
-          default: 'hot water',
         },
       },
     ],
