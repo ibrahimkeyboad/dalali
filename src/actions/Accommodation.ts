@@ -1,5 +1,7 @@
+import { baseUrl } from './url';
+
 export async function getAllAccommodation() {
-  const res = await fetch('http://localhost:3000/api/posts/accommodation', {
+  const res = await fetch(`${baseUrl}/posts/accommodation`, {
     next: { revalidate: 100 },
   });
   const data = await res.json();
@@ -8,17 +10,16 @@ export async function getAllAccommodation() {
 
 export async function getHouses(category: string) {
   const res = await fetch(
-    `http://localhost:3000/api/posts/accommodation/category/${category}`,
+    `${baseUrl}/posts/accommodation/category/${category}`,
     { next: { revalidate: 100 } }
   );
   const data = await res.json();
   return data;
 }
 export async function getAccommodation(id: string) {
-  const res = await fetch(
-    `http://localhost:3000/api/posts/accommodation/${id}`,
-    { next: { revalidate: 100 } }
-  );
+  const res = await fetch(`${baseUrl}/posts/accommodation/${id}`, {
+    next: { revalidate: 100 },
+  });
   const data = await res.json();
   return data;
 }

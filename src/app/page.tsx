@@ -3,7 +3,7 @@ import Header from '@/components/header/Header';
 import Posts from '@/components/posts/Posts';
 
 async function Page() {
-  const data: Accommodation[] = await getAllAccommodation();
+  // const data: Accommodation[] = await getAllAccommodation();
 
   return (
     <>
@@ -23,9 +23,9 @@ async function Page() {
         xl:gap-x-4
         xl:gap-y-8
     '>
-        {data.map((data) => (
+        {/* {data.map((data) => (
           <Posts data={data} yes key={`${data._id}`} />
-        ))}
+        ))} */}
       </main>
     </>
   );

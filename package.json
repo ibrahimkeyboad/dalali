@@ -49,7 +49,7 @@
     "mailgen": "^2.0.27",
     "million": "^2.6.4",
     "mongodb": "^5.9.0",
-    "mongoose": "^7.6.0",
+    "mongoose": "^7.6.3",
     "negotiator": "^0.6.3",
     "next": "^14.0.0",
     "next-auth": "^4.24.4",

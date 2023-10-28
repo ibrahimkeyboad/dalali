@@ -4,7 +4,7 @@ import Posts from '@/components/posts/Posts';
 import React from 'react';
 
 async function HomePage() {
-  const houses: Accommodation[] = await getHouses('house');
+  // const houses: Accommodation[] = await getHouses('house');
   return (
     <>
       <Header />
@@ -23,9 +23,9 @@ async function HomePage() {
         xl:gap-x-4
         xl:gap-y-8
     '>
-        {houses.map((data) => (
+        {/* {houses.map((data) => (
           <Posts data={data} key={`${data._id}`} />
-        ))}
+        ))} */}
       </main>
     </>
   );
