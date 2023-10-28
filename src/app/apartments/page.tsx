@@ -3,7 +3,7 @@ import Header from '@/components/header/Header';
 import Posts from '@/components/posts/Posts';
 
 async function ApartmentPage() {
-  // const houses: Accommodation[] = await getHouses('apartment');
+  const houses: Accommodation[] = await getHouses('apartment');
   return (
     <>
       <Header />
@@ -22,9 +22,9 @@ async function ApartmentPage() {
         xl:gap-x-4
         xl:gap-y-8
     '>
-        {/* {houses.map((data) => (
+        {houses.map((data) => (
           <Posts data={data} key={`${data._id}`} />
-        ))} */}
+        ))}
       </main>
     </>
   );
