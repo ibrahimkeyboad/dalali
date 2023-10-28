@@ -15,7 +15,6 @@ function HouseRooms({ bath, room, kitchen }: Props) {
   const roomLength = room.length;
   const bathLength = bath.length;
 
-  console.log(room, bath);
   return (
     <Card>
       <h2 className='dark:text-[#e6f1ff] tracking-widest font-bold text-xl p-3 pb-5 '>

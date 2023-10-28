@@ -62,7 +62,6 @@ export function SelectForm() {
   const size = form.watch('size');
 
   function setCustomValue(id: ID, value: any) {
-    console.log('value', value);
     form.setValue(id, value, {
       shouldDirty: true,
       shouldTouch: true,

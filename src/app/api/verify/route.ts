@@ -7,7 +7,6 @@ export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const userId = searchParams.get('userId');
   const uniqueString = searchParams.get('uniqueString');
-  console.log(userId, uniqueString);
 
   try {
     // await connectDB();
@@ -16,7 +15,6 @@ export async function GET(req: Request) {
     });
 
     if (!userVerification) {
-      console.log('no user');
       return NextResponse.json(
         {
           title: 'Invalid ',

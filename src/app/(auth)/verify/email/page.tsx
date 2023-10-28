@@ -29,8 +29,6 @@ async function page({ searchParams: { uniqueString, userId } }: ParamsProps) {
 
   const data: Data = await res.json();
 
-  console.log('data', data);
-
   return (
     <div className='flex flex-col justify-center'>
       <h2>Verify Page</h2>

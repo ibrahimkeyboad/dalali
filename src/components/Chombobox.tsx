@@ -20,28 +20,24 @@ import {
 
 const city = [
   {
-    value: 'Arusha',
-    label: 'arusha',
+    label: 'Arusha',
+    value: 'arusha',
   },
   {
-    value: 'Dar es salama',
-    label: 'dar es salama',
+    label: 'Dar es salama',
+    value: 'dar es salama',
   },
   {
-    value: 'Kilmanjaro',
-    label: 'kilmanjaro',
-  },
-  {
-    value: 'remix',
-    label: 'Remix',
-  },
-  {
-    value: 'astro',
-    label: 'Astro',
+    label: 'Kilmanjaro',
+    value: 'kilmanjaro',
   },
 ];
 
-export function ComboboxDemo() {
+interface Prop {
+  title: string;
+}
+
+export function ComboboxDemo({ title }: Prop) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState('');
 
@@ -54,20 +50,20 @@ export function ComboboxDemo() {
           aria-expanded={open}
           className='w-[200px] justify-between'>
           {value
-            ? city.find((framework) => framework.value === value)?.label
-            : 'Select framework...'}
+            ? city.find((city) => city.value === value)?.label
+            : `Select ${title}...`}
           <ChevronsUpDown className='ml-2 h-4 w-4 shrink-0 opacity-50' />
         </Button>
       </PopoverTrigger>
       <PopoverContent className='w-[200px] p-0'>
         <Command>
-          <CommandInput placeholder='Search framework...' />
-          <CommandEmpty>No framework found.</CommandEmpty>
+          <CommandInput placeholder='Search city...' />
+          <CommandEmpty>No city found.</CommandEmpty>
           <CommandGroup>
-            {city.map((framework) => (
+            {city.map((city) => (
               <CommandItem
-                key={framework.value}
-                value={framework.value}
+                key={city.value}
+                value={city.value}
                 onSelect={(currentValue) => {
                   setValue(currentValue === value ? '' : currentValue);
                   setOpen(false);
@@ -75,10 +71,10 @@ export function ComboboxDemo() {
                 <Check
                   className={cn(
                     'mr-2 h-4 w-4',
-                    value === framework.value ? 'opacity-100' : 'opacity-0'
+                    value === city.value ? 'opacity-100' : 'opacity-0'
                   )}
                 />
-                {framework.label}
+                {city.label}
               </CommandItem>
             ))}
           </CommandGroup>

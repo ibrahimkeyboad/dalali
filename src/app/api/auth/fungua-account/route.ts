@@ -10,8 +10,6 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
 
-    console.log(body);
-
     const { name, email, password }: bodyData = body;
 
     if (!validator.isEmail(email)) {
@@ -47,7 +45,6 @@ export async function POST(req: Request) {
       { status: 201 }
     );
   } catch (error) {
-    console.log('API error', error);
     return Response.json({ error: 'Something went wrong' }, { status: 500 });
   }
 }

@@ -42,7 +42,6 @@ function Modal({
   }, [disable, onClose]);
 
   const handleSubmint = useCallback(() => {
-    console.log('modal');
     onSubmit();
     onClose();
   }, [onSubmit, onClose]);

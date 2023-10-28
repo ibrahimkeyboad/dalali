@@ -77,23 +77,19 @@ function StepContainer() {
 
   const onBack = useCallback(() => {
     setStep((value) => value - 1);
-    console.log('runn');
   }, []);
 
   const onNext = useCallback(() => {
-    console.log('runn');
     setStep((value) => value + 1);
   }, []);
 
   const onSubmit: SubmitHandler<FieldValues> = () => {
-    console.log('ruu');
     if (step !== Steps.step4) {
       return onNext();
     }
   };
 
   function setCustomValue(id: ID, value: any) {
-    console.log('value', value);
     setValue(id, value, {
       shouldDirty: true,
       shouldTouch: true,
@@ -105,7 +101,6 @@ function StepContainer() {
     id: ID,
     { uri, label }: { uri: File | null; label: string }
   ) {
-    // console.log('value', value);
     setValue(
       id,
       { label, uri },
@@ -120,7 +115,6 @@ function StepContainer() {
     id: ID,
     { uri, label }: { uri: File | null; label: string }
   ) {
-    // console.log('value', value);
     setValue(
       id,
       { label, uri },
@@ -143,8 +137,6 @@ function StepContainer() {
       sofa={sofa}
     />
   );
-
-  console.log('imageCover', imageCover);
 
   if (step === Steps.step2) {
     bodyContent = <StepTwo errors={errors} register={register} />;

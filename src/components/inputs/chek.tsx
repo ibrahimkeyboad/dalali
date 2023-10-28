@@ -10,10 +10,10 @@ interface Props {
 export function CheckboxWithText({ desc, title }: Props) {
   return (
     <div className='items-top flex space-x-2'>
-      <Checkbox id='terms1' />
+      <Checkbox id={title} />
       <div className='grid gap-1.5 leading-none'>
         <label
-          htmlFor='terms1'
+          htmlFor={title}
           className='text-sm cursor-pointer font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70'>
           {title}
         </label>

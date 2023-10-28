@@ -78,13 +78,10 @@ function AuthForm() {
         router.push('/verify');
         toast.success(res.data.msg);
       } else {
-        console.log(res.status);
         toast.error('fail', res.data);
       }
     } catch (errors: any) {
-      console.log('errors', errors.response);
 
-      toast.error(errors.response.data.error);
     } finally {
       // setIsLoading(false);
     }

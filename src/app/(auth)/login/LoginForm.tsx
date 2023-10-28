@@ -46,8 +46,6 @@ function LoginForm({ email }: { email: string }) {
       redirect: false,
     });
 
-    console.log(res);
-
     if (res?.ok && !res?.error) {
       toast.success('logged in');
       router.push('/');

@@ -6,8 +6,6 @@ export async function POST(req: Request) {
     connectDB();
     const body = await req.json();
 
-    console.log('body', body);
-
     const {
       type,
       price,
@@ -45,7 +43,6 @@ export async function POST(req: Request) {
 
     return Response.json({ house }, { status: 201 });
   } catch (err) {
-    console.log(err);
     return new Response('something went wrong', { status: 500 });
   }
 }

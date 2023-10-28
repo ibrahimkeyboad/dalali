@@ -85,10 +85,7 @@ function FilterModal() {
     [form]
   );
 
-  console.log(form.formState.errors);
-
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    console.log('hello');
     router.push(
       // `${data.category}?bed=${data.bed}&bathrooms=${data.bathrooms}&bedrooms=${data.bedrooms}&location=${data.location}`
       `${data.category}?bed=${data.bed}&bathrooms=${data.bathrooms}&bedrooms=${data.bedrooms}`
@@ -105,6 +102,11 @@ function FilterModal() {
     <div className='flex flex-col divide-y'>
       <div className='flex gap-6 justify-center pb-6'>
         <RangePrice />
+      </div>
+
+      <div className='flex gap-4 flex-wrap py-5'>
+        <ComboboxDemo title='city' />
+        <ComboboxDemo title='street' />
       </div>
 
       <div className='py-6'>
@@ -198,8 +200,6 @@ function FilterModal() {
       )}
 
       {category === 'houses' && <RoomCheck />}
-
-      <ComboboxDemo />
 
       {/* <RoomContain title='Size' /> */}
     </div>
