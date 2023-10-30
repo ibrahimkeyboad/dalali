@@ -19,6 +19,7 @@ import { CheckboxWithText } from './inputs/chek';
 import RoomCheck from './header/RoomCheck';
 import { ComboboxDemo } from './Chombobox';
 import Counter from './Counter';
+import CategoryType from './CategoryType';
 
 const FormSchema = z.object({
   minPrice: z.number(),
@@ -209,6 +210,8 @@ function FilterModal() {
         </div>
       )}
 
+      {category === 'houses' && <CategoryType />}
+
       <div className='flex flex-col gap-6  py-6'>
         <Counter
           title='Min price'
@@ -225,8 +228,6 @@ function FilterModal() {
           price
         />
       </div>
-
-      {category === 'houses' && <RoomCheck />}
 
       {/* <RoomContain title='Size' /> */}
     </div>
