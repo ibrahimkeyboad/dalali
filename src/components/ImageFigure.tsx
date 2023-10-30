@@ -37,10 +37,10 @@ const ImageFigure = ({ images }: Props) => {
             quality={100}
             alt=''
             className='object-cover'
-            priority={true}
+            priority
             src={`/images/${img.uri}`}
-            sizes='100vw'
             fill
+            sizes='(min-width: 768px) 90vw, (min-width: 1200px) 50vw, 33vw'
           />
         </SwiperSlide>
       ))}
