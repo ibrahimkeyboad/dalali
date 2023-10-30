@@ -17,16 +17,19 @@ function CategoryInput({
     <article
       onClick={() => onClick(label)}
       className={`
-        grid 
+        flex
+        flex-col
+        overflow-hidden
         cursor-pointer
         border-2
+        flex-wrap
         hover:border-black 
         transition 
         capitalize
         dark:hover:border-white 
         rounded-xl  
         p-4 
-        gap-3 
+        gap-4
         ${
           selected
             ? 'border-black dark:border-white'

@@ -20,7 +20,7 @@ function RoomContain({ title, onClick, value }: Props) {
             key={item}
             type='button'
             onClick={() => onClick(item)}
-            className={`px-6 text-lg py-2 rounded-2xl ${
+            className={`px-5 text-lg py-2 rounded-2xl ${
               item === value
                 ? 'bg-primary text-primary-foreground border-primary-foreground'
                 : ''
