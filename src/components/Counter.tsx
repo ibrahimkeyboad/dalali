@@ -7,12 +7,25 @@ interface CounterProps {
   title: string;
   subtitle: string;
   value: number;
+  price?: boolean;
   onChange: (value: number) => void;
 }
-function Counter({ onChange, subtitle, title, value }: CounterProps) {
+function Counter({ onChange, subtitle, title, value, price }: CounterProps) {
   const onAdd = useCallback(() => {
-    onChange(value + 1);
-  }, [onChange, value]);
+    if (price) {
+      onChange(value + 5000);
+      if (value >= 100000) {
+        onChange(value + 10000);
+      }
+    } else {
+      onChange(value + 1);
+    }
+  }, [onChange, price, value]);
+
+  function priceString() {
+    if (value >= 20000 && value < 100000) return `Elf ${value / 1000}`;
+    if (value >= 100000 && value < 1000000) return `Laki ${value / 100000}`;
+  }
 
   const onReduce = useCallback(() => {
     if (value === 1) {
@@ -44,7 +57,10 @@ function Counter({ onChange, subtitle, title, value }: CounterProps) {
         transition'>
           <AiOutlineMinus className='text-primary' />
         </button>
-        <span className='font-medium text-xl text-primary'>{value}</span>
+        <span className='font-medium text-xl text-primary'>
+          {/* {price && value} */}
+          {price && priceString()}
+        </span>
         <button
           onClick={onAdd}
           type='button'

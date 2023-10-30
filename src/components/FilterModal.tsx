@@ -72,8 +72,8 @@ function FilterModal() {
       bed: 0,
       bedrooms: 1,
       bathrooms: 1,
-      minPrice: 20,
-      maxPrice: 100,
+      minPrice: 25000,
+      maxPrice: 100000,
     },
   });
 
@@ -206,18 +206,20 @@ function FilterModal() {
         </div>
       )}
 
-      <div className='flex flex-col gap-6 justify-center py-6'>
+      <div className='flex flex-col gap-6  py-6'>
         <Counter
           title='Min price'
           onChange={(value) => setCustomValue('minPrice', value)}
-          subtitle=''
+          subtitle='what price will start'
           value={minPrice}
+          price
         />
         <Counter
           title='Max price'
           onChange={(value) => setCustomValue('maxPrice', value)}
-          subtitle=''
+          subtitle='what price will end at'
           value={maxPrice}
+          price
         />
       </div>
 
