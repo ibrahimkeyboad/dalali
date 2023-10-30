@@ -57,14 +57,14 @@ const categories = [
   },
 ];
 
-// type ID = 'category' | 'bed' | 'bedrooms' | 'bathrooms' | 'size';
 type ID =
   | 'category'
   | 'bed'
   | 'bedrooms'
   | 'bathrooms'
   | 'minPrice'
-  | 'maxPrice';
+  | 'maxPrice'
+  | 'categoryType';
 
 function FilterModal() {
   const router = useRouter();
@@ -87,7 +87,10 @@ function FilterModal() {
   const bathrooms = form.watch('bathrooms');
   const minPrice = form.watch('minPrice');
   const maxPrice = form.watch('maxPrice');
+  const categoryType = form.watch('categoryType');
   // const size = form.watch('size');
+
+  console.log(categoryType);
 
   const setCustomValue = useCallback(
     (id: ID, value: any) => {
@@ -210,7 +213,12 @@ function FilterModal() {
         </div>
       )}
 
-      {category === 'houses' && <CategoryType />}
+      {category === 'houses' && (
+        <CategoryType
+          onHandlerClick={(value) => setCustomValue('categoryType', value)}
+          value={categoryType}
+        />
+      )}
 
       <div className='flex flex-col gap-6  py-6'>
         <Counter
