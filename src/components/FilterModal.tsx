@@ -18,10 +18,11 @@ import RangePrice from '@/contexts/rage';
 import { CheckboxWithText } from './inputs/chek';
 import RoomCheck from './header/RoomCheck';
 import { ComboboxDemo } from './Chombobox';
+import Counter from './Counter';
 
 const FormSchema = z.object({
-  // minPrice: z.number().
-  // maxPrice: z.number(),
+  minPrice: z.number(),
+  maxPrice: z.number(),
   category: z.string(),
   // location: z.string(),
   bathrooms: z.number(),
@@ -53,7 +54,13 @@ const categories = [
 ];
 
 // type ID = 'category' | 'bed' | 'bedrooms' | 'bathrooms' | 'size';
-type ID = 'category' | 'bed' | 'bedrooms' | 'bathrooms';
+type ID =
+  | 'category'
+  | 'bed'
+  | 'bedrooms'
+  | 'bathrooms'
+  | 'minPrice'
+  | 'maxPrice';
 
 function FilterModal() {
   const router = useRouter();
@@ -65,6 +72,8 @@ function FilterModal() {
       bed: 0,
       bedrooms: 1,
       bathrooms: 1,
+      minPrice: 20,
+      maxPrice: 100,
     },
   });
 
@@ -72,6 +81,8 @@ function FilterModal() {
   const bed = form.watch('bed');
   const bedrooms = form.watch('bedrooms');
   const bathrooms = form.watch('bathrooms');
+  const minPrice = form.watch('minPrice');
+  const maxPrice = form.watch('maxPrice');
   // const size = form.watch('size');
 
   const setCustomValue = useCallback(
@@ -100,10 +111,6 @@ function FilterModal() {
   const body = (
     // <Form {...form}>
     <div className='flex flex-col divide-y'>
-      <div className='flex gap-6 justify-center pb-6'>
-        <RangePrice />
-      </div>
-
       <div className='flex gap-4 flex-wrap py-5'>
         <ComboboxDemo title='city' />
         <ComboboxDemo title='street' />
@@ -198,6 +205,21 @@ function FilterModal() {
           </div>
         </div>
       )}
+
+      <div className='flex flex-col gap-6 justify-center py-6'>
+        <Counter
+          title='Min price'
+          onChange={(value) => setCustomValue('minPrice', value)}
+          subtitle=''
+          value={minPrice}
+        />
+        <Counter
+          title='Max price'
+          onChange={(value) => setCustomValue('maxPrice', value)}
+          subtitle=''
+          value={maxPrice}
+        />
+      </div>
 
       {category === 'houses' && <RoomCheck />}
 
