@@ -74,8 +74,8 @@ function FilterModal() {
     resolver: zodResolver(FormSchema),
     defaultValues: {
       bed: 0,
-      bedrooms: 1,
-      bathrooms: 1,
+      bedrooms: 0,
+      bathrooms: 0,
       minPrice: 25000,
       maxPrice: 100000,
     },
@@ -149,6 +149,13 @@ function FilterModal() {
       </div>
 
       {category === 'houses' && (
+        <CategoryType
+          onHandlerClick={(value) => setCustomValue('categoryType', value)}
+          value={categoryType}
+        />
+      )}
+
+      {category === 'houses' && categoryType === 'self' && (
         <div className='py-6'>
           <h3>Rooms</h3>
           <div className='flex gap-4 flex-col py-6'>
@@ -211,13 +218,6 @@ function FilterModal() {
             />
           </div>
         </div>
-      )}
-
-      {category === 'houses' && (
-        <CategoryType
-          onHandlerClick={(value) => setCustomValue('categoryType', value)}
-          value={categoryType}
-        />
       )}
 
       <div className='flex flex-col gap-6  py-6'>

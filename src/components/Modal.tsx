@@ -67,8 +67,7 @@ function Modal({
       className='
           justify-center 
           items-center 
-          flex 
-        
+          flex
           fixed 
           inset-0 
           z-30 
@@ -83,7 +82,7 @@ function Modal({
           md:w-4/6 
           lg:w-3/6 
           xl:/2/5 
-          max-h-[60vh]
+          max-h-[85vh]
           overflow-x-hidden 
           overflow-y-auto 
           my-6 

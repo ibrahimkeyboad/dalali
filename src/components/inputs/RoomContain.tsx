@@ -8,7 +8,7 @@ interface Props {
   onClick: (value: number) => void;
 }
 
-const data = [1, 2, 3, 4, 5, 6];
+const data = [0, 1, 2, 3, 4, 5, 6];
 
 function RoomContain({ title, onClick, value }: Props) {
   return (
@@ -25,7 +25,7 @@ function RoomContain({ title, onClick, value }: Props) {
                 ? 'bg-primary text-primary-foreground border-primary-foreground'
                 : ''
             } border-slate-400 hover:border-primary border-2`}>
-            {item}
+            {item === 0 ? 'Any' : item}
           </button>
         ))}
       </div>
