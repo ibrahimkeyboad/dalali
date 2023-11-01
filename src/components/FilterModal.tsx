@@ -76,7 +76,7 @@ function FilterModal() {
       bed: 0,
       bedrooms: 0,
       bathrooms: 0,
-      minPrice: 25000,
+      minPrice: 30000,
       maxPrice: 100000,
     },
   });
