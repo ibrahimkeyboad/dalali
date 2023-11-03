@@ -24,19 +24,15 @@ type Token = {
 
 interface Accommodation {
   _id?: Schema.Types.ObjectId;
-  located: string;
   type: string;
   price: number;
   beds: number;
-  sofa: number;
   location: Location;
   bathrooms: number;
-  duration: string;
   purpose: string;
   isAvailable: boolean;
-  area: number;
   offers: string[];
-
+  price: Price;
   kitchen: Kitchen;
   room: Room[];
   bath: Bath[];
@@ -72,7 +68,6 @@ interface Kitchen {
 
 interface Location {
   located: string;
-
   street: string;
 
   city: string;

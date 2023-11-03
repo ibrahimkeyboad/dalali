@@ -57,7 +57,7 @@ function Posts({ data, yes }: PostsProps) {
             <h4 className='dark:text-[#b6bac1] '>
               {data.location.street} {data.location.city}
             </h4>
-            <h4>{data.located}</h4>
+            <h4>{data.location.located}</h4>
           </div>
         </div>
       </Link>

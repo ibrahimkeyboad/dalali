@@ -100,11 +100,6 @@ const accommodationSchema = new Schema<Accommodation>(
       required: true,
     },
 
-    duration: {
-      type: String,
-      required: true,
-    },
-
     // imageCover: {
     //   uri: {
     //     type: String,

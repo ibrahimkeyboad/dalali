@@ -10,10 +10,8 @@ export async function POST(req: Request) {
       type,
       price,
       purpose,
-      duration,
       description,
-    location,
-      payFormDuration,
+      location,
       category,
       kitchen,
       images,
@@ -24,10 +22,8 @@ export async function POST(req: Request) {
       type,
       price,
       purpose,
-      duration,
       description,
-    location,
-      payFormDuration,
+      location,
       category,
       images,
       room,
@@ -37,7 +33,7 @@ export async function POST(req: Request) {
 
     return Response.json({ house }, { status: 201 });
   } catch (err) {
-    return new Response('something went wrong', { status: 500 });
+    return new Response(`something went wrong ${err}`, { status: 500 });
   }
 }
 
@@ -49,6 +45,7 @@ export async function GET(req: Request) {
 
     return Response.json(houses, { status: 201 });
   } catch (err) {
+    console.log(err);
     return new Response(`something went wrong ${err}`, { status: 500 });
   }
 }
