@@ -29,9 +29,7 @@ interface Accommodation {
   price: number;
   beds: number;
   sofa: number;
-  street: string;
-  city: string;
-  country: string;
+  location: Location;
   bathrooms: number;
   duration: string;
   purpose: string;
@@ -70,4 +68,13 @@ interface Kitchen {
   size?: string;
   washing?: string;
   fidge?: string;
+}
+
+interface Location {
+  located: string;
+
+  street: string;
+
+  city: string;
+  country: string;
 }

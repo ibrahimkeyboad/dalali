@@ -9,14 +9,24 @@ const accommodationSchema = new Schema<Accommodation>(
       trim: true,
     },
 
-    city: {
-      type: String,
-      required: true,
-    },
+    location: {
+      located: {
+        type: String,
+        required: true,
+      },
+      street: {
+        type: String,
+        required: true,
+      },
 
-    located: {
-      type: String,
-      required: true,
+      city: {
+        type: String,
+        required: true,
+      },
+      country: {
+        type: String,
+        required: true,
+      },
     },
 
     kitchen: {
@@ -126,11 +136,6 @@ const accommodationSchema = new Schema<Accommodation>(
     },
 
     category: {
-      type: String,
-      required: true,
-    },
-
-    country: {
       type: String,
       required: true,
     },
