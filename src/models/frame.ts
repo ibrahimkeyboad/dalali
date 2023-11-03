@@ -11,8 +11,24 @@ const FrameSchema = new Schema(
       required: true,
     },
 
-    located: {
-      type: String,
+    location: {
+      located: {
+        type: String,
+        required: true,
+      },
+      street: {
+        type: String,
+        required: true,
+      },
+
+      city: {
+        type: String,
+        required: true,
+      },
+      country: {
+        type: String,
+        required: true,
+      },
     },
 
     sort: {

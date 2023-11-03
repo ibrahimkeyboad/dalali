@@ -78,3 +78,9 @@ interface Location {
   city: string;
   country: string;
 }
+
+interface Price {
+  amount: number;
+  duration: string;
+  perDuration: string;
+}

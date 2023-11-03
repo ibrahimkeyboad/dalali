@@ -55,7 +55,7 @@ function Posts({ data, yes }: PostsProps) {
               <span>{data.duration}</span>
             </h3>
             <h4 className='dark:text-[#b6bac1] '>
-              {data.street} {data.city}
+              {data.location.street} {data.location.city}
             </h4>
             <h4>{data.located}</h4>
           </div>

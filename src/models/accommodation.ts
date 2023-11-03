@@ -9,6 +9,19 @@ const accommodationSchema = new Schema<Accommodation>(
       trim: true,
     },
 
+    price: {
+      amount: {
+        type: Number,
+        return: true,
+      },
+      duration: {
+        type: String,
+      },
+      perDuration: {
+        type: String,
+      },
+    },
+
     location: {
       located: {
         type: String,
@@ -92,10 +105,6 @@ const accommodationSchema = new Schema<Accommodation>(
       required: true,
     },
 
-    payFormDuration: {
-      type: String,
-      required: true,
-    },
     // imageCover: {
     //   uri: {
     //     type: String,
@@ -125,14 +134,6 @@ const accommodationSchema = new Schema<Accommodation>(
     owner: {
       type: Schema.Types.ObjectId,
       ref: User,
-    },
-    price: {
-      type: Number,
-      required: true,
-    },
-    street: {
-      type: String,
-      required: true,
     },
 
     category: {
