@@ -10,11 +10,7 @@ import {
 import { Badge } from 'lucide-react';
 import React from 'react';
 
-interface Props {
-  data: Accommodation;
-}
-
-function Page({ data }: Props) {
+function Page() {
   return (
     <div className='bg-background'>
       <section className='max-w-[1120px] px-3 md:px-10 m-auto'>
