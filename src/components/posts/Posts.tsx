@@ -30,6 +30,7 @@ function Posts({ data, yes }: PostsProps) {
         <div
           className='
             flex
+            text-[15px]
             flex-col
             overflow-hidden
             p-2'>
@@ -44,20 +45,22 @@ function Posts({ data, yes }: PostsProps) {
             </span>
             {/* <span>{data.area} (sqft)</span> */}
           </div>
-          <h4>{data.type}</h4>
+          <h4 className='capitalize font-bold '>{data.type}</h4>
           <div className='flex flex-col'>
             {/* <h3 className='dark:text-#ccd6f6] text-[#122c2e] font-medium flex tracking-wide'>{data.</h3> */}
-            <h3 className='flex items-center gap-1'>
-              <span>Tsh</span>
-              <span className='font-extrabold'>
-                {data?.price?.toString()?.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-              </span>
-              <span>{data.duration}</span>
-            </h3>
+
             <h4 className='dark:text-[#b6bac1] '>
               {data.location.street} {data.location.city}
             </h4>
-            <h4>{data.location.located}</h4>
+            <h3 className='flex items-center gap-1'>
+              <span>Tsh</span>
+              <span className='font-extrabold'>
+                {data?.price.amount
+                  ?.toString()
+                  ?.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+              </span>
+              <span>{data.price.duration}</span>
+            </h3>
           </div>
         </div>
       </Link>

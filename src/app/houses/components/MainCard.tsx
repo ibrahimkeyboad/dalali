@@ -34,15 +34,15 @@ function MainCard({ data }: Props) {
                 <h3 className='flex items-center gap-1'>
                   <span>Tsh</span>
                   <span className='text-xl font-extrabold'>
-                    {data?.price
+                    {data?.price.amount
                       ?.toString()
                       ?.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                   </span>
-                  <span>{data.duration}</span>
+                  <span>{data.price.duration}</span>
                 </h3>
                 <h4></h4>
                 <h3 className=''>
-                  {`${data.street}, ${data.city} ${data.country}`}
+                  {`${data.location.street}, ${data.location.city} ${data.location.country}`}
                 </h3>
               </div>
               <figure className='flex justify-center items-center gap-4'>

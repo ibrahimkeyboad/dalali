@@ -25,7 +25,6 @@ type Token = {
 interface Accommodation {
   _id?: Schema.Types.ObjectId;
   type: string;
-  price: number;
   beds: number;
   location: Location;
   bathrooms: number;
