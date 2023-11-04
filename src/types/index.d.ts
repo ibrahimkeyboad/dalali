@@ -78,3 +78,15 @@ interface Price {
   duration: string;
   perDuration: string;
 }
+
+interface Apartment {
+  bathroom: {
+    dressing: string;
+    toilet: string;
+    shower: string;
+  };
+
+  bedroom: {
+    bed;
+  };
+}

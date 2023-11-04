@@ -1,9 +1,9 @@
-import { match } from '@formatjs/intl-localematcher';
-import Negotiator from 'negotiator';
+import NextAuth from 'next-auth';
+import { authOptions } from '@/actions/authOptions';
 
-let headers = { 'accept-language': 'en-US,en;q=0.5' };
-let languages = new Negotiator({ headers }).languages();
-let locales = ['en-US', 'sw'];
-let defaultLocale = 'en-US';
+export default NextAuth(authOptions).auth;
 
-match(languages, locales, defaultLocale); // -> 'en-US'
+export const config = {
+  // https://nextjs.org/docs/app/building-your-application/routing/middleware#matcher
+  matcher: ['/((?!api|_next/static|_next/image|.png).*)'],
+};

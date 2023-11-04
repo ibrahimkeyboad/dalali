@@ -42,36 +42,16 @@ const apartmentSchema = new Schema(
       },
     },
 
-    kitchen: {
-      size: String,
-      washing: String,
-      fidge: String,
-    },
-
     offers: [String],
     rooms: [
       {
         bedroom: {},
         bedromm: {},
-      },
-      {
-        sort: {
-          type: String,
-          default: 'normal',
-          required: true,
+        kitchen: {
+          size: String,
+          washing: String,
+          fidge: String,
         },
-
-        description: {
-          type: String,
-        },
-
-        bed: [
-          {
-            sort: {
-              type: String,
-            },
-          },
-        ],
       },
     ],
 
