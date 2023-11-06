@@ -3,7 +3,7 @@ import User from './user';
 
 const apartmentSchema = new Schema(
   {
-    type: {
+    title: {
       type: String, //single double self -s
       required: true,
       trim: true,
@@ -68,6 +68,7 @@ const apartmentSchema = new Schema(
           washing: String,
           fidge: String,
         },
+        taken: Number,
       },
     ],
 

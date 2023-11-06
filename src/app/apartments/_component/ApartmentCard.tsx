@@ -1,5 +1,3 @@
-import React from 'react';
-
 import coverApartment from '../../../../public/images/cover1.jpg';
 import { MdApartment, MdOutlineShower } from 'react-icons/md';
 import Image from 'next/image';
@@ -36,14 +34,15 @@ function ApartmentCard() {
           <h4> city view</h4>
         </div>
       </CardContent>
-      <CardFooter>
-        <h3 className='flex text-[15px] items-center gap-1'>
+      <CardFooter className='flex justify-between'>
+        <h3 className='flex text-[12px] items-center gap-1'>
           <span>Tsh</span>
           <span className='text-xl font-extrabold'>
             {200000?.toString()?.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
           </span>
           <span>month</span>
         </h3>
+        <h4 className='text-[12px]'>3/ 5</h4>
       </CardFooter>
     </Card>
   );
