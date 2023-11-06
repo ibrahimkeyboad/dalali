@@ -1,41 +1,58 @@
-import { baseUrl } from '@/actions/url';
-import axios from 'axios';
+import { Form } from '@/components/ui/form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { Metadata } from 'next';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import React from 'react';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
 
 export const metadata: Metadata = {
-  title: 'Hakikisha email yako',
+  title: 'Hakikisha namba yako ya simu',
 };
 
-interface ParamsProps {
-  searchParams: {
-    userId: string;
-    uniqueString: string;
-  };
-}
+const FormSchema = z.object({
+  firstName: z.string().min(2, {
+    message: 'Username must be at least 2 characters.',
+  }),
+});
 
-interface Data {
-  title: string;
-  link: string;
-  msg: string;
-}
+type MakeOfferFormValues = z.infer<typeof FormSchema>;
 
-async function page({ searchParams: { uniqueString, userId } }: ParamsProps) {
-  const res = await fetch(
-    `${baseUrl}/verify?userId=${userId}&uniqueString=${uniqueString}`,
-    { cache: 'no-store' }
-  );
+function Page() {
+  const router = useRouter();
 
-  const data: Data = await res.json();
+  const form = useForm<MakeOfferFormValues>({
+    resolver: zodResolver(FormSchema),
+  });
+
+  async function onSubmitHandler(value: MakeOfferFormValues) {
+    // try {
+    //   const res = await axios.post('/api/auth/fungua-account', data);
+    //   if (res.status == 201) {
+    //     router.push('/verify');
+    //     toast.success(res.data.msg);
+    //   } else {
+    //     toast.error('fail', res.data);
+    //   }
+    // } catch (errors: any) {
+    // } finally {
+    //   // setIsLoading(false);
+    // }
+  }
 
   return (
-    <div className='flex flex-col justify-center'>
-      <h2>Verify Page</h2>
-      <h3>{data.title}</h3>
-      <Link href={data.link}>{data.msg}</Link>
+    <div>
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmitHandler)}
+          className=' bg-card w-[90%] shadow-lg shadow-gray-200 dark:shadow-none rounded-lg md:w-[70%] lg:w-[45%] px-10 m-auto gap-6 flex flex-col items-stretch border-2 py-4'>
+          <h1 className='text-3xl font-semibold self-center  text-primary'>
+            Create Your Account
+          </h1>
+        </form>
+      </Form>
     </div>
   );
 }
 
-export default page;
+export default Page;
