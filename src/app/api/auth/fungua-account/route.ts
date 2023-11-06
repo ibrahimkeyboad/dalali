@@ -5,12 +5,13 @@ import validator from 'validator';
 import sendEmailVerification from '@/utils/sendEmail';
 
 export async function POST(req: Request) {
-  await connetDB();
-
   try {
+    connetDB();
     const body = await req.json();
 
-    const { name, email, password }: bodyData = body;
+    const { firstName, lastName, email, password } = body;
+
+    console.log(body);
 
     if (!validator.isEmail(email)) {
       return Response.json({ error: 'Invalid crendential' }, { status: 422 });
@@ -31,7 +32,8 @@ export async function POST(req: Request) {
 
     const user = await User.create({
       email: email.trim().toLowerCase(),
-      name: name.trim(),
+      firstName: firstName.trim(),
+      lastName: lastName.trim(),
       password: newPassword,
     });
 
@@ -45,6 +47,7 @@ export async function POST(req: Request) {
       { status: 201 }
     );
   } catch (error) {
+    console.log(error);
     return Response.json({ error: 'Something went wrong' }, { status: 500 });
   }
 }

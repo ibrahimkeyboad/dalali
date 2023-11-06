@@ -81,7 +81,6 @@ function AuthForm() {
         toast.error('fail', res.data);
       }
     } catch (errors: any) {
-
     } finally {
       // setIsLoading(false);
     }
@@ -91,7 +90,7 @@ function AuthForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmitHandler)}
-        className=' bg-card w-[90%] shadow-lg shadow-gray-200 dark:shadow-none rounded-lg md:w-[70%] lg:w-[45%] px-10 m-auto gap-6 flex flex-col items-stretch border'>
+        className=' bg-card w-[90%] shadow-lg shadow-gray-200 dark:shadow-none rounded-lg md:w-[70%] lg:w-[45%] px-10 m-auto gap-6 flex flex-col items-stretch border-2 py-4'>
         <h1 className='text-3xl font-semibold self-center  text-primary'>
           Create Your Account
         </h1>

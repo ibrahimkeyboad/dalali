@@ -1,12 +1,7 @@
-interface bodyData {
-  name: string;
-  email: string;
-  password: string;
-}
-
 interface User {
   _id?: string;
-  name: string;
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
   street: string;

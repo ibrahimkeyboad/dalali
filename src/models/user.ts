@@ -9,7 +9,12 @@ enum Role {
 
 const userSchema = new Schema<User>(
   {
-    name: {
+    firstName: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    lastName: {
       type: String,
       required: true,
       trim: true,
