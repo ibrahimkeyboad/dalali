@@ -9,19 +9,6 @@ const apartmentSchema = new Schema(
       trim: true,
     },
 
-    price: {
-      amount: {
-        type: Number,
-        return: true,
-      },
-      duration: {
-        type: String,
-      },
-      perDuration: {
-        type: String,
-      },
-    },
-
     location: {
       located: {
         type: String,
@@ -45,31 +32,41 @@ const apartmentSchema = new Schema(
     offers: [String],
     rooms: [
       {
+        price: {
+          amount: {
+            type: Number,
+            return: true,
+          },
+          duration: {
+            type: String,
+          },
+          perDuration: {
+            type: String,
+          },
+        },
         bedroom: {},
-        bedromm: {},
+        bath: [
+          {
+            sort: {
+              type: String,
+              required: true,
+            },
+
+            description: String,
+            toilet: {
+              type: String,
+              required: true,
+            },
+
+            shower: {
+              type: String,
+            },
+          },
+        ],
         kitchen: {
           size: String,
           washing: String,
           fidge: String,
-        },
-      },
-    ],
-
-    bath: [
-      {
-        sort: {
-          type: String,
-          required: true,
-        },
-
-        description: String,
-        toilet: {
-          type: String,
-          required: true,
-        },
-
-        shower: {
-          type: String,
         },
       },
     ],
@@ -84,16 +81,16 @@ const apartmentSchema = new Schema(
       required: true,
     },
 
-    // imageCover: {
-    //   uri: {
-    //     type: String,
-    //     required: true,
-    //   },
-    //   public_id: {
-    //     type: String,
-    //     required: true,
-    //   },
-    // },
+    imageCover: {
+      uri: {
+        type: String,
+        required: true,
+      },
+      public_id: {
+        type: String,
+        required: true,
+      },
+    },
     images: [
       {
         uri: {
@@ -106,10 +103,7 @@ const apartmentSchema = new Schema(
         },
       },
     ],
-    // isAvailable: {
-    //   type: Boolean,
-    //   default: true,
-    // },
+
     owner: {
       type: Schema.Types.ObjectId,
       ref: User,

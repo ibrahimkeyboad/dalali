@@ -7,9 +7,9 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Badge } from 'lucide-react';
 import React from 'react';
 import HouseRooms from './HouseRooms';
+import { Badge } from '@/components/ui/badge';
 
 interface Props {
   data: Accommodation;

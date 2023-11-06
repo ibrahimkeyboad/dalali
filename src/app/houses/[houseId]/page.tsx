@@ -1,7 +1,6 @@
 import dynamic from 'next/dynamic';
 import Header from '@/components/header/Header';
 import MainCard from '../components/MainCard';
-import { baseUrl } from '@/actions/url';
 import { getAccommodation } from '@/actions/Accommodation';
 
 export function generateMetadata({ params }: { params: { houseId: string } }) {
