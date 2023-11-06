@@ -1,7 +1,4 @@
 'use client';
-import ImageFigure from '@/components/ImageFigure';
-import UserAvatar from '@/components/UserAvatar';
-
 import {
   Card,
   CardContent,
@@ -9,7 +6,6 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Badge } from 'lucide-react';
 import Image from 'next/image';
 import { AspectRatio } from '@radix-ui/react-aspect-ratio';
 import coverImage from '../../../../public/images/apartment.jpg';
@@ -26,38 +22,22 @@ function Page() {
             alt='apartment cover image'
           />
         </AspectRatio>
-        <div className={`bg-card p-3 my-4  rounded-sm divide-y`}>
-          <div className='flex items-center justify-between p-5'>
-            <h2 className='tracking-widest font-bold text-3xl'>Overview</h2>
-            {/* @ts-ignore  */}
-            <Badge className='capitalize font-bold' variant='secondary'>
-              Rent
-            </Badge>
-          </div>
-          <div>
-            <Card className='p-4 flex gap-8 md:items-center flex-col md:flex-row items-start justify-between'>
-              <div className='md:flex gap-2 flex-col'>
-                <h4></h4>
-                <h3 className=''>{`Ngulelo, Arusha, Tanzania`}</h3>
-              </div>
-              <figure className='flex justify-center items-center gap-4'>
-                <UserAvatar />
-                <figcaption className='flex flex-col'>
-                  <span
-                    className={`dark:text-[#e6f1ff] font-bold tracking-wide text-base`}>
-                    {/* @ts-ignore  */}
-                    Ibrahim Mwanga
-                  </span>
 
-                  <span className={`dark:text-[#ccd6f6] font-bold text-base`}>
-                    {/* @ts-ignore  */}
-                    +2556299067
-                  </span>
-                </figcaption>
-              </figure>
-            </Card>
-          </div>
-        </div>
+        <Card>
+          <CardHeader>
+            <CardTitle>Ngulelo build Apartment</CardTitle>
+            <CardContent>
+              <div>
+                <h3>Location</h3>
+                <div className='flex gap-3'>
+                  <span>Ngulelo</span>
+                  <span>Arusha</span>
+                  <span>Tanzania</span>
+                </div>
+              </div>
+            </CardContent>
+          </CardHeader>
+        </Card>
 
         <div className='flex flex-wrap gap-5 py-8'>
           <ApartmentCard />
