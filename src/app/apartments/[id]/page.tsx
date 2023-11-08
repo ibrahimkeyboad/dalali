@@ -10,6 +10,7 @@ import Image from 'next/image';
 import { AspectRatio } from '@radix-ui/react-aspect-ratio';
 import coverImage from '../../../../public/images/apartment.jpg';
 import ApartmentCard from '../_component/ApartmentCard';
+import { IoLocationOutline } from 'react-icons/io5';
 
 function Page() {
   return (
@@ -25,18 +26,35 @@ function Page() {
 
         <Card>
           <CardHeader>
-            <CardTitle>Ngulelo build Apartment</CardTitle>
-            <CardContent>
-              <div>
-                <h3>Location</h3>
-                <div className='flex gap-3'>
-                  <span>Ngulelo</span>
-                  <span>Arusha</span>
-                  <span>Tanzania</span>
-                </div>
-              </div>
-            </CardContent>
+            <CardTitle className='capitalize tracking-wider'>
+              Ngulelo build Apartment
+            </CardTitle>
           </CardHeader>
+          <CardContent>
+            <div>
+              <div className='flex gap-4 items-center mb-2'>
+                <IoLocationOutline size={25} />
+                <h3>Location</h3>
+              </div>
+              <div className='flex gap-3'>
+                <span>Ngulelo</span>
+                <span>Arusha</span>
+                <span>Tanzania</span>
+              </div>
+            </div>
+          </CardContent>
+          <CardContent>
+            <h4 className='text-gray-300 font-semibold'>
+              What this Apartment have
+            </h4>
+
+            <div className='grid grid-cols-2'>
+              <h6>water</h6>
+              <h6>umeme</h6>
+              <h6>geti</h6>
+              <h6>mashine ya kufulia</h6>
+            </div>
+          </CardContent>
         </Card>
 
         <div className='flex flex-wrap gap-5 py-8'>

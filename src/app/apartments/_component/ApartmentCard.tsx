@@ -12,7 +12,7 @@ import { BedIcon } from 'lucide-react';
 
 function ApartmentCard() {
   return (
-    <Card className='w-[350px] overflow-hidden'>
+    <Card className='w-[330px] overflow-hidden'>
       <AspectRatio ratio={16 / 9}>
         <Image className='w-full' src={coverApartment} alt='cover' />
       </AspectRatio>
