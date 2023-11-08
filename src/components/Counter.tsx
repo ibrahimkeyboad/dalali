@@ -28,12 +28,19 @@ function Counter({ onChange, subtitle, title, value, price }: CounterProps) {
   }
 
   const onReduce = useCallback(() => {
-    if (value === 1) {
-      return;
-    }
+    if (price) {
+      onChange(value - 5000);
+      if (value >= 100000) {
+        onChange(value - 10000);
+      }
+    } else {
+      if (value === 1) {
+        return;
+      }
 
-    onChange(value - 1);
-  }, [value, onChange]);
+      onChange(value - 1);
+    }
+  }, [value, onChange, price]);
   return (
     <div className='flex items-center gap-4'>
       <div className='flex flex-col'>
