@@ -29,6 +29,10 @@ function Counter({ onChange, subtitle, title, value, price }: CounterProps) {
 
   const onReduce = useCallback(() => {
     if (price) {
+      if (value === 20000) {
+        return;
+      }
+
       onChange(value - 5000);
       if (value >= 100000) {
         onChange(value - 10000);
