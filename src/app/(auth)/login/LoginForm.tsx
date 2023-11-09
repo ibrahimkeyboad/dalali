@@ -1,5 +1,5 @@
 'use client';
-import InputAuth from '@/components/inputs/InputAuth';
+// import InputAuth from '@/components/inputs/InputAuth';
 import { useFormik } from 'formik';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -62,7 +62,6 @@ function LoginForm({ email }: { email: string }) {
         Login to Your Account
       </h1>
       <div className='sm:w-[60%] w-[90%]'>
-        <InputAuth name='email' type='email' formik={formik} hint='Email' />
         {formik.errors && (
           <p className='text-error ml-3 text-sm p-1'>
             {formik.errors && formik.touched.email && formik.errors.email}
@@ -72,12 +71,6 @@ function LoginForm({ email }: { email: string }) {
 
       <div className='sm:w-[60%] w-[80%]'>
         <span className='flex items-center'>
-          <InputAuth
-            type={toggle ? 'text' : 'password'}
-            name='password'
-            formik={formik}
-            hint='Password'
-          />
           {!toggle ? (
             <HiOutlineEyeOff
               onClick={toggleHandler}
