@@ -3,14 +3,13 @@
 import { Form } from '@/components/ui/form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import axios from 'axios';
-import { Metadata } from 'next';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
-export const metadata: Metadata = {
-  title: 'Hakikisha namba yako ya simu',
-};
+// export const metadata: Metadata = {
+//   title: 'Hakikisha namba yako ya simu',
+// };
 
 const FormSchema = z.object({
   firstName: z.string().min(2, {
