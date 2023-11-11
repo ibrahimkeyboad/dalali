@@ -16,7 +16,7 @@ async function LocationComponent() {
   return (
     <div>
       <ComboboxDemo title='country' data={data} />
-      <ComboboxDemo title='city' data={data[0].cit} />
+      <ComboboxDemo title='city' data={data[0].cities} />
     </div>
   );
 }

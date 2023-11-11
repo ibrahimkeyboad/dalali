@@ -3,7 +3,22 @@
     "flag": "https://flagcdn.com/tz.svg",
     "name": { "label": "Tanzania", "value": "tanzania" },
     "cities": [
-      { "name": { "label": "Arusha", "value": "arusha" }, "regions": [{}] },
+      {
+        "name": { "label": "Arusha", "value": "arusha" },
+        "regions": [
+          { "name": { "label": "Arusha", "value": "arusha" } },
+
+          { "name": { "label": "Arusha CBD", "value": "arusha cbd" } },
+
+          { "name": { "label": "Karatu", "value": "karatu" } },
+
+          { "name": { "label": "Longido", "value": "longido" } },
+
+          { "name": { "label": "Monduli", "value": "module" } },
+
+          { "name": { "label": "Ngorongoro", "value": "ngorongoro" } }
+        ]
+      },
 
       { "name": { "label": "Dar Es Salaam", "value": "" }, "regions": [{}] },
 
