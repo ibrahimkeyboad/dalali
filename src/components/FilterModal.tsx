@@ -1,7 +1,6 @@
 'use client';
 import React, { useCallback } from 'react';
 import Modal from './Modal';
-import { Form } from './ui/form';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -14,12 +13,9 @@ import { RootState } from '@/contexts/store';
 import { modalToggle } from '@/contexts/globalState';
 import { useRouter } from 'next/navigation';
 import RoomContain from './inputs/RoomContain';
-import RangePrice from '@/contexts/rage';
-import { CheckboxWithText } from './inputs/chek';
-import RoomCheck from './header/RoomCheck';
-import { ComboboxDemo } from './Chombobox';
 import Counter from './Counter';
 import CategoryType from './CategoryType';
+import LocationComponent from './LocationComponent';
 
 const FormSchema = z.object({
   minPrice: z.number(),
@@ -119,8 +115,7 @@ function FilterModal() {
     // <Form {...form}>
     <div className='flex flex-col divide-y'>
       <div className='flex gap-4 flex-wrap py-5'>
-        <ComboboxDemo title='city' />
-        <ComboboxDemo title='street' />
+        <LocationComponent />
       </div>
 
       <div className='py-6'>
