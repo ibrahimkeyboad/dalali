@@ -18,28 +18,16 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover';
 
-const city = [
-  {
-    label: 'Arusha',
-    value: 'arusha',
-  },
-  {
-    label: 'Dar es salama',
-    value: 'dar es salama',
-  },
-  {
-    label: 'Kilmanjaro',
-    value: 'kilmanjaro',
-  },
-];
-
 interface Prop {
   title: string;
+  data: any;
 }
 
-export function ComboboxDemo({ title }: Prop) {
+export function ComboboxDemo({ title, data }: Prop) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState('');
+
+  console.log(value);
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -50,7 +38,7 @@ export function ComboboxDemo({ title }: Prop) {
           aria-expanded={open}
           className='w-[200px] justify-between'>
           {value
-            ? city.find((city) => city.value === value)?.label
+            ? data.find((item: any) => item.name.value === value)?.name.label
             : `Select ${title}...`}
           <ChevronsUpDown className='ml-2 h-4 w-4 shrink-0 opacity-50' />
         </Button>
@@ -58,23 +46,24 @@ export function ComboboxDemo({ title }: Prop) {
       <PopoverContent className='w-[200px] p-0'>
         <Command>
           <CommandInput placeholder='Search city...' />
-          <CommandEmpty>No city found.</CommandEmpty>
+          <CommandEmpty>No {title} found.</CommandEmpty>
           <CommandGroup>
-            {city.map((city) => (
+            {data.map((item: any) => (
               <CommandItem
-                key={city.value}
-                value={city.value}
+                key={item.name.value}
+                value={item.name.value}
                 onSelect={(currentValue) => {
+                  console.log('current', currentValue);
                   setValue(currentValue === value ? '' : currentValue);
                   setOpen(false);
                 }}>
                 <Check
                   className={cn(
                     'mr-2 h-4 w-4',
-                    value === city.value ? 'opacity-100' : 'opacity-0'
+                    value === item.name.value ? 'opacity-100' : 'opacity-0'
                   )}
                 />
-                {city.label}
+                {item.name.label}
               </CommandItem>
             ))}
           </CommandGroup>
