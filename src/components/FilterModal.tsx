@@ -112,7 +112,6 @@ function FilterModal() {
   }
 
   const body = (
-    // <Form {...form}>
     <div className='flex flex-col divide-y'>
       <div className='flex gap-4 flex-wrap py-5'>
         <LocationComponent />
@@ -234,7 +233,6 @@ function FilterModal() {
 
       {/* <RoomContain title='Size' /> */}
     </div>
-    // </Form>
   );
 
   return (
