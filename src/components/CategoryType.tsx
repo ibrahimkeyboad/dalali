@@ -6,7 +6,6 @@ interface Props {
 }
 
 function CategoryType({ onHandlerClick, value }: Props) {
-  console.log(value);
   const items = ['single room', 'double room', 'single self', 'self'];
   return (
     <div className='py-6'>

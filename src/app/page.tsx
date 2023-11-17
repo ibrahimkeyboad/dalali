@@ -8,7 +8,6 @@ const totalCpu = os.cpus().length;
 
 async function Page() {
   const data: Accommodation[] = await getAllAccommodation();
-  console.log(totalCpu);
 
   return (
     <>

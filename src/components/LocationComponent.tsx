@@ -12,7 +12,6 @@ import { ComboboxDemo } from './Chombobox';
 // }
 function LocationComponent() {
   // const data = await getLocation();
-  // console.log(data);
   return (
     <div>
       {/* <ComboboxDemo title='country' data={data} />

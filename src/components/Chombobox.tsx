@@ -27,7 +27,6 @@ export function ComboboxDemo({ title, data }: Prop) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState('');
 
-  console.log(value);
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -53,7 +52,6 @@ export function ComboboxDemo({ title, data }: Prop) {
                 key={item.name.value}
                 value={item.name.value}
                 onSelect={(currentValue) => {
-                  console.log('current', currentValue);
                   setValue(currentValue === value ? '' : currentValue);
                   setOpen(false);
                 }}>

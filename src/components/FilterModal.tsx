@@ -86,7 +86,6 @@ function FilterModal() {
   const categoryType = form.watch('categoryType');
   // const size = form.watch('size');
 
-  console.log(categoryType);
 
   const setCustomValue = useCallback(
     (id: ID, value: any) => {
