@@ -5,10 +5,19 @@ export const metadata: Metadata = {
   title: 'Fungua account yako',
 };
 
-function Page() {
+async function getLocation() {
+  const res = await fetch('http://localhost:3000/api/location');
+
+  const data = await res.json();
+
+  return data;
+}
+
+async function Page() {
+  const data = await getLocation();
   return (
     <>
-      <AuthForm />
+      <AuthForm location={data} />
     </>
   );
 }

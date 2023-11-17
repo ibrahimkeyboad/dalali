@@ -21,6 +21,7 @@ import { Input } from '@/components/ui/input';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { ComboboxDemo } from '@/components/Chombobox';
 
 interface UserType {
   name: string;
@@ -45,7 +46,7 @@ const FormSchema = z.object({
 
 type MakeOfferFormValues = z.infer<typeof FormSchema>;
 
-function AuthForm() {
+function AuthForm({ location }) {
   const router = useRouter();
   const [toggle, setToggle] = useState<boolean>(false);
 
@@ -151,6 +152,11 @@ function AuthForm() {
             </FormItem>
           )}
         />
+
+        <div className='flex gap-4'>
+          <ComboboxDemo data={location} title='country' />
+          <ComboboxDemo data={location[0].cities} title='city' />
+        </div>
         {/* <FormField
           control={form.control}
           name='username'

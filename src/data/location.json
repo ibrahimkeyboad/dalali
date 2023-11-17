@@ -58,7 +58,7 @@
 
       { "name": { "label": "Mwanza", "value": "mwanza" }, "regions": [{}] },
 
-      { "name": { "label": "Njombe", "value": "Njombe" }, "regions": [{}] },
+      { "name": { "label": "Njombe", "value": "njombe" }, "regions": [{}] },
 
       {
         "name": { "label": "Pemba North", "value": "pemba north" },
@@ -89,7 +89,7 @@
 
       { "name": { "label": "Tabora", "value": "tabora" }, "regions": [{}] },
 
-      { "name": { "label": "Tanga", "value": "Tanga" }, "regions": [] },
+      { "name": { "label": "Tanga", "value": "tanga" }, "regions": [] },
 
       {
         "name": { "label": "Unguja North", "value": "unguja north" },
