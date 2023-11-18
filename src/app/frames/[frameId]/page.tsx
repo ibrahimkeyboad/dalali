@@ -18,8 +18,6 @@ export function generateMetadata({ params }: { params: { houseId: string } }) {
 }
 
 async function Apartment({ params }: { params: { houseId: string } }) {
-  // const res = await fetch('http://localhost:3000/api/apartment');
-  // const data = await res.json();
 
   const data = {
     id: 'faf1',

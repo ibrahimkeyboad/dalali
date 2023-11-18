@@ -1,12 +1,13 @@
 import { Metadata } from 'next';
 import AuthForm from './AuthForm';
+import { baseUrl } from '@/actions/url';
 
 export const metadata: Metadata = {
   title: 'Fungua account yako',
 };
 
 async function getLocation() {
-  const res = await fetch('http://localhost:3000/api/location');
+  const res = await fetch(`${baseUrl}/location');
 
   const data = await res.json();
 

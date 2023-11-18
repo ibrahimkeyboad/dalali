@@ -13,9 +13,6 @@ export function generateMetadata({ params }: { params: { id: string } }) {
 }
 
 async function LodgePage({ params }: { params: { id: string } }) {
-  // const res = await fetch('http://localhost:3000/api/apartment');
-  // const data = await res.json();
-
   const data: any = {
     id: 'oda',
     price: 50000,
