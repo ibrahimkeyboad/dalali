@@ -27,7 +27,6 @@ export function ComboboxDemo({ title, data }: Prop) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState('');
 
-
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
@@ -43,10 +42,10 @@ export function ComboboxDemo({ title, data }: Prop) {
         </Button>
       </PopoverTrigger>
       <PopoverContent className='w-[200px] p-0'>
-        <Command>
+        <Command className='h-96'>
           <CommandInput placeholder='Search city...' />
           <CommandEmpty>No {title} found.</CommandEmpty>
-          <CommandGroup>
+          <CommandGroup className='overflow-y-auto'>
             {data.map((item: any) => (
               <CommandItem
                 key={item.name.value}
