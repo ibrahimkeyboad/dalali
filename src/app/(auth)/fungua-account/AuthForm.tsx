@@ -46,7 +46,7 @@ const FormSchema = z.object({
 
 type MakeOfferFormValues = z.infer<typeof FormSchema>;
 
-function AuthForm({ location }) {
+function AuthForm({ location }: { location: any }) {
   const router = useRouter();
   const [toggle, setToggle] = useState<boolean>(false);
 

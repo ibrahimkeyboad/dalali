@@ -4,10 +4,11 @@ import { Inter } from 'next/font/google';
 import ToasterProvider, { ThemeProvider } from '@/providers/ToasterProvider';
 import FilterModal from '@/components/FilterModal';
 import ReduxProvider from '@/providers/ReduxProvider';
+import { Metadata } from 'next';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Dalai | Find place as easist as click',
   description: 'Find better place to live',
 };
