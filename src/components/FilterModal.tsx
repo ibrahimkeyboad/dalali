@@ -7,15 +7,24 @@ import { z } from 'zod';
 import { IoHomeSharp } from 'react-icons/io5';
 import { MdApartment } from 'react-icons/md';
 import { TbBuildingCommunity } from 'react-icons/tb';
-import CategoryInput from './header/CategoryInput';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@/contexts/store';
 import { modalToggle } from '@/contexts/globalState';
 import { useRouter } from 'next/navigation';
-import RoomContain from './inputs/RoomContain';
-import Counter from './Counter';
-import CategoryType from './CategoryType';
-import LocationComponent from './LocationComponent';
+import dynamic from 'next/dynamic';
+
+const CategoryType = dynamic(() => import('./CategoryType'), {
+  loading: () => <p>Loading...</p>,
+});
+const Counter = dynamic(() => import('./Counter'), {
+  loading: () => <p>Loading...</p>,
+});
+const RoomContain = dynamic(() => import('./inputs/RoomContain'), {
+  loading: () => <p>Loading...</p>,
+});
+const CategoryInput = dynamic(() => import('./header/CategoryInput'), {
+  loading: () => <p>Loading...</p>,
+});
 
 const FormSchema = z.object({
   minPrice: z.number(),
@@ -86,7 +95,6 @@ function FilterModal() {
   const categoryType = form.watch('categoryType');
   // const size = form.watch('size');
 
-
   const setCustomValue = useCallback(
     (id: ID, value: any) => {
       form.setValue(id, value, {
@@ -112,9 +120,7 @@ function FilterModal() {
 
   const body = (
     <div className='flex flex-col divide-y'>
-      <div className='flex gap-4 flex-wrap py-5'>
-        <LocationComponent />
-      </div>
+      <div className='flex gap-4 flex-wrap py-5'></div>
 
       <div className='py-6'>
         <h3>Property category</h3>
