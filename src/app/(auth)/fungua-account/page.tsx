@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 };
 
 async function getLocation() {
-  const res = await fetch(`${baseUrl}/location');
+  const res = await fetch(`${baseUrl}/location`);
 
   const data = await res.json();
 
