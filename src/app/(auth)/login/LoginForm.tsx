@@ -1,18 +1,36 @@
 'use client';
-// import InputAuth from '@/components/inputs/InputAuth';
-import { useFormik } from 'formik';
 import Link from 'next/link';
 import { useState } from 'react';
 import { signIn } from 'next-auth/react';
-import { HiOutlineEye, HiOutlineEyeOff } from 'react-icons/hi';
-import * as Yup from 'yup';
 import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
+
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 type Data = {
   email: string;
   password: string;
 };
+
+const FormSchema = z.object({
+  email: z.string().email('Email is required').email('Invalid email address'),
+  password: z.string().min(6, 'Too Short!'),
+});
+
+type MakeOfferFormValues = z.infer<typeof FormSchema>;
 
 function LoginForm({ email }: { email: string }) {
   const [toggle, setToggle] = useState<boolean>(false);
@@ -25,18 +43,9 @@ function LoginForm({ email }: { email: string }) {
     email: email ?? '',
     password: '',
   };
-  const formik = useFormik({
-    initialValues,
-    onSubmit: onSubmitHandler,
 
-    validationSchema: Yup.object({
-      email: Yup.string()
-        .required('Email is required')
-        .email('Invalid email address'),
-      password: Yup.string()
-        .min(6, 'Too Short!')
-        .required('Password is required'),
-    }),
+  const form = useForm<MakeOfferFormValues>({
+    resolver: zodResolver(FormSchema),
   });
 
   async function onSubmitHandler(value: Data) {
@@ -55,57 +64,53 @@ function LoginForm({ email }: { email: string }) {
   }
 
   return (
-    <form
-      onSubmit={formik.handleSubmit}
-      className={`dark:shadow-none capitalize bg-card w-[100%] rounded-lg py-20  md:w-[60%] m-auto items-center gap-8 flex flex-col`}>
-      <h1 className='lg:text-3xl text-xl px-4 font-semibold self-center  text-primary'>
-        Login to Your Account
-      </h1>
-      <div className='sm:w-[60%] w-[90%]'>
-        {formik.errors && (
-          <p className='text-error ml-3 text-sm p-1'>
-            {formik.errors && formik.touched.email && formik.errors.email}
-          </p>
-        )}
-      </div>
-
-      <div className='sm:w-[60%] w-[80%]'>
-        <span className='flex items-center'>
-          {!toggle ? (
-            <HiOutlineEyeOff
-              onClick={toggleHandler}
-              size={25}
-              className='-m-7 cursor-pointer'
-            />
-          ) : (
-            <HiOutlineEye
-              onClick={toggleHandler}
-              size={25}
-              className='-m-7 cursor-pointer'
-            />
+    <Form {...form}>
+      <form
+        onSubmit={form.handleSubmit(onSubmitHandler)}
+        className={`dark:shadow-none capitalize bg-card w-[100%] rounded-lg py-20  md:w-[60%] m-auto items-center gap-8 flex flex-col`}>
+        <h1 className='lg:text-3xl text-xl px-4 font-semibold self-center  text-primary'>
+          Login to Your Account
+        </h1>
+        <FormField
+          control={form.control}
+          name='email'
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email Address</FormLabel>
+              <FormControl>
+                <Input type='email' placeholder='Ibra' {...field} />
+              </FormControl>
+              <FormDescription>Your first name</FormDescription>
+              <FormMessage />
+            </FormItem>
           )}
-        </span>
+        />
 
-        {formik.errors && formik.touched.password && formik.errors.password ? (
-          <p className='error'>
-            {formik.errors && formik.touched.password && formik.errors.password}
-          </p>
-        ) : (
-          <p className='text-gray-400 text-sm ml-2'>
-            Please enter atleast 6 character
-          </p>
-        )}
-      </div>
-      <div className='flex flex-col gap-3'>
-        <button type='submit' className={`btn btn-primary`}>
-          Log in
-        </button>
-        <Link className='self-center' href='/fungua-account'>
-          <span>Already a member? </span>
-          <span className='font-bold text-primary'> sigup</span>
-        </Link>
-      </div>
-    </form>
+        <FormField
+          control={form.control}
+          name='password'
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Password</FormLabel>
+              <FormControl>
+                <Input type='password' placeholder='Ibra' {...field} />
+              </FormControl>
+              <FormDescription>password</FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <div className='flex flex-col gap-3'>
+          <Button type='submit' className={`btn btn-primary`}>
+            Log in
+          </Button>
+          <Link className='self-center' href='/fungua-account'>
+            <span>Already a member? </span>
+            <span className='font-bold text-primary'> sigup</span>
+          </Link>
+        </div>
+      </form>
+    </Form>
   );
 }
 

@@ -6,7 +6,8 @@ import { useForm, SubmitHandler, FieldValues } from 'react-hook-form';
 import StepTwo from './steps/step-02';
 import StepThree from './steps/step-03';
 import StepFour from './steps/step-04';
-import * as yup from 'yup';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 export enum Steps {
   step1 = 1,
@@ -34,18 +35,19 @@ export interface FormData {
   ];
 }
 
+const FormSchema = z.object({
+  bedrooms: z.number().max(5, 'Bed rooms should be less than 6'),
+  bathrooms: z
+    .number()
+
+    .max(3, 'bathrooms should be less than 4'),
+  city: z.string(),
+  street: z.string(),
+});
+type MakeOfferFormValues = z.infer<typeof FormSchema>;
+
 function StepContainer() {
   const [step, setStep] = useState(Steps.step1);
-
-  const schema = yup.object({
-    bedrooms: yup.number().required().max(5, 'Bed rooms should be less than 6'),
-    bathrooms: yup
-      .number()
-      .required()
-      .max(3, 'bathrooms should be less than 4'),
-    city: yup.string().required('city is required'),
-    street: yup.string().required('street is required'),
-  });
 
   const {
     register,
