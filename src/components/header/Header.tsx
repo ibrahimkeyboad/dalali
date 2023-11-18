@@ -3,16 +3,21 @@
 import Link from 'next/link';
 import { useDispatch } from 'react-redux';
 
-import UserAvatar from '../UserAvatar';
 import { usePathname } from 'next/navigation';
 import { PiFadersHorizontalFill } from 'react-icons/pi';
-import { Button } from '../ui/button';
 import { useCallback } from 'react';
-import ModeToggle from './Theme';
 import { modalToggle } from '@/contexts/globalState';
 import dynamic from 'next/dynamic';
+import { Button } from '../ui/button';
 
 const Nav = dynamic(() => import('./Nav'), {
+  loading: () => <p>Loading...</p>,
+});
+const UserAvatar = dynamic(() => import('../UserAvatar'), {
+  loading: () => <p>Loading...</p>,
+});
+
+const ModeToggle = dynamic(() => import('./Theme'), {
   loading: () => <p>Loading...</p>,
 });
 
