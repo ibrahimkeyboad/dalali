@@ -1,0 +1,77 @@
+[
+  {
+    "name": { "label": "Arusha", "value": "arusha" }
+  },
+
+  { "name": { "label": "Dar Es Salaam", "value": "dar es salaam" } },
+
+  { "name": { "label": "Dodoma", "value": "dodoma" } },
+
+  { "name": { "label": "Geita", "value": "geita" } },
+
+  { "name": { "label": "Iringa", "value": "iringa" } },
+
+  { "name": { "label": "Kagera", "value": "kagera" } },
+
+  { "name": { "label": "Katavi", "value": "katavi" } },
+
+  { "name": { "label": "Kigoma", "value": "kigoma" } },
+
+  {
+    "name": { "label": "Kilimanjaro", "value": "kilimanjaro" }
+  },
+
+  { "name": { "label": "Lindi", "value": "lindi" } },
+
+  { "name": { "label": "Manyara", "value": "manyara" } },
+
+  { "name": { "label": "Mara", "value": "mara" } },
+
+  { "name": { "label": "Mbeya", "value": "mbeya" } },
+
+  {
+    "name": { "label": "Mjini Magharibi", "value": "mjini magharibi" }
+  },
+
+  { "name": { "label": "Morogoro", "value": "morogoro" } },
+
+  { "name": { "label": "Mtwara", "value": "mtwara" } },
+
+  { "name": { "label": "Mwanza", "value": "mwanza" } },
+
+  { "name": { "label": "Njombe", "value": "njombe" } },
+
+  {
+    "name": { "label": "Pemba North", "value": "pemba north" }
+  },
+
+  {
+    "name": { "label": "Pemba South", "value": "pemba south" }
+  },
+
+  { "name": { "label": "Pwani", "value": "pwani" } },
+
+  { "name": { "label": "Rukwa", "value": "rukwa" } },
+
+  { "name": { "label": "Ruvuma", "value": "ruvuma" } },
+
+  {
+    "name": { "label": "Shinyanga", "value": "shinyanga" }
+  },
+
+  { "name": { "label": "Simiyu", "value": "simiyu" } },
+
+  { "name": { "label": "Singida", "value": "singida" } },
+
+  { "name": { "label": "Songwe", "value": "songwe" } },
+
+  { "name": { "label": "Tabora", "value": "tabora" } },
+
+  { "name": { "label": "Tanga", "value": "tanga" } },
+
+  {
+    "name": { "label": "Unguja North", "value": "unguja north" }
+  },
+
+  { "name": { "label": "Unguja South", "value": "unguja south" } }
+]
