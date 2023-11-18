@@ -55,7 +55,7 @@ type ID = 'country' | 'city';
 
 type MakeOfferFormValues = z.infer<typeof FormSchema>;
 
-function AuthForm({ location }: { location: any }) {
+function AuthForm() {
   const router = useRouter();
   const [toggle, setToggle] = useState<boolean>(false);
 
@@ -190,8 +190,8 @@ function AuthForm({ location }: { location: any }) {
             />
           </div>
         </FormItem>
-        <div>
-          <Image src={location[0].flag} height={32} width={24} alt='flag' />
+        <div className='flex  gap-4 items-end justify-normal'>
+          <span className='border-b'>+255</span>
           <FormField
             control={form.control}
             name='phone'
@@ -205,7 +205,6 @@ function AuthForm({ location }: { location: any }) {
                     {...field}
                   />
                 </FormControl>
-                <FormDescription>Create a strong password </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
