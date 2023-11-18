@@ -1,9 +1,7 @@
 'use client';
 import Link from 'next/link';
-import { useState } from 'react';
-import * as Yup from 'yup';
-import { useFormik } from 'formik';
-import { HiOutlineEye, HiOutlineEyeOff } from 'react-icons/hi';
+import dynamic from 'next/dynamic';
+import { useCallback, useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
@@ -21,7 +19,12 @@ import { Input } from '@/components/ui/input';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { ComboboxDemo } from '@/components/Chombobox';
+import Image from 'next/image';
+
+const LocationComponent = dynamic(
+  () => import('@/components/LocationComponent'),
+  { loading: () => <p>loading..</p> }
+);
 
 interface UserType {
   name: string;
@@ -36,13 +39,19 @@ const FormSchema = z.object({
   lastName: z.string().min(2, {
     message: 'Username must be at least 2 characters.',
   }),
-  email: z.string().email('Invalid email').min(2, {
-    message: 'Username must be at least 2 characters.',
+  email: z.string().email('Invalid email'),
+  password: z.string().min(6, {
+    message: 'password is too small',
   }),
-  password: z.string().min(2, {
-    message: 'Username must be at least 2 characters.',
+  phone: z.string().min(2, {
+    message: 'provide your phone number',
   }),
+
+  country: z.string(),
+  city: z.string(),
 });
+
+type ID = 'country' | 'city';
 
 type MakeOfferFormValues = z.infer<typeof FormSchema>;
 
@@ -86,6 +95,23 @@ function AuthForm({ location }: { location: any }) {
       // setIsLoading(false);
     }
   }
+
+  const country = form.watch('country');
+  const city = form.watch('city');
+
+  const setCustomValue = useCallback(
+    (id: ID, value: any) => {
+      form.setValue(id, value, {
+        shouldValidate: true,
+        shouldDirty: true,
+        shouldTouch: true,
+      });
+    },
+    [form]
+  );
+
+  console.log(country);
+  console.log(city);
 
   return (
     <Form {...form}>
@@ -153,10 +179,39 @@ function AuthForm({ location }: { location: any }) {
           )}
         />
 
-        <div className='flex gap-4'>
-          <ComboboxDemo data={location} title='country' />
-          <ComboboxDemo data={location[0].cities} title='city' />
+        <FormItem>
+          <FormLabel className='mb-3'>Location</FormLabel>
+          <div className='flex gap-4'>
+            <LocationComponent
+              country={country}
+              city='city'
+              setCountry={(value) => setCustomValue('country', value)}
+              setCity={(value) => setCustomValue('city', value)}
+            />
+          </div>
+        </FormItem>
+        <div>
+          <Image src={location[0].flag} height={32} width={24} alt='flag' />
+          <FormField
+            control={form.control}
+            name='phone'
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Phone Number</FormLabel>
+                <FormControl>
+                  <Input
+                    type='tel'
+                    pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
+                    {...field}
+                  />
+                </FormControl>
+                <FormDescription>Create a strong password </FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
         </div>
+
         {/* <FormField
           control={form.control}
           name='username'

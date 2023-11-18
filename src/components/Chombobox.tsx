@@ -21,9 +21,10 @@ import {
 interface Prop {
   title: string;
   data: any;
+  onChange: (value: string) => void;
 }
 
-export function ComboboxDemo({ title, data }: Prop) {
+export function ComboboxDemo({ title, data = [], onChange }: Prop) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState('');
 
@@ -42,15 +43,16 @@ export function ComboboxDemo({ title, data }: Prop) {
         </Button>
       </PopoverTrigger>
       <PopoverContent className='w-[200px] p-0'>
-        <Command className='h-96'>
+        <Command className='max-h-96'>
           <CommandInput placeholder='Search city...' />
           <CommandEmpty>No {title} found.</CommandEmpty>
           <CommandGroup className='overflow-y-auto'>
-            {data.map((item: any) => (
+            {data?.map((item: any) => (
               <CommandItem
                 key={item.name.value}
                 value={item.name.value}
                 onSelect={(currentValue) => {
+                  onChange(currentValue);
                   setValue(currentValue === value ? '' : currentValue);
                   setOpen(false);
                 }}>

@@ -1,22 +1,34 @@
-import React from 'react';
+'use client';
+
 import { ComboboxDemo } from './Chombobox';
+import { useGetCountryCitiesQuery, useGetCountryQuery } from '@/contexts/api';
 
-// async function getLocation() {
-//   const res = await fetch('http://localhost:3000/api/location', {
-//     cache: 'no-cache',
-//   });
-
-//   const data = await res.json();
-
-//   return data;
-// }
-function LocationComponent() {
-  // const data = await getLocation();
+function LocationComponent({
+  city,
+  country,
+  setCountry,
+  setCity,
+}: {
+  city: string;
+  country: string;
+  setCountry: (value: string) => void;
+  setCity: (value: string) => void;
+}) {
+  const { data: countries } = useGetCountryQuery('');
+  const { data: cities } = useGetCountryCitiesQuery(country);
   return (
-    <div>
-      {/* <ComboboxDemo title='country' data={data} />
-      <ComboboxDemo title='city' data={data[0].cities} /> */}
-    </div>
+    <>
+      <ComboboxDemo
+        onChange={(value) => setCountry(value)}
+        title='country'
+        data={countries}
+      />
+      <ComboboxDemo
+        onChange={(value) => setCity(value)}
+        title='city'
+        data={cities}
+      />
+    </>
   );
 }
 
