@@ -1,5 +1,4 @@
 'use client';
-import Button from '@/components/Button';
 import { useCallback, useState } from 'react';
 import StepOne from './steps/step-01';
 import { useForm, SubmitHandler, FieldValues } from 'react-hook-form';
@@ -8,6 +7,7 @@ import StepThree from './steps/step-03';
 import StepFour from './steps/step-04';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Button } from '@/components/ui/button';
 
 export enum Steps {
   step1 = 1,
@@ -17,23 +17,6 @@ export enum Steps {
 }
 
 type ID = 'bedrooms' | 'bathrooms' | 'beds' | 'sofa' | 'imageCover' | 'images';
-
-export interface FormData {
-  bedrooms: number;
-  bathrooms: number;
-  beds: number;
-  sofa: number;
-  imageCover: {
-    label: string;
-    uri: File | null;
-  };
-  images: [
-    {
-      label: string;
-      uri: File | null;
-    }
-  ];
-}
 
 const FormSchema = z.object({
   bedrooms: z.number().max(5, 'Bed rooms should be less than 6'),
@@ -55,7 +38,7 @@ function StepContainer() {
     setValue,
     watch,
     formState: { errors },
-  } = useForm<FormData>({
+  } = useForm<MakeOfferFormValues>({
     defaultValues: {
       bedrooms: 1,
       bathrooms: 1,
@@ -75,7 +58,6 @@ function StepContainer() {
   const beds = watch('beds');
   const sofa = watch('sofa');
   const imageCover = watch('imageCover');
-  const images = watch('images');
 
   const onBack = useCallback(() => {
     setStep((value) => value - 1);

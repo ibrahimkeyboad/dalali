@@ -1,8 +1,8 @@
 'use client';
 
-import Modal from '@/components/Modal';
+import Modal from '@/components/modal/Modal';
+import { Input } from '@/components/ui/input';
 import { ChangeEvent } from 'react';
-import Input from './Input';
 
 interface ImageUpload {
   isOpen: boolean;

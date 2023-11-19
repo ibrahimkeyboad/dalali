@@ -1,6 +1,6 @@
 'use client';
 
-import { ComboboxDemo } from './Chombobox';
+import { ComboboxDemo } from './inputs/Chombobox';
 import { useGetCountryCitiesQuery, useGetCountryQuery } from '@/contexts/api';
 
 function LocationComponent({

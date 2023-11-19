@@ -13,16 +13,16 @@ import { modalToggle } from '@/contexts/globalState';
 import { useRouter } from 'next/navigation';
 import dynamic from 'next/dynamic';
 
-const CategoryType = dynamic(() => import('./CategoryType'), {
+const CategoryType = dynamic(() => import('../inputs/CategoryType'), {
   loading: () => <p>Loading...</p>,
 });
-const Counter = dynamic(() => import('./Counter'), {
+const Counter = dynamic(() => import('../Counter'), {
   loading: () => <p>Loading...</p>,
 });
-const RoomContain = dynamic(() => import('./inputs/RoomContain'), {
+const RoomContain = dynamic(() => import('../inputs/RoomContain'), {
   loading: () => <p>Loading...</p>,
 });
-const CategoryInput = dynamic(() => import('./header/CategoryInput'), {
+const CategoryInput = dynamic(() => import('../header/CategoryInput'), {
   loading: () => <p>Loading...</p>,
 });
 

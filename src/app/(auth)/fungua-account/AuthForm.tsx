@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
@@ -19,18 +19,11 @@ import { Input } from '@/components/ui/input';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import Image from 'next/image';
 
 const LocationComponent = dynamic(
   () => import('@/components/LocationComponent'),
   { loading: () => <p>loading..</p> }
 );
-
-interface UserType {
-  name: string;
-  email: string;
-  password: string;
-}
 
 const FormSchema = z.object({
   firstName: z.string().min(2, {
@@ -57,21 +50,10 @@ type MakeOfferFormValues = z.infer<typeof FormSchema>;
 
 function AuthForm() {
   const router = useRouter();
-  const [toggle, setToggle] = useState<boolean>(false);
 
   const form = useForm<MakeOfferFormValues>({
     resolver: zodResolver(FormSchema),
   });
-
-  function toggleHandler() {
-    setToggle((prev) => !prev);
-  }
-
-  const initialValues: UserType = {
-    name: '',
-    email: '',
-    password: '',
-  };
 
   async function onSubmitHandler(value: MakeOfferFormValues) {
     const data = {

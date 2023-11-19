@@ -1,5 +1,5 @@
 import Heading from '@/components/Heading';
-import TextField from '@/components/input';
+import { Input } from '@/components/ui/input';
 import React from 'react';
 
 interface StepProp {
@@ -16,28 +16,22 @@ function StepTwo({ register, errors }: StepProp) {
       />
       <div className={`grid md:grid-cols-2 items-center gap-6 mt-4`}>
         <div>
-          <TextField
+          <Input
             id='street'
-            register={register}
-            errors={errors}
-            label='Street'
+            // label='Street'
             type='text'
             name='street'
           />
         </div>
-        <TextField
+        <Input
           id='street'
-          register={register}
-          errors={errors}
-          label='City'
+          // label='City'
           type='text'
           name='city'
         />
-        <TextField
+        <Input
           id='steet'
-          register={register}
-          errors={errors}
-          label='Country'
+          // label='Country'
           type='text'
           name='country'
         />
