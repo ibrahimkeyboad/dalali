@@ -47,7 +47,7 @@ function UploadImageModal({
           multiple
         />
       </label>
-      <Input id='label' label='Label' setLabel={setLabel} />
+      <Input id='label' />
     </div>
   );
 

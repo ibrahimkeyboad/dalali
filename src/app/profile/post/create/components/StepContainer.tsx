@@ -16,7 +16,8 @@ export enum Steps {
   step4 = 4,
 }
 
-type ID = 'bedrooms' | 'bathrooms' | 'beds' | 'sofa' | 'imageCover' | 'images';
+// type ID = 'bedrooms' | 'bathrooms' | 'beds' | 'sofa' | 'imageCover' | 'images'|'city'|'street';
+type ID = any;
 
 const FormSchema = z.object({
   bedrooms: z.number().max(5, 'Bed rooms should be less than 6'),
@@ -42,22 +43,22 @@ function StepContainer() {
     defaultValues: {
       bedrooms: 1,
       bathrooms: 1,
-      beds: 1,
-      sofa: 1,
-      imageCover: {
-        label: '',
-        uri: null,
-      },
-      images: [],
+      // beds: 1,
+      // sofa: 1,
+      // imageCover: {
+      //   label: '',
+      //   uri: null,
+      // },
+      // images: [],
     },
     // resolver: yupResolver(schema),
   });
 
   const bedrooms = watch('bedrooms');
   const bathrooms = watch('bathrooms');
-  const beds = watch('beds');
-  const sofa = watch('sofa');
-  const imageCover = watch('imageCover');
+  // const beds = watch('beds');
+  // const sofa = watch('sofa');
+  // const imageCover = watch('imageCover');
 
   const onBack = useCallback(() => {
     setStep((value) => value - 1);
@@ -110,37 +111,37 @@ function StepContainer() {
     );
   }
 
-  let bodyContent = (
-    <StepOne
-      onHandlerBathRoom={(value) => setCustomValue('bathrooms', value)}
-      onHandlerBeedRoom={(value) => setCustomValue('bedrooms', value)}
-      onHandlerSofa={(value) => setCustomValue('sofa', value)}
-      bathrooms={bathrooms}
-      bedrooms={bedrooms}
-      beds={beds}
-      sofa={sofa}
-    />
-  );
+  // let bodyContent = (
+  //   <StepOne
+  //     onHandlerBathRoom={(value) => setCustomValue('bathrooms', value)}
+  //     onHandlerBeedRoom={(value) => setCustomValue('bedrooms', value)}
+  //     onHandlerSofa={(value) => setCustomValue('sofa', value)}
+  //     bathrooms={bathrooms}
+  //     bedrooms={bedrooms}
+  //     beds={beds}
+  //     sofa={sofa}
+  //   />
+  // );
 
-  if (step === Steps.step2) {
-    bodyContent = <StepTwo errors={errors} register={register} />;
-  }
+  // if (step === Steps.step2) {
+  //   bodyContent = <StepTwo errors={errors} register={register} />;
+  // }
 
-  if (step === Steps.step3) {
-    bodyContent = <StepThree register={register} errors={errors} disabled />;
-  }
+  // if (step === Steps.step3) {
+  //   bodyContent = <StepThree register={register} errors={errors} disabled />;
+  // }
 
-  if (step === Steps.step4) {
-    bodyContent = (
-      <StepFour
-        handelerImageCover={(uri, label) =>
-          setImageValue('imageCover', { uri, label })
-        }
-        handelerImages={(uri, label) => setImageValue('images', { uri, label })}
-        imageCover={imageCover}
-      />
-    );
-  }
+  // if (step === Steps.step4) {
+  //   bodyContent = (
+  //     <StepFour
+  //       handelerImageCover={(uri, label) =>
+  //         setImageValue('imageCover', { uri, label })
+  //       }
+  //       handelerImages={(uri, label) => setImageValue('images', { uri, label })}
+  //       // imageCover={imageCover}
+  //     />
+  //   );
+  // }
 
   return (
     <form
@@ -157,13 +158,13 @@ function StepContainer() {
         w-full
         outline-none
         focus:outline-none'>
-      {bodyContent}
+      {/* {bodyContent} */}
       <nav
         className={`flex ${
           step !== Steps.step1 ? 'justify-between' : 'justify-end'
         } mt-4 text-white`}>
         {step !== Steps.step1 ? <Button title='Back' onClick={onBack} /> : null}
-        <Button title='Next' onClick={onNext} step={step} />
+        {/* <Button title='Next' onClick={onNext} step={step} /> */}
       </nav>
     </form>
   );
