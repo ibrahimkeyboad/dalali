@@ -2,9 +2,9 @@ import './globals.css';
 
 import { Inter } from 'next/font/google';
 import ToasterProvider, { ThemeProvider } from '@/providers/ToasterProvider';
-import FilterModal from '@/components/FilterModal';
 import ReduxProvider from '@/providers/ReduxProvider';
 import { Metadata } from 'next';
+import FilterModal from '@/components/modal/FilterModal';
 
 const inter = Inter({ subsets: ['latin'] });
 

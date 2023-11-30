@@ -9,16 +9,18 @@ import { useCallback } from 'react';
 import { modalToggle } from '@/contexts/globalState';
 import dynamic from 'next/dynamic';
 import { Button } from '../ui/button';
+import NavSkeleton from './NavSkeleton';
+import { Skeleton } from '../ui/skeleton';
 
 const Nav = dynamic(() => import('./Nav'), {
-  loading: () => <p>Loading...</p>,
+  loading: () => <NavSkeleton />,
 });
 const UserAvatar = dynamic(() => import('../UserAvatar'), {
-  loading: () => <p>Loading...</p>,
+  loading: () => <Skeleton className='h-10 w-10 rounded-full' />,
 });
 
 const ModeToggle = dynamic(() => import('./Theme'), {
-  loading: () => <p>Loading...</p>,
+  loading: () => <Skeleton className='h-12 w-12 rounded-md' />,
 });
 
 function Header() {
@@ -38,12 +40,7 @@ function Header() {
           Dalali
         </Link>
 
-        {/* <SelectForm /> */}
-
         <nav className='flex items-center gap-3'>
-          {/* <Button className='lg:hidden' variant='outline' size='icon'>
-            <IoIosSearch size={25} />
-          </Button> */}
           <Button variant='outline' type='button' onClick={handlerToggle}>
             <PiFadersHorizontalFill size={20} />
           </Button>

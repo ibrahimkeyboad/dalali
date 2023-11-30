@@ -9,7 +9,7 @@ const UserAvatar = ({ user }: Props) => {
   return (
     <Avatar>
       <AvatarImage src='/images/pisi.jpg' alt='@shadcn' />
-      <AvatarFallback>CN</AvatarFallback>
+      <AvatarFallback>pisi</AvatarFallback>
     </Avatar>
   );
 };
