@@ -3,7 +3,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import React from 'react';
 
 function Loading() {
-  const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const arr = [...Array(10).keys()];
 
   return (
     <>
