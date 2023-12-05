@@ -1,5 +1,5 @@
 import Heading from '@/components/Heading';
-import TextField from '@/components/input';
+import { Input } from '@/components/ui/input';
 import React from 'react';
 
 interface StepProp {
@@ -15,7 +15,7 @@ function StepThree({ register, errors, disabled }: StepProp) {
         title='How would you describe your place?'
         subtitle='Short and sweet works best!'
       />
-      <TextField
+      <Input
         label='Title'
         id='title'
         name='Title'
@@ -23,7 +23,7 @@ function StepThree({ register, errors, disabled }: StepProp) {
         register={register}
         errors={errors}
       />
-      <TextField
+      <Input
         label='Description'
         id='description'
         name='Description'

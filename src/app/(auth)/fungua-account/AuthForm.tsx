@@ -19,6 +19,7 @@ import { Input } from '@/components/ui/input';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import PhoneNumber from '@/components/inputs/PhoneNumber';
 
 const LocationComponent = dynamic(
   () => import('@/components/LocationComponent'),
@@ -172,26 +173,19 @@ function AuthForm() {
             />
           </div>
         </FormItem>
-        <div className='flex  gap-4 items-end justify-normal'>
-          <span className='border-b'>+255</span>
-          <FormField
-            control={form.control}
-            name='phone'
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Phone Number</FormLabel>
-                <FormControl>
-                  <Input
-                    type='tel'
-                    pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
+        <FormField
+          control={form.control}
+          name='phone'
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Phone Number</FormLabel>
+              <FormControl>
+                <PhoneNumber />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
         {/* <FormField
           control={form.control}
