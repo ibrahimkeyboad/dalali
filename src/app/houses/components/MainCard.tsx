@@ -69,6 +69,12 @@ function MainCard({ data }: Props) {
         <Card>
           <CardHeader>
             <CardTitle>What this place offers</CardTitle>
+            <CardContent>
+              <p>umeme</p>
+              <p>maji</p>
+              <p>umeme</p>
+              <p>umeme</p>
+            </CardContent>
           </CardHeader>
           <CardContent>
             <div className='flexgap-5 flex-col'>

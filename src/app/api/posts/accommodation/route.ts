@@ -45,7 +45,7 @@ export async function GET(req: Request) {
 
     return Response.json(houses, { status: 201 });
   } catch (err) {
-    console.log(err);
+    console.log(' err');
     return new Response(`something went wrong ${err}`, { status: 500 });
   }
 }
