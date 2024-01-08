@@ -5,6 +5,7 @@ export async function GET(
   req: Request,
   { params }: { params: { country: string } }
 ) {
+  console.log('params', params);
   const filePath = join(
     process.cwd(),
     `src/data/${params.country}/cities.json`

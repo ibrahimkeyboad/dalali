@@ -53,6 +53,9 @@ function AuthForm() {
   const router = useRouter();
 
   const form = useForm<MakeOfferFormValues>({
+    defaultValues: {
+      country: 'tanzania',
+    },
     resolver: zodResolver(FormSchema),
   });
 
@@ -186,23 +189,6 @@ function AuthForm() {
             </FormItem>
           )}
         />
-
-        {/* <FormField
-          control={form.control}
-          name='username'
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Username</FormLabel>
-              <FormControl>
-                <Input placeholder='shadcn' {...field} />
-              </FormControl>
-              <FormDescription>
-                This is your public display name.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        /> */}
 
         <Button type='submit'>Submit</Button>
 

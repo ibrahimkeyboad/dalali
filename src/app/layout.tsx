@@ -5,6 +5,7 @@ import ToasterProvider, { ThemeProvider } from '@/providers/ToasterProvider';
 import ReduxProvider from '@/providers/ReduxProvider';
 import { Metadata } from 'next';
 import FilterModal from '@/components/modal/FilterModal';
+import QueryProviders from '@/providers/react-query';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -22,12 +23,14 @@ export default function RootLayout({
     <html lang='sw' data-theme='night'>
       <body className={inter.className}>
         <ToasterProvider />
-        <ReduxProvider>
-          <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
-            {children}
-            <FilterModal />
-          </ThemeProvider>
-        </ReduxProvider>
+        <QueryProviders>
+          <ReduxProvider>
+            <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
+              {children}
+              <FilterModal />
+            </ThemeProvider>
+          </ReduxProvider>
+        </QueryProviders>
       </body>
     </html>
   );
