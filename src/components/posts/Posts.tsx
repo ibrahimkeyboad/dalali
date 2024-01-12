@@ -16,7 +16,7 @@ function Posts({ data, yes }: PostsProps) {
           <Image
             alt='image'
             src={`/images/${data.images[0].uri}`}
-            className='rounded-lg object-cover bg-black h-52'
+            className='rounded-lg object-cover bg-black h-60'
             width={400}
             height={300}
             priority

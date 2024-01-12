@@ -55,6 +55,7 @@ function AuthForm() {
   const form = useForm<MakeOfferFormValues>({
     defaultValues: {
       country: 'tanzania',
+      firstName: 'Zahara',
     },
     resolver: zodResolver(FormSchema),
   });

@@ -32,17 +32,17 @@ function LocationComponent({
   }
 
   async function getCities() {
-    if (countries[0].name) return;
+    if (!country) return;
 
-    const res = await fetch(
-      `${baseUrl}/location/city/${countries[0].name.value}`
-    );
+    const res = await fetch(`${baseUrl}/location/city/${country}`);
 
     const data = await res.json();
 
-    console.log(data);
+    console.log('cities', data);
     return data;
   }
+
+  console.log('country', country);
 
   return (
     <>

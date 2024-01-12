@@ -12,6 +12,8 @@ import { RootState } from '@/contexts/store';
 import { modalToggle } from '@/contexts/globalState';
 import { useRouter } from 'next/navigation';
 import dynamic from 'next/dynamic';
+import { Label } from '../ui/label';
+import { Input } from '../ui/input';
 
 const CategoryType = dynamic(() => import('../inputs/CategoryType'), {
   loading: () => <p>Loading...</p>,
@@ -220,20 +222,14 @@ function FilterModal() {
       )}
 
       <div className='flex flex-col gap-6  py-6'>
-        <Counter
-          title='Min price'
-          onChange={(value) => setCustomValue('minPrice', value)}
-          subtitle='what price will start'
-          value={minPrice}
-          price
-        />
-        <Counter
-          title='Max price'
-          onChange={(value) => setCustomValue('maxPrice', value)}
-          subtitle='what price will end at'
-          value={maxPrice}
-          price
-        />
+        <div className='w-5/12'>
+          <Label>Kuanzia</Label>
+          <Input type='number' placeholder='00' name='' id='' />
+        </div>
+        <div className='w-5/12'>
+          <Label>Had</Label>
+          <Input type='number' placeholder='0' name='' id='' />
+        </div>
       </div>
 
       {/* <RoomContain title='Size' /> */}

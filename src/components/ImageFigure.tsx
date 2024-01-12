@@ -1,12 +1,13 @@
 'use client';
 import Image from 'next/image';
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-import { Navigation } from 'swiper/modules';
-
-import 'swiper/css';
-import 'swiper/css/navigation';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel';
 
 type Props = {
   images: [
@@ -19,32 +20,25 @@ type Props = {
 
 const ImageFigure = ({ images }: Props) => {
   return (
-    <Swiper
-      navigation={true}
-      modules={[Navigation]}
-      style={{
-        // @ts-ignore
-        '--swiper-navigation-color': '#fff',
-        '--swiper-navigation-size': '15px',
-        fontWeight: 'bolder',
-        color: 'text-primary',
-        overflow: 'hidden',
-        borderRadius: '7px',
-      }}>
-      {images?.map((img, i) => (
-        <SwiperSlide key={i}>
-          <Image
-            quality={100}
-            alt=''
-            className='object-cover'
-            priority
-            src={`/images/${img.uri}`}
-            fill
-            sizes='(min-width: 768px) 90vw, (min-width: 1200px) 50vw, 33vw'
-          />
-        </SwiperSlide>
-      ))}
-    </Swiper>
+    <Carousel className=' mx-auto w-[900px]'>
+      <CarouselContent className=' rounded-md h-[600px]'>
+        {images?.map((img, i) => (
+          <CarouselItem className='h-[600px] relative' key={i}>
+            <Image
+              quality={100}
+              alt=''
+              className='object-cover'
+              priority
+              src={`/images/${img.uri}`}
+              fill
+              sizes='(min-width: 768px) 90vw, (min-width: 1200px) 50vw, 33vw'
+            />
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+      <CarouselPrevious />
+      <CarouselNext />
+    </Carousel>
   );
 };
 

@@ -1,13 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { Swiper, SwiperSlide } from 'swiper/react';
-
 import { usePathname } from 'next/navigation';
-
-import 'swiper/css';
-import 'swiper/css/navigation';
-
-import { Navigation } from 'swiper/modules';
 
 const links = [
   {

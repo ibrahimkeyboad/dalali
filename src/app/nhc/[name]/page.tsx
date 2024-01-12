@@ -9,9 +9,11 @@ import {
 import Image from 'next/image';
 import { AspectRatio } from '@radix-ui/react-aspect-ratio';
 import coverImage from '../../../../public/images/apartment.jpg';
-import ApartmentCard from '../_component/ApartmentCard';
+import image2 from '../../../../public/images/apartment2.jpg';
+import image3 from '../../../../public/images/apartment3.jpg';
 import { IoLocationOutline } from 'react-icons/io5';
 import Header from '@/components/header/Header';
+import ApartmentCard from '@/app/apartments/_component/ApartmentCard';
 
 function Page() {
   return (
@@ -60,10 +62,17 @@ function Page() {
             </CardHeader>
             <CardContent>
               <div className='grid grid-cols-2'>
+                Three swimming pools
                 <h6>water</h6>
                 <h6>umeme</h6>
                 <h6>geti</h6>
-                <h6>mashine ya kufulia</h6>
+                <h6>Gymnasium</h6>
+                <h6>Clubhouse</h6>
+                <h6> Kids playing area</h6>
+                <h6>
+                  The security system that filters access within the building
+                  based on nature and category of the users profile
+                </h6>
               </div>
             </CardContent>
           </Card>
@@ -73,13 +82,16 @@ function Page() {
             </CardHeader>
             <CardContent>
               <CardDescription>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Laudantium recusandae vel ea cum eaque qui exercitationem magnam
-                dicta perferendis eligendi, inventore aliquam, modi maxime
-                quidem quam aperiam ipsum necessitatibus ad maiores. Voluptatum
-                sapiente, dicta delectus quisquam provident reprehenderit
-                necessitatibus reiciendis deleniti nulla odit iure expedita
-                ratione debitis? Vitae, asperiores. Suscipit.
+                For 40 years, Steven Emmanuel, lived at former Victoria House on
+                new Bagamoyo road and never thought of moving. Two things made
+                him fall in love with his place all this time, the convenience
+                and privacy. On these same plots, NHC has built the all-modern
+                VICTORIA PLACE, a blend of 2,3 and 3 bedroom apartments that
+                gives you the same things that made Steve a tenant for 40 years.
+                Come build everlasting memories in these modern apartments with
+                well-equipped gymnasium, swimming pool and surrounded by
+                schools, retail shopping center, financial institutions and
+                offices.
               </CardDescription>
             </CardContent>
           </Card>
