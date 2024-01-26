@@ -10,10 +10,14 @@ import {
 import React from 'react';
 import HouseRooms from './HouseRooms';
 import { formatPrice } from '@/utils/formatPrice';
+import { Merriweather } from 'next/font/google';
+import { cn } from '@/lib/utils';
 
 interface Props {
   data: Accommodation;
 }
+
+const merriweather = Merriweather({ weight: '700', subsets: ['latin'] });
 
 function MainCard({ data }: Props) {
   return (
@@ -23,7 +27,9 @@ function MainCard({ data }: Props) {
         <div>
           <CardHeader>
             <div className='flex flex-col space-y-2'>
-              <h1 className='text-3xl capitalize font-bold'>{data.type}</h1>
+              <h1 className={cn('text-3xl capitalize', merriweather.className)}>
+                {data.type}
+              </h1>
               <p className='text-gray-500'>
                 {data.location.street}, {data.location.city},
                 {data.location.country}
@@ -47,7 +53,10 @@ function MainCard({ data }: Props) {
           <UserAvatar />
           <figcaption className='flex flex-col'>
             <span
-              className={`dark:text-[#e6f1ff] font-bold tracking-wide text-base`}>
+              className={cn(
+                'dark:text-[#e6f1ff] font-bold tracking-wide text-base',
+                merriweather.className
+              )}>
               Zahara Ibrahim
             </span>
 
@@ -62,7 +71,10 @@ function MainCard({ data }: Props) {
       <Card className='my-4 p-3'>
         <CardContent>
           <div className='flex flex-col space-y-4'>
-            <h2 className='text-2xl tracking-wider font-bold'>Amenities</h2>
+            <h2
+              className={cn('text-2xl tracking-wider', merriweather.className)}>
+              Amenities
+            </h2>
             <ul className='grid grid-cols-2 gap-2'>
               <li>Free Wi-Fi</li>
               <li>24/7 Security</li>
@@ -76,7 +88,9 @@ function MainCard({ data }: Props) {
       </Card>
       <Card className='mb-6'>
         <CardHeader>
-          <CardTitle className='tracking-wider'>Description</CardTitle>
+          <CardTitle className={cn('tracking-wider', merriweather.className)}>
+            Description
+          </CardTitle>
         </CardHeader>
         <CardContent>
           <CardDescription>{data?.description}</CardDescription>

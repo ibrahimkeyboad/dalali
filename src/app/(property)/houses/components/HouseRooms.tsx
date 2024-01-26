@@ -1,5 +1,7 @@
 import { Card, CardContent, CardDescription } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
 import { BedSingleIcon } from 'lucide-react';
+import { Merriweather } from 'next/font/google';
 import React from 'react';
 import { BiSolidDoorOpen } from 'react-icons/bi';
 import { IoDesktopOutline } from 'react-icons/io5';
@@ -13,13 +15,19 @@ interface Props {
   kitchen?: Kitchen;
 }
 
+const merriweather = Merriweather({ weight: '700', subsets: ['latin'] });
+
 function HouseRooms({ bath, room, kitchen }: Props) {
   const roomLength = room.length;
   const bathLength = bath.length;
 
   return (
     <div>
-      <h2 className='dark:text-[#e6f1ff] tracking-widest font-bold text-xl p-3 pb-5 '>
+      <h2
+        className={cn(
+          'dark:text-[#e6f1ff] tracking-widest text-xl p-3 pb-5 ',
+          merriweather.className
+        )}>
         What is house contain
       </h2>
       <div className='flex gap-6'>
