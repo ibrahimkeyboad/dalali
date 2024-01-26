@@ -1,43 +1,21 @@
-import { IconType } from 'react-icons';
+import { cn } from '@/lib/utils';
 
 interface CategoryProps {
-  icon: IconType;
   label: string;
   selected?: boolean;
   onClick: (value: string) => void;
 }
 
-function CategoryInput({
-  icon: Icon,
-  label,
-  onClick,
-  selected,
-}: CategoryProps) {
+function CategoryInput({ label, onClick, selected }: CategoryProps) {
   return (
-    <article
+    <button
       onClick={() => onClick(label)}
-      className={`
-        flex
-        flex-col
-        overflow-hidden
-        cursor-pointer
-        border-2
-        flex-wrap
-        hover:border-black 
-        transition 
-        capitalize
-        dark:hover:border-white 
-        rounded-xl  
-        p-4 
-        gap-4
-        ${
-          selected
-            ? 'border-black dark:border-white'
-            : 'border-neutral-500 dark:text-gray-300'
-        }`}>
-      <Icon size={25} />
-      <h4 className='font-semibold'>{label} </h4>
-    </article>
+      className={cn(
+        'font-semibold border-2 w-[120px] rounded-xl border-gray-400 capitalize py-1 px-3',
+        selected ? 'border-primary' : ''
+      )}>
+      {label}
+    </button>
   );
 }
 

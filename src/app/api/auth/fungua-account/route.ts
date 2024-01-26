@@ -11,7 +11,7 @@ export async function POST(req: Request) {
 
     const { firstName, lastName, email, password } = body;
 
-    console.log(body);
+    // console.log(body);
 
     if (!validator.isEmail(email)) {
       return Response.json({ error: 'Invalid crendential' }, { status: 422 });
@@ -47,7 +47,7 @@ export async function POST(req: Request) {
       { status: 201 }
     );
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     return Response.json({ error: 'Something went wrong' }, { status: 500 });
   }
 }

@@ -1,3 +1,4 @@
+import { cn } from '@/lib/utils';
 import React from 'react';
 
 interface Props {
@@ -14,18 +15,19 @@ function RoomContain({ title, onClick, value }: Props) {
   return (
     <div>
       <h3 className='text-lg font-bold'>{title}</h3>
-      <div className=' flex gap-8 py-4'>
+      <div className=' flex  gap-2 py-2 md:gap-8 md:py-4 flex-wrap'>
         {data.map((item) => (
           <button
             key={item}
             type='button'
             onClick={() => onClick(item)}
-            className={`px-5 text-lg py-2 rounded-2xl ${
+            className={cn(
+              'px-4 text-center text-base py-2 border-slate-400 hover:border-primary border-2 rounded-2xl',
               item === value
-                ? 'bg-primary text-primary-foreground border-primary-foreground'
+                ? 'bg-primary text-primary-foreground border-primary'
                 : ''
-            } border-slate-400 hover:border-primary border-2`}>
-            {item === 0 ? 'Any' : item}
+            )}>
+            {item === 0 ? 'Yoyote' : item}
           </button>
         ))}
       </div>

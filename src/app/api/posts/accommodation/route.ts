@@ -1,5 +1,6 @@
 import connectDB from '@/db';
 import Accommodation from '@/models/accommodation';
+import { NextResponse } from 'next/server';
 
 export async function POST(req: Request) {
   try {
@@ -39,13 +40,17 @@ export async function POST(req: Request) {
 
 export async function GET(req: Request) {
   try {
-    connectDB();
+    await connectDB();
 
     const houses = await Accommodation.find();
 
-    return Response.json(houses, { status: 201 });
+    console.log(houses);
+
+    return NextResponse.json(houses, { status: 200 });
+
+    // return Response.json(houses, { status: 201 });
   } catch (err) {
-    console.log(' err');
+    // console.log(' err');
     return new Response(`something went wrong ${err}`, { status: 500 });
   }
 }

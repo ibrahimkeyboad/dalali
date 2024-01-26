@@ -3,6 +3,13 @@
 import { ReactElement, useCallback, useEffect, useState } from 'react';
 import { IoMdClose } from 'react-icons/io';
 import { Button } from '../ui/button';
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '../ui/card';
 
 interface ModalProps {
   isOpen?: boolean;
@@ -43,8 +50,9 @@ function Modal({
 
   const handleSubmint = useCallback(() => {
     onSubmit();
+    console.log('hello');
     onClose();
-  }, [onSubmit, onClose]);
+  }, [onClose, onSubmit]);
 
   useEffect(() => {
     setShowModal(isOpen);
@@ -74,19 +82,13 @@ function Modal({
           outline-none 
           focus:outline-none 
         bg-neutral-800/70'>
-      <div
+      <Card
         onClick={(e) => e.stopPropagation()}
         className='
           relative 
-          w-full 
-          md:w-4/6 
-          lg:w-3/6 
-          xl:/2/5 
           max-h-[85vh]
           overflow-x-hidden 
           overflow-y-auto 
-          my-6 
-          bg-red
           mx-auto 
           md:h-auto'>
         <div
@@ -111,7 +113,7 @@ function Modal({
                 outline-none
                 focus:outline-none'>
             {/* Header */}
-            <header
+            <CardHeader
               className='
                   flex
                   items-center
@@ -132,16 +134,16 @@ function Modal({
                     '>
                 <IoMdClose size={18} />
               </button>
-              <h2 className='text-lg text-primary  font-semibold'>{title}</h2>
-            </header>
+              <CardTitle>{title}</CardTitle>
+            </CardHeader>
             {/* Body */}
-            <main
+            <CardContent
               className='relative p-6 flex-auto  overflow-x-hidden 
                 overflow-y-auto '>
               {body}
-            </main>
+            </CardContent>
             {/* footer */}
-            <footer className='flex flex-col gap-2 p-6'>
+            <CardFooter>
               <div className='flex items-center justify-between w-full'>
                 {secondaryAction && secondaryLabel && (
                   <Button
@@ -153,13 +155,15 @@ function Modal({
                   </Button>
                 )}
 
-                <Button onClick={handleSubmint}>{actionLabel}</Button>
+                <Button onClick={handleSubmint} type='button'>
+                  {actionLabel}
+                </Button>
               </div>
               {footer}
-            </footer>
+            </CardFooter>
           </div>
         </div>
-      </div>
+      </Card>
     </div>
   );
 }

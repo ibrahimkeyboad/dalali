@@ -52,7 +52,7 @@ export const authOptions: AuthOptions = {
 
   callbacks: {
     async signIn(params) {
-      console.log('params', params);
+      // console.log('params', params);
       return true;
     },
   },

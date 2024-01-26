@@ -38,7 +38,7 @@ function LocationComponent({
 
     const data = await res.json();
 
-    console.log('cities', data);
+    // console.log('cities', data);
     return data;
   }
 

@@ -11,6 +11,11 @@ import dynamic from 'next/dynamic';
 import { Button } from '../ui/button';
 import NavSkeleton from './NavSkeleton';
 import { Skeleton } from '../ui/skeleton';
+import { BiWorld } from 'react-icons/bi';
+import { Merriweather } from 'next/font/google';
+import { cn } from '@/lib/utils';
+
+const merriweather = Merriweather({ weight: '700', subsets: ['latin'] });
 
 const Nav = dynamic(() => import('./Nav'), {
   loading: () => <NavSkeleton />,
@@ -34,36 +39,63 @@ function Header() {
   }, [dispatch]);
 
   return (
-    <header className='px-5 py-6 m-auto flex flex-col divide-y'>
-      <nav className='flex justify-between pb-6 items-center flex-wrap place-content-around md:px-9'>
-        <Link className={`font-bold text-2xl dark:text-[#CCD6F6] `} href='/'>
-          Dalali
-        </Link>
+    <>
+      <header className='px-5 py-3 max-w-[1240px] bg0 m-auto flex flex-col'>
+        <nav className='flex py-3 justify-between pb-2 items-center flex-wrap place-content-around md:px-9'>
+          <Link
+            className={cn('text-2xl text-primary', merriweather.className)}
+            href='/'>
+            Dalali
+          </Link>
 
-        <nav className='flex items-center gap-3'>
-          <Button variant='outline' type='button' onClick={handlerToggle}>
-            <PiFadersHorizontalFill size={20} />
-          </Button>
+          <nav className='flex items-center gap-3'>
+            <ul className='flex gap-4 text-sm capitalize font-medium'>
+              <li className='py-1 px-2'>
+                <Link href='/emergency'>Dharura</Link>
+              </li>
+              <li className='py-1 px-2'>
+                <Link href='/support'>Msaada</Link>
+              </li>
+              <li className='py-1 px-2'>
+                <Link href='/user/wishlist'>Mapendeleo</Link>
+              </li>
+            </ul>
+            <Button
+              className='rounded-lg border'
+              variant='ghost'
+              type='button'
+              onClick={handlerToggle}>
+              <PiFadersHorizontalFill size={20} />
+            </Button>
+            <Button
+              className='rounded-lg border flex items-center gap-1 justify-center'
+              variant='ghost'
+              type='button'
+              onClick={handlerToggle}>
+              <BiWorld size={20} />
+              <span>Swahili</span>
+            </Button>
 
-          <ModeToggle />
-          {data ? (
-            <Link href='/profile'>
-              <UserAvatar />
-            </Link>
-          ) : (
-            <div className='flex gap-4 items-center'>
-              <Link className='dark:text-[#64FFDA] px-3 py-1' href='/login'>
-                Login
+            {/* <ModeToggle /> */}
+            {data ? (
+              <Link href='/profile'>
+                <UserAvatar />
               </Link>
-              <Link
-                className='dark:border-[#64FFDA] dark:text-[#64FFDA] border-gray-800 border-2 text-gray-800 px-3 py-2 rounded-lg'
-                href='/signup'>
-                Get Start
-              </Link>
-            </div>
-          )}
+            ) : (
+              <div className='flex gap-4 items-center'>
+                <Link className='px-3 py-1' href='/login'>
+                  Login
+                </Link>
+                <Link
+                  className='border-gray-800 border-2 text-gray-800 px-3 py-2 rounded-lg'
+                  href='/signup'>
+                  Get Start
+                </Link>
+              </div>
+            )}
+          </nav>
         </nav>
-      </nav>
+      </header>
 
       {path === '/' && <Nav />}
       {path === '/apartments' && <Nav />}
@@ -72,7 +104,7 @@ function Header() {
       {path === '/lodges' && <Nav />}
       {path === '/frames' && <Nav />}
       {path === '/geusthouses' && <Nav />}
-    </header>
+    </>
   );
 }
 

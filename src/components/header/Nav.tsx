@@ -1,4 +1,5 @@
 'use client';
+import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -39,15 +40,14 @@ function Nav() {
   return (
     <>
       {!asPath.includes('search') && (
-        <ul className='flex gap-10 p-2 overflow-auto'>
+        <ul className='flex gap-10 my-1 py-3 overflow-auto justify-center'>
           {links.map((link) => (
             <Link
               key={link.name}
-              className={`text-sm whitespace-nowrap my-3 mx-0 md:mx-4 ${
-                asPath === link.link
-                  ? '  font-bold'
-                  : 'font-normal text-slate-500'
-              }`}
+              className={cn(
+                'text-sm whitespace-nowrap text-slate-900 hover:font-bold py-4 duration-100 transition-all border-transparent',
+                asPath === link.link ? 'font-bold' : 'font-normal '
+              )}
               href={link.link}>
               {link.name}
             </Link>

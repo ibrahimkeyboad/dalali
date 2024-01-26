@@ -15,7 +15,7 @@ function CategoryType({ onHandlerClick, value }: Props) {
           <button
             onClick={() => onHandlerClick(item)}
             key={item}
-            className={`px-8 py-6 border-2 hover:border-primary capitalize transition duration-200 rounded-md ${
+            className={`px-4 py-2 border-2 hover:border-primary capitalize transition duration-200 rounded-2xl ${
               value === item ? 'border-primary' : 'border-gray-500'
             } `}>
             {item}

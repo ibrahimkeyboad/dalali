@@ -18,8 +18,11 @@ export async function getHouses(category: string) {
 }
 export async function getAccommodation(id: string) {
   const res = await fetch(`${baseUrl}/posts/accommodation/${id}`, {
-    next: { revalidate: 100 },
+    cache: 'no-cache',
   });
+
+  // console.log(await res.json());
+
   const data = await res.json();
   return data;
 }

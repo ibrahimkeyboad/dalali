@@ -4,9 +4,6 @@ import Modal from './Modal';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { IoHomeSharp } from 'react-icons/io5';
-import { MdApartment } from 'react-icons/md';
-import { TbBuildingCommunity } from 'react-icons/tb';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@/contexts/store';
 import { modalToggle } from '@/contexts/globalState';
@@ -14,13 +11,12 @@ import { useRouter } from 'next/navigation';
 import dynamic from 'next/dynamic';
 import { Label } from '../ui/label';
 import { Input } from '../ui/input';
+import { formatPrice } from '@/utils/formatPrice';
 
 const CategoryType = dynamic(() => import('../inputs/CategoryType'), {
   loading: () => <p>Loading...</p>,
 });
-const Counter = dynamic(() => import('../Counter'), {
-  loading: () => <p>Loading...</p>,
-});
+
 const RoomContain = dynamic(() => import('../inputs/RoomContain'), {
   loading: () => <p>Loading...</p>,
 });
@@ -35,32 +31,27 @@ const FormSchema = z.object({
   categoryType: z.string(),
   street: z.string(),
   city: z.string(),
-  country: z.string(),
   bathrooms: z.number(),
   bedrooms: z.number(),
   bed: z.number(),
   // size: z.number(),
 });
 
-type MakeOfferFormValues = z.infer<typeof FormSchema>;
+type FormValuesType = z.infer<typeof FormSchema>;
 
 const categories = [
   {
     label: 'houses',
-    icon: IoHomeSharp,
   },
   {
     label: 'apartments',
-    icon: MdApartment,
   },
   {
     label: 'hostels',
-    icon: TbBuildingCommunity,
   },
 
   {
     label: 'frames',
-    icon: IoHomeSharp,
   },
 ];
 
@@ -77,7 +68,7 @@ function FilterModal() {
   const router = useRouter();
   const isOpen = useSelector((state: RootState) => state.modalValue.modalValue);
   const dispatch = useDispatch();
-  const form = useForm<MakeOfferFormValues>({
+  const form = useForm<FormValuesType>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
       bed: 0,
@@ -85,6 +76,10 @@ function FilterModal() {
       bathrooms: 0,
       minPrice: 30000,
       maxPrice: 100000,
+      category: '',
+      categoryType: '',
+      city: '',
+      street: '',
     },
   });
 
@@ -108,43 +103,36 @@ function FilterModal() {
     [form]
   );
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    router.push(
-      // `${data.category}?bed=${data.bed}&bathrooms=${data.bathrooms}&bedrooms=${data.bedrooms}&location=${data.location}`
-      `${data.category}?bed=${data.bed}&bathrooms=${data.bathrooms}&bedrooms=${data.bedrooms}`
-    );
+  console.log('data', form.formState.errors);
+  function onSubmit(data: FormValuesType) {
     if (!bed) {
       router.push(
-        `${data.category}?bathrooms=${data.bathrooms}&bedrooms=${data.bedrooms}`
+        `/${data.category}?bathrooms=${data.bathrooms}&bedrooms=${data.bedrooms}`
       );
+      return;
     }
+
+    router.push(
+      `/${data.category}?&bathrooms=${data.bathrooms}&bedrooms=${data.bedrooms}&city=${data.city}&${data.category}&bed=${data.bed}&bathrooms=${data.bathrooms}`
+    );
   }
 
   const body = (
     <div className='flex flex-col divide-y'>
-      <div className='flex gap-4 flex-wrap py-5'></div>
+      {/* <div className='flex gap-4 flex-wrap py-5'></div>s */}
 
       <div className='py-6'>
         <h3>Property category</h3>
         <div
           className='
-              grid
-              grid-cols-2
-              p-4
-              md:grid-cols-3
-              lg:grid-cols-4
-              gap-3
-              max-h-[50vh]
-              overflow-y-auto'>
+            flex flex-col mt-2 sm:flex-row gap-3'>
           {categories.map((item) => (
-            <div key={item.label} className='col-span-1'>
-              <CategoryInput
-                onClick={(value) => setCustomValue('category', value)}
-                selected={category === item.label}
-                label={item.label}
-                icon={item.icon}
-              />
-            </div>
+            <CategoryInput
+              key={item.label}
+              onClick={(value) => setCustomValue('category', value)}
+              selected={category === item.label}
+              label={item.label}
+            />
           ))}
         </div>
       </div>
@@ -222,13 +210,28 @@ function FilterModal() {
       )}
 
       <div className='flex flex-col gap-6  py-6'>
-        <div className='w-5/12'>
-          <Label>Kuanzia</Label>
-          <Input type='number' placeholder='00' name='' id='' />
+        <div className='sm:w-5/12'>
+          <Label>Kuanzia: {formatPrice(minPrice)}</Label>
+          <Input
+            type='number'
+            onChange={(e) => setCustomValue('minPrice', Number(e.target.value))}
+            placeholder=''
+            className='border-gray-500 focus:border-none mt-1 focus-visible:ring-none focus-visible:ring-offset-0 focus-within:border-none focus:outline-none focus:ring-offset-0'
+            name=''
+            id=''
+          />
         </div>
-        <div className='w-5/12'>
-          <Label>Had</Label>
-          <Input type='number' placeholder='0' name='' id='' />
+        <div className='sm:w-5/12'>
+          <Label>Had: {formatPrice(maxPrice)}</Label>
+          <Input
+            className='mt-2'
+            type='number'
+            // disabled
+            onChange={(e) => setCustomValue('maxPrice', Number(e.target.value))}
+            placeholder=''
+            name=''
+            id=''
+          />
         </div>
       </div>
 
