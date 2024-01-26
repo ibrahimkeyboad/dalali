@@ -5,7 +5,7 @@ import Posts from '@/components/posts/Posts';
 import Image from 'next/image';
 import Link from 'next/link';
 
-async function ApartmentPage(props) {
+async function ApartmentPage() {
   // console.log(props);
   const houses: Accommodation[] = await getHouses('apartment');
   return (
