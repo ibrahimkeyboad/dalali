@@ -8,7 +8,7 @@ import {
 } from '@/components/ui/card';
 import Image from 'next/image';
 import { AspectRatio } from '@radix-ui/react-aspect-ratio';
-import coverImage from '../../../../public/images/apartment.jpg';
+import coverImage from '../../../../../public/images/apartment.jpg';
 import ApartmentCard from '../_component/ApartmentCard';
 import { IoLocationOutline } from 'react-icons/io5';
 import Header from '@/components/header/Header';
