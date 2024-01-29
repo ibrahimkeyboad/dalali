@@ -43,7 +43,7 @@ function Header() {
       <header className='px-5 py-3 max-w-[1240px] bg0 m-auto flex flex-col'>
         <nav className='flex py-3 justify-between pb-2 items-center flex-wrap place-content-around md:px-9'>
           <Link
-            className={cn('text-2xl text-primary', merriweather.className)}
+            className={cn('text-2xl text-[#034047]', merriweather.className)}
             href='/'>
             Dalali
           </Link>

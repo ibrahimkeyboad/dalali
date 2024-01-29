@@ -10,13 +10,7 @@ import {
   TableBody,
   Table,
 } from '@/components/ui/table';
-import ProfileLink from './_components/ProfileLink';
-import {
-  DollarSignIcon,
-  Package2Icon,
-  SearchIcon,
-  UsersIcon,
-} from 'lucide-react';
+import { Package2Icon, SearchIcon, UsersIcon } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 
 export default function Component() {
@@ -171,7 +165,7 @@ export default function Component() {
   );
 }
 
-function TrashIcon(props) {
+function TrashIcon(props: any) {
   return (
     <svg
       {...props}

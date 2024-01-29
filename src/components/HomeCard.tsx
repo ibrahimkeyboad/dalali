@@ -91,13 +91,11 @@ function HomeCard({
           {title}
         </h3>
         <p className='text-sm text-gray-500 dark:text-gray-400'>
-          {location.street}
+          {location.street}, {location.city}
         </p>
-        <p className='text-sm text-gray-500 dark:text-gray-400'>
-          {location.city}
-        </p>
+        <p className='text-sm text-gray-500 dark:text-gray-400'></p>
         <h4 className='font-semibold text-base md:text-lg'>
-          {formatPrice(price.amount)} / {price.duration}
+          Tsh {formatPrice(price.amount)} / {price.duration}
         </h4>
         <div className='flex items-center gap-2 mt-2'>
           <BedIcon className='w-5 h-5' />

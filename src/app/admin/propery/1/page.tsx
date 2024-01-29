@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { CardTitle, CardHeader, CardContent, Card } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
+import { DollarSignIcon, HomeIcon, UsersIcon } from 'lucide-react';
 
 export default function Component() {
   return (
@@ -123,64 +124,5 @@ export default function Component() {
         </div>
       </main>
     </div>
-  );
-}
-
-function DollarSignIcon(props) {
-  return (
-    <svg
-      {...props}
-      xmlns='http://www.w3.org/2000/svg'
-      width='24'
-      height='24'
-      viewBox='0 0 24 24'
-      fill='none'
-      stroke='currentColor'
-      strokeWidth='2'
-      strokeLinecap='round'
-      strokeLinejoin='round'>
-      <line x1='12' x2='12' y1='2' y2='22' />
-      <path d='M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6' />
-    </svg>
-  );
-}
-
-function HomeIcon(props) {
-  return (
-    <svg
-      {...props}
-      xmlns='http://www.w3.org/2000/svg'
-      width='24'
-      height='24'
-      viewBox='0 0 24 24'
-      fill='none'
-      stroke='currentColor'
-      strokeWidth='2'
-      strokeLinecap='round'
-      strokeLinejoin='round'>
-      <path d='m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z' />
-      <polyline points='9 22 9 12 15 12 15 22' />
-    </svg>
-  );
-}
-
-function UsersIcon(props) {
-  return (
-    <svg
-      {...props}
-      xmlns='http://www.w3.org/2000/svg'
-      width='24'
-      height='24'
-      viewBox='0 0 24 24'
-      fill='none'
-      stroke='currentColor'
-      strokeWidth='2'
-      strokeLinecap='round'
-      strokeLinejoin='round'>
-      <path d='M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2' />
-      <circle cx='9' cy='7' r='4' />
-      <path d='M22 21v-2a4 4 0 0 0-3-3.87' />
-      <path d='M16 3.13a4 4 0 0 1 0 7.75' />
-    </svg>
   );
 }
