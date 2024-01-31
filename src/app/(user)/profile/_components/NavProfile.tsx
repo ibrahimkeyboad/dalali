@@ -1,9 +1,11 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { BuildingIcon, CogIcon, HomeIcon, UserIcon } from 'lucide-react';
+import { CogIcon, UserIcon } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { HiUserGroup } from 'react-icons/hi';
+import { IoHomeOutline, IoPeopleSharp } from 'react-icons/io5';
 
 function NavProfile() {
   const pathName = usePathname();
@@ -25,12 +27,32 @@ function NavProfile() {
             <Link
               className={cn(
                 'flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50',
-                pathName === '/profile/list' &&
+                pathName === '/profile/vyumba' &&
                   'bg-gray-200 dark:text-gray-50 text-gray-900 dark:bg-gray-800'
               )}
-              href='/profile/list'>
-              <BuildingIcon className='h-6 w-6' />
-              Apartment List
+              href='/profile/vyumba'>
+              <IoHomeOutline className='h-6 w-6' />
+              Vyumba
+            </Link>
+            <Link
+              className={cn(
+                'flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50',
+                pathName === '/profile/wapangaji' &&
+                  'bg-gray-200 dark:text-gray-50 text-gray-900 dark:bg-gray-800'
+              )}
+              href='/profile/wapangaji'>
+              <IoPeopleSharp className='h-6 w-6' />
+              Wapamgaji
+            </Link>
+            <Link
+              className={cn(
+                'flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50',
+                pathName === '/profile/weka' &&
+                  'bg-gray-200 dark:text-gray-50 text-gray-900 dark:bg-gray-800'
+              )}
+              href='/profile/weka'>
+              <HiUserGroup className='h-6 w-6' />
+              Ongeza chumba
             </Link>
 
             <Link

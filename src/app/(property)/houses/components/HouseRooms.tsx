@@ -22,7 +22,7 @@ function HouseRooms({ bath, room, kitchen }: Props) {
   const bathLength = bath.length;
 
   return (
-    <div>
+    <Card className='p-3'>
       <h2
         className={cn(
           'dark:text-[#e6f1ff] tracking-widest text-xl p-3 pb-5 ',
@@ -34,7 +34,7 @@ function HouseRooms({ bath, room, kitchen }: Props) {
         {room.length > 0 && (
           <article className='flex gap-5'>
             {room.map((item) => (
-              <Card className='pt-3' key={item.sort}>
+              <div className='pt-3' key={item.sort}>
                 <CardContent>
                   {item.sort === 'bedroom' ? (
                     <BedSingleIcon size={40} />
@@ -46,14 +46,14 @@ function HouseRooms({ bath, room, kitchen }: Props) {
                   </h3>
                   <CardDescription>{item.description}</CardDescription>
                 </CardContent>
-              </Card>
+              </div>
             ))}
           </article>
         )}
 
         {bath.length > 0 &&
           bath.map((item) => (
-            <Card className='pt-3' key={item.shower}>
+            <div className='pt-3' key={item.shower}>
               <CardContent>
                 <PiToilet size={40} />
                 <h3 className='font-semibold tracking-wider capitalize'>
@@ -67,7 +67,7 @@ function HouseRooms({ bath, room, kitchen }: Props) {
                   </ul>
                 </CardDescription>
               </CardContent>
-            </Card>
+            </div>
           ))}
 
         {/* {bath.length > 0 && (
@@ -136,7 +136,7 @@ function HouseRooms({ bath, room, kitchen }: Props) {
           </div>
         </CardContent> */}
       </div>
-    </div>
+    </Card>
   );
 }
 

@@ -39,12 +39,8 @@ function MainCard({ data }: Props) {
 
           <CardContent className='flex gap-8 md:items-center flex-col md:flex-row items-start justify-between'>
             <div className='md:flex gap-2 flex-col'>
-              <h3 className='flex items-center gap-1'>
-                <span>Tsh</span>
-                <span className='text-xl font-extrabold'>
-                  {formatPrice(data?.price.amount)}
-                </span>
-                <span>{data.price.duration}</span>
+              <h3 className='font-semibold text-base md:text-lg'>
+                Tsh {formatPrice(data.price.amount)} / {data.price.duration}
               </h3>
             </div>
           </CardContent>

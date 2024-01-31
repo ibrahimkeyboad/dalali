@@ -1,8 +1,3 @@
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/lmu55znWisf
- * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
- */
 import Link from 'next/link';
 
 export default function Component() {
@@ -50,7 +45,9 @@ export default function Component() {
                   Emergency Services
                 </div>
                 <h1 className='lg:leading-tighter text-3xl font-bold tracking-tighter sm:text-5xl'>
-                  We're here to help.
+                  {`
+                  
+                 `}
                 </h1>
                 <p className='max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400'>
                   We provide emergency services to help you during times of

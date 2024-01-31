@@ -14,6 +14,9 @@ import ApartmentCard from '../../apartments/_component/ApartmentCard';
 import { BiCar } from 'react-icons/bi';
 import { Merriweather } from 'next/font/google';
 import { cn } from '@/lib/utils';
+import { FaSwimmer } from 'react-icons/fa';
+
+import { MdOutlineElectricBolt } from 'react-icons/md';
 
 const merriweather = Merriweather({ weight: '700', subsets: ['latin'] });
 
@@ -106,9 +109,14 @@ function Page() {
           </CardHeader>
           <CardContent>
             <ul className='grid grid-cols-2 gap-2'>
-              3 swimming pools
-              <li>water</li>
-              <li>umeme</li>
+              <li className='flex gap-2 items-center'>
+                <FaSwimmer />3 swimming pools
+              </li>
+              <li className='flex gap-2 items-center'>water</li>
+              <li className='flex gap-2 items-center'>
+                <MdOutlineElectricBolt className='w-6 h-6' />
+                umeme
+              </li>
               <li>geti</li>
               <li>Gymnasium</li>
               <li>Clubhouse</li>
