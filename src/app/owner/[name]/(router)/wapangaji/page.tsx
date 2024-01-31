@@ -11,7 +11,7 @@ import {
 import { Separator } from '@/components/ui/separator';
 import Link from 'next/link';
 import { TrashIcon } from 'lucide-react';
-import FilterProfile from '../_components/filter';
+import FilterProfile from '../../_components/filter';
 
 function Tenants() {
   return (

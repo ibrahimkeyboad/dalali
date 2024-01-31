@@ -10,7 +10,7 @@ import {
 import { CardTitle, CardHeader, CardContent, Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { TrashIcon } from 'lucide-react';
-import FilterProfile from '../_components/filter';
+import FilterProfile from '../../_components/filter';
 
 export default function Component() {
   return (

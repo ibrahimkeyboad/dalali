@@ -4,14 +4,15 @@ import Link from 'next/link';
 const merriweather = Merriweather({ weight: '700', subsets: ['latin'] });
 
 export default function NotFound() {
-
   return (
     <div className='grid gap-2 place-items-center h-screen content-center'>
-      <h1 className={cn('text-4xl font-bold', merriweather.className)}>
-        Not Found
+      <h1 className={cn('text-7xl font-bold', merriweather.className)}>
+        Ukurasa Haupo
       </h1>
-      <p className='text-lg'>This Page is not found</p>
-      <Link href='/'>Return Home</Link>
+      <p className='text-xl'>Ukurasa unao utafuta haupo</p>
+      <Link className='hover:underline' href='/'>
+        Return Home
+      </Link>
     </div>
   );
 }
