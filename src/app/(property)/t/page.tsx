@@ -10,6 +10,7 @@ import {
   Carousel,
 } from '@/components/ui/carousel';
 import { CardTitle, CardHeader, CardContent, Card } from '@/components/ui/card';
+import Image from 'next/image';
 
 export default function Component() {
   return (
@@ -17,30 +18,30 @@ export default function Component() {
       <Carousel className='w-full max-w-3xl'>
         <CarouselContent>
           <CarouselItem>
-            <img
+            <Image
               alt='Apartment Image 1'
               className='aspect-[16/9] object-cover rounded-md'
-              height='500'
+              height={500}
               src='/placeholder.svg'
-              width='800'
+              width={800}
             />
           </CarouselItem>
           <CarouselItem>
-            <img
+            <Image
               alt='Apartment Image 2'
               className='aspect-[16/9] object-cover rounded-md'
-              height='500'
+              height={500}
               src='/placeholder.svg'
-              width='800'
+              width={800}
             />
           </CarouselItem>
           <CarouselItem>
-            <img
+            <Image
               alt='Apartment Image 3'
               className='aspect-[16/9] object-cover rounded-md'
-              height='500'
+              height={500}
               src='/placeholder.svg'
-              width='800'
+              width={800}
             />
           </CarouselItem>
         </CarouselContent>
@@ -78,7 +79,7 @@ export default function Component() {
               <CardTitle>Cozy Apartment</CardTitle>
             </CardHeader>
             <CardContent>
-              <img
+              <Image
                 alt='Cozy Apartment'
                 className='aspect-[1/1] object-cover rounded-md'
                 height='200'
@@ -92,7 +93,7 @@ export default function Component() {
               <CardTitle>Modern Apartment</CardTitle>
             </CardHeader>
             <CardContent>
-              <img
+              <Image
                 alt='Modern Apartment'
                 className='aspect-[1/1] object-cover rounded-md'
                 height='200'
@@ -106,7 +107,7 @@ export default function Component() {
               <CardTitle>Classic Apartment</CardTitle>
             </CardHeader>
             <CardContent>
-              <img
+              <Image
                 alt='Classic Apartment'
                 className='aspect-[1/1] object-cover rounded-md'
                 height='200'

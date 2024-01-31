@@ -73,13 +73,13 @@ export default function Component() {
               <img
                 alt='Top Story Image'
                 className='w-full h-64 object-cover object-center rounded-lg'
-                height='400'
+                height={400}
                 src='/images/home.jpg'
                 style={{
                   aspectRatio: '600/400',
                   objectFit: 'cover',
                 }}
-                width='600'
+                width={600}
               />
             </div>
             <div className='flex flex-col justify-center'>
@@ -100,16 +100,16 @@ export default function Component() {
           <h2 className='text-2xl font-bold mb-4'>Nyumba</h2>
           <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
             <div>
-              <img
+              <Image
                 alt='Politics Story Image'
                 className='w-full h-64 object-cover object-center rounded-lg'
-                height='400'
+                height={400}
                 src='/images/home.jpg'
                 style={{
                   aspectRatio: '600/400',
                   objectFit: 'cover',
                 }}
-                width='600'
+                width={600}
               />
               <h3 className='text-xl font-bold mb-2 mt-4'>
                 Self ya vyumba viwili
@@ -125,16 +125,16 @@ export default function Component() {
               </Link>
             </div>
             <div>
-              <img
+              <Image
                 alt='Politics Story Image'
                 className='w-full h-64 object-cover object-center rounded-lg'
-                height='400'
+                height={400}
                 src='/images/home.jpg'
                 style={{
                   aspectRatio: '600/400',
                   objectFit: 'cover',
                 }}
-                width='600'
+                width={600}
               />
               <h3 className='text-xl font-bold mb-2 mt-4'>
                 Nyumba ya chumba kimoja
@@ -151,16 +151,16 @@ export default function Component() {
               </Link>
             </div>
             <div>
-              <img
+              <Image
                 alt='Politics Story Image'
                 className='w-full h-64 object-cover object-center rounded-lg'
-                height='400'
+                height={400}
                 src='/images/home.jpg'
                 style={{
                   aspectRatio: '600/400',
                   objectFit: 'cover',
                 }}
-                width='600'
+                width={600}
               />
               <h3 className='text-xl font-bold mb-2 mt-4'>
                 Self ya chumba kimoja
@@ -181,16 +181,16 @@ export default function Component() {
           <h2 className='text-2xl font-bold mb-4'>Apartment</h2>
           <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
             <div>
-              <img
+              <Image
                 alt='Business Story Image'
                 className='w-full h-64 object-cover object-center rounded-lg'
-                height='400'
+                height={400}
                 src='/images/home.jpg'
                 style={{
                   aspectRatio: '600/400',
                   objectFit: 'cover',
                 }}
-                width='600'
+                width={600}
               />
               <h3 className='text-xl font-bold mb-2 mt-4'>VICTORIA PLACE</h3>
               <p className='text-zinc-500 dark:text-zinc-400'>
@@ -202,16 +202,16 @@ export default function Component() {
               </Link>
             </div>
             <div>
-              <img
+              <Image
                 alt='Business Story Image'
                 className='w-full h-64 object-cover object-center rounded-lg'
-                height='400'
+                height={400}
                 src='/images/home.jpg'
                 style={{
                   aspectRatio: '600/400',
                   objectFit: 'cover',
                 }}
-                width='600'
+                width={600}
               />
               <h3 className='text-xl font-bold mb-2 mt-4'>
                 Business Story Headline
@@ -225,16 +225,16 @@ export default function Component() {
               </Link>
             </div>
             <div>
-              <img
+              <Image
                 alt='Business Story Image'
                 className='w-full h-64 object-cover object-center rounded-lg'
-                height='400'
+                height={400}
                 src='/images/home.jpg'
                 style={{
                   aspectRatio: '600/400',
                   objectFit: 'cover',
                 }}
-                width='600'
+                width={600}
               />
               <h3 className='text-xl font-bold mb-2 mt-4'>
                 Business Story Headline
@@ -253,16 +253,16 @@ export default function Component() {
           <h2 className='text-2xl font-bold mb-4'>Frame</h2>
           <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
             <div>
-              <img
+              <Image
                 alt='Tech Story Image'
                 className='w-full h-64 object-cover object-center rounded-lg'
-                height='400'
+                height={400}
                 src='/images/home.jpg'
                 style={{
                   aspectRatio: '600/400',
                   objectFit: 'cover',
                 }}
-                width='600'
+                width={600}
               />
               <h3 className='text-xl font-bold mb-2 mt-4'>
                 Tech Story Headline
@@ -276,16 +276,16 @@ export default function Component() {
               </Link>
             </div>
             <div>
-              <img
+              <Image
                 alt='Tech Story Image'
                 className='w-full h-64 object-cover object-center rounded-lg'
-                height='400'
+                height={400}
                 src='/images/home.jpg'
                 style={{
                   aspectRatio: '600/400',
                   objectFit: 'cover',
                 }}
-                width='600'
+                width={600}
               />
               <h3 className='text-xl font-bold mb-2 mt-4'>
                 Tech Story Headline
@@ -299,16 +299,16 @@ export default function Component() {
               </Link>
             </div>
             <div>
-              <img
+              <Image
                 alt='Tech Story Image'
                 className='w-full h-64 object-cover object-center rounded-lg'
-                height='400'
+                height={400}
                 src='/images/home.jpg'
                 style={{
                   aspectRatio: '600/400',
                   objectFit: 'cover',
                 }}
-                width='600'
+                width={600}
               />
               <h3 className='text-xl font-bold mb-2 mt-4'>
                 Tech Story Headline
@@ -329,16 +329,16 @@ export default function Component() {
           </Link>
           <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
             <div>
-              <img
+              <Image
                 alt='Culture Story Image'
                 className='w-full h-64 object-cover object-center rounded-lg'
-                height='400'
+                height={400}
                 src='/images/home.jpg'
                 style={{
                   aspectRatio: '600/400',
                   objectFit: 'cover',
                 }}
-                width='600'
+                width={600}
               />
               <h3 className='text-xl font-bold mb-2 mt-4'>
                 Culture Story Headline
@@ -352,16 +352,16 @@ export default function Component() {
               </Link>
             </div>
             <div>
-              <img
+              <Image
                 alt='Culture Story Image'
                 className='w-full h-64 object-cover object-center rounded-lg'
-                height='400'
+                height={400}
                 src='/images/home.jpg'
                 style={{
                   aspectRatio: '600/400',
                   objectFit: 'cover',
                 }}
-                width='600'
+                width={600}
               />
               <h3 className='text-xl font-bold mb-2 mt-4'>
                 Culture Story Headline
@@ -375,16 +375,16 @@ export default function Component() {
               </Link>
             </div>
             <div>
-              <img
+              <Image
                 alt='Culture Story Image'
                 className='w-full h-64 object-cover object-center rounded-lg'
-                height='400'
+                height={400}
                 src='/images/home.jpg'
                 style={{
                   aspectRatio: '600/400',
                   objectFit: 'cover',
                 }}
-                width='600'
+                width={600}
               />
               <h3 className='text-xl font-bold mb-2 mt-4'>
                 Culture Story Headline
@@ -403,16 +403,16 @@ export default function Component() {
           <h2 className='text-2xl font-bold mb-4'>Sports</h2>
           <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
             <div>
-              <img
+              <Image
                 alt='Sports Story Image'
                 className='w-full h-64 object-cover object-center rounded-lg'
-                height='400'
+                height={400}
                 src='/images/home.jpg'
                 style={{
                   aspectRatio: '600/400',
                   objectFit: 'cover',
                 }}
-                width='600'
+                width={600}
               />
               <h3 className='text-xl font-bold mb-2 mt-4'>
                 Sports Story Headline
@@ -426,16 +426,16 @@ export default function Component() {
               </Link>
             </div>
             <div>
-              <img
+              <Image
                 alt='Sports Story Image'
                 className='w-full h-64 object-cover object-center rounded-lg'
-                height='400'
+                height={400}
                 src='/images/home.jpg'
                 style={{
                   aspectRatio: '600/400',
                   objectFit: 'cover',
                 }}
-                width='600'
+                width={600}
               />
               <h3 className='text-xl font-bold mb-2 mt-4'>
                 Sports Story Headline
@@ -449,16 +449,16 @@ export default function Component() {
               </Link>
             </div>
             <div>
-              <img
+              <Image
                 alt='Sports Story Image'
                 className='w-full h-64 object-cover object-center rounded-lg'
-                height='400'
+                height={400}
                 src='/images/home.jpg'
                 style={{
                   aspectRatio: '600/400',
                   objectFit: 'cover',
                 }}
-                width='600'
+                width={600}
               />
               <h3 className='text-xl font-bold mb-2 mt-4'>
                 Sports Story Headline

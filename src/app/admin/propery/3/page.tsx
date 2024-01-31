@@ -20,6 +20,7 @@ import {
   SearchIcon,
   UsersIcon,
 } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Component() {
   return (
@@ -54,16 +55,16 @@ export default function Component() {
             </div>
           </form>
           <Button className='rounded-full' size='icon' variant='ghost'>
-            <img
+            <Image
               alt='Avatar'
               className='rounded-full'
-              height='32'
+              height={32}
               src='/placeholder.svg'
               style={{
                 aspectRatio: '32/32',
                 objectFit: 'cover',
               }}
-              width='32'
+              width={32}
             />
             <span className='sr-only'>Toggle user menu</span>
           </Button>
