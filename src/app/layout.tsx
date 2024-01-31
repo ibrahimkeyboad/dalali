@@ -25,10 +25,10 @@ export default function RootLayout({
         <ToasterProvider />
         <QueryProviders>
           <ReduxProvider>
-            <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
-              {children}
-              <FilterModal />
-            </ThemeProvider>
+            {/* <ThemeProvider attribute='class' defaultTheme='system' enableSystem> */}
+            {children}
+            <FilterModal />
+            {/* </ThemeProvider> */}
           </ReduxProvider>
         </QueryProviders>
       </body>
