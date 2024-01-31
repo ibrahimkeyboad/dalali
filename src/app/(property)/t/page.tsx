@@ -19,6 +19,7 @@ export default function Component() {
         <CarouselContent>
           <CarouselItem>
             <Image
+              priority
               alt='Apartment Image 1'
               className='aspect-[16/9] object-cover rounded-md'
               height={500}
@@ -28,6 +29,7 @@ export default function Component() {
           </CarouselItem>
           <CarouselItem>
             <Image
+              priority
               alt='Apartment Image 2'
               className='aspect-[16/9] object-cover rounded-md'
               height={500}
@@ -37,6 +39,7 @@ export default function Component() {
           </CarouselItem>
           <CarouselItem>
             <Image
+              priority
               alt='Apartment Image 3'
               className='aspect-[16/9] object-cover rounded-md'
               height={500}
@@ -80,6 +83,7 @@ export default function Component() {
             </CardHeader>
             <CardContent>
               <Image
+                priority
                 alt='Cozy Apartment'
                 className='aspect-[1/1] object-cover rounded-md'
                 height='200'
@@ -94,6 +98,7 @@ export default function Component() {
             </CardHeader>
             <CardContent>
               <Image
+                priority
                 alt='Modern Apartment'
                 className='aspect-[1/1] object-cover rounded-md'
                 height='200'
@@ -108,6 +113,7 @@ export default function Component() {
             </CardHeader>
             <CardContent>
               <Image
+                priority
                 alt='Classic Apartment'
                 className='aspect-[1/1] object-cover rounded-md'
                 height='200'

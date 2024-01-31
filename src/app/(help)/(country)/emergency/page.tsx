@@ -31,6 +31,7 @@ function Emergency() {
                 src='/images/emergency/tanesco.jpg'
                 alt='tanesco'
                 fill
+                priority
               />
             </figure>
             <h3
@@ -49,6 +50,7 @@ function Emergency() {
                 src='/images/emergency/zima.jpg'
                 alt='Zima moto'
                 fill
+                priority
               />
             </figure>
 
@@ -68,6 +70,7 @@ function Emergency() {
                 src='/images/emergency/polisi.webp'
                 alt='polisi'
                 fill
+                priority
               />
             </figure>
             <h3
@@ -86,6 +89,7 @@ function Emergency() {
                 src='/images/emergency/ambulence.jpg'
                 alt='ambulence'
                 fill
+                priority
               />
             </figure>
             <h3
@@ -104,6 +108,7 @@ function Emergency() {
                 src='/images/emergency/water.jpg'
                 alt='idadi ya maji'
                 fill
+                priority
               />
             </figure>
             <h3

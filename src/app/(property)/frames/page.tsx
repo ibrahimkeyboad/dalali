@@ -15,6 +15,7 @@ function FramePage() {
             height={200}
             src='/images/apartment3.jpg'
             width={300}
+            priority
           />
           <div className='grid gap-1'>
             <h3 className='font-semibold'>Apartment Building 1</h3>

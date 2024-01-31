@@ -13,12 +13,12 @@ export function NavSlider() {
       opts={{
         align: 'start',
       }}
-      className='w-full mx-auto my-10 max-w-sm'>
-      <CarouselContent>
+      className='w-full mx-auto sm:max-w-lg my-16  lg:max-w-xl xl:max-w-2xl'>
+      <CarouselContent className='gap-10'>
         {Array.from({ length: 8 }).map((_, index) => (
-          <CarouselItem key={index} className='md:basis-1/6 lg:basis-1/6'>
-            <Link className='bg-white p-3' href={`/${index}`}>
-              {index}
+          <CarouselItem key={index} className='basis-[50px]'>
+            <Link className='bg-white p-4' href={`/${index}`}>
+              link{index}
             </Link>
           </CarouselItem>
         ))}

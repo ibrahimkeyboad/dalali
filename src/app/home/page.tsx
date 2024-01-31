@@ -57,6 +57,7 @@ export default function Component() {
             </p>
           </div>
           <Image
+            priority
             className='rounded-lg'
             src='/images/hero.jpg'
             alt='hero'
@@ -101,6 +102,7 @@ export default function Component() {
           <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
             <div>
               <Image
+                priority
                 alt='Politics Story Image'
                 className='w-full h-64 object-cover object-center rounded-lg'
                 height={400}
@@ -126,6 +128,7 @@ export default function Component() {
             </div>
             <div>
               <Image
+                priority
                 alt='Politics Story Image'
                 className='w-full h-64 object-cover object-center rounded-lg'
                 height={400}
@@ -152,6 +155,7 @@ export default function Component() {
             </div>
             <div>
               <Image
+                priority
                 alt='Politics Story Image'
                 className='w-full h-64 object-cover object-center rounded-lg'
                 height={400}
@@ -182,6 +186,7 @@ export default function Component() {
           <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
             <div>
               <Image
+                priority
                 alt='Business Story Image'
                 className='w-full h-64 object-cover object-center rounded-lg'
                 height={400}
@@ -203,6 +208,7 @@ export default function Component() {
             </div>
             <div>
               <Image
+                priority
                 alt='Business Story Image'
                 className='w-full h-64 object-cover object-center rounded-lg'
                 height={400}
@@ -226,6 +232,7 @@ export default function Component() {
             </div>
             <div>
               <Image
+                priority
                 alt='Business Story Image'
                 className='w-full h-64 object-cover object-center rounded-lg'
                 height={400}
@@ -254,6 +261,7 @@ export default function Component() {
           <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
             <div>
               <Image
+                priority
                 alt='Tech Story Image'
                 className='w-full h-64 object-cover object-center rounded-lg'
                 height={400}
@@ -277,6 +285,7 @@ export default function Component() {
             </div>
             <div>
               <Image
+                priority
                 alt='Tech Story Image'
                 className='w-full h-64 object-cover object-center rounded-lg'
                 height={400}
@@ -300,6 +309,7 @@ export default function Component() {
             </div>
             <div>
               <Image
+                priority
                 alt='Tech Story Image'
                 className='w-full h-64 object-cover object-center rounded-lg'
                 height={400}
@@ -330,6 +340,7 @@ export default function Component() {
           <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
             <div>
               <Image
+                priority
                 alt='Culture Story Image'
                 className='w-full h-64 object-cover object-center rounded-lg'
                 height={400}
@@ -353,6 +364,7 @@ export default function Component() {
             </div>
             <div>
               <Image
+                priority
                 alt='Culture Story Image'
                 className='w-full h-64 object-cover object-center rounded-lg'
                 height={400}
@@ -376,6 +388,7 @@ export default function Component() {
             </div>
             <div>
               <Image
+                priority
                 alt='Culture Story Image'
                 className='w-full h-64 object-cover object-center rounded-lg'
                 height={400}
@@ -404,6 +417,7 @@ export default function Component() {
           <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
             <div>
               <Image
+                priority
                 alt='Sports Story Image'
                 className='w-full h-64 object-cover object-center rounded-lg'
                 height={400}
@@ -427,6 +441,7 @@ export default function Component() {
             </div>
             <div>
               <Image
+                priority
                 alt='Sports Story Image'
                 className='w-full h-64 object-cover object-center rounded-lg'
                 height={400}
@@ -450,6 +465,7 @@ export default function Component() {
             </div>
             <div>
               <Image
+                priority
                 alt='Sports Story Image'
                 className='w-full h-64 object-cover object-center rounded-lg'
                 height={400}

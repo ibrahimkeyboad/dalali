@@ -14,6 +14,7 @@ async function ApartmentPage() {
       <Container>
         <div className='grid gap-3'>
           <Image
+          priority
             alt='Apartment Building 1'
             className='rounded-lg object-cover transition-opacity'
             height={200}

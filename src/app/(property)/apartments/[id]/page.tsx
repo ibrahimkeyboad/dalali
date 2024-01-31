@@ -22,6 +22,7 @@ function Page() {
       <section className='max-w-[1120px] px-3 md:px-10 m-auto'>
         <AspectRatio ratio={16 / 9}>
           <Image
+            priority
             className='w-[1000px] rounded-md h-[500px] object-cover'
             src={coverImage}
             alt='apartment cover image'

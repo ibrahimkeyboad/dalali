@@ -56,6 +56,7 @@ export default function Component() {
           </form>
           <Button className='rounded-full' size='icon' variant='ghost'>
             <Image
+              priority
               alt='Avatar'
               className='rounded-full'
               height={32}

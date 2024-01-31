@@ -18,6 +18,7 @@ function HomeCard() {
           <CarouselItem>
             <AspectRatio ratio={400 / 300}>
               <Image
+                priority
                 alt='Apartment 1'
                 className='object-cover w-full h-full'
                 height={300}
@@ -33,6 +34,7 @@ function HomeCard() {
           <CarouselItem>
             <AspectRatio ratio={400 / 300}>
               <Image
+                priority
                 alt='Apartment 1'
                 className='object-cover w-full h-full'
                 height={300}
