@@ -17,6 +17,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Pencil } from 'lucide-react';
 import { useState } from 'react';
+import { Card } from '@/components/ui/card';
 
 type TitleFormProps = {
   initialData: { title: string };
@@ -50,7 +51,7 @@ function TitleForm({ initialData, properyId }: TitleFormProps) {
 
   const { isSubmitting, isValid } = form.formState;
   return (
-    <div className='mt-6 bg-slate-100 rounded-md p-4'>
+    <Card className='mt-6 rounded-md p-4'>
       <div className='font-medium flex items-center justify-between'>
         Property Title
         <Button onClick={handleEditing} variant='ghost'>
@@ -95,7 +96,7 @@ function TitleForm({ initialData, properyId }: TitleFormProps) {
           <p className='text-sm mt-2'>{initialData.title}</p>
         )}
       </div>
-    </div>
+    </Card>
   );
 }
 

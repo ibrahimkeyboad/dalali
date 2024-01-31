@@ -16,13 +16,11 @@ export default function Component() {
   return (
     <>
       <FilterProfile />
-      <main className='flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-6'>
+      <main className=' p-4 md:gap-8 md:p-6'>
+        <h3 className='text-lg font-bold mb-5'>Vyumba vya Apartment Yako</h3>
         <div className='grid grid-cols-1 gap-6'>
           <div className='md:col-span-4 lg:col-span-3 xl:col-span-4 flex flex-col gap-6'>
             <Card>
-              <CardHeader>
-                <CardTitle>Apartments</CardTitle>
-              </CardHeader>
               <CardContent>
                 <Table>
                   <TableHeader>

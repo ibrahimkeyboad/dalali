@@ -9,7 +9,7 @@ function layout({ children }: { children: React.ReactNode }) {
   return (
     <main className='flex h-screen '>
       <NavProfile />
-      <section className='p-3 w-full'>{children}</section>
+      <section className='w-full'>{children}</section>
     </main>
   );
 }

@@ -20,37 +20,37 @@ function NavProfile() {
                 pathName === '/profile' &&
                   'bg-gray-200 dark:text-gray-50 text-gray-900 dark:bg-gray-800'
               )}
-              href='/profile'>
+              href='/owner/nhc'>
               <UserIcon className='h-6 w-6' />
               Dashboard
             </Link>
             <Link
               className={cn(
                 'flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50',
-                pathName === '/profile/vyumba' &&
+                pathName === '/owner/nhc/vyumba' &&
                   'bg-gray-200 dark:text-gray-50 text-gray-900 dark:bg-gray-800'
               )}
-              href='/profile/vyumba'>
+              href='/owner/nhc/vyumba'>
               <IoHomeOutline className='h-6 w-6' />
               Vyumba
             </Link>
             <Link
               className={cn(
                 'flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50',
-                pathName === '/profile/wapangaji' &&
+                pathName === '/owner/nhc/wapangaji' &&
                   'bg-gray-200 dark:text-gray-50 text-gray-900 dark:bg-gray-800'
               )}
-              href='/profile/wapangaji'>
+              href='/owner/nhc/wapangaji'>
               <IoPeopleSharp className='h-6 w-6' />
               Wapamgaji
             </Link>
             <Link
               className={cn(
                 'flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50',
-                pathName === '/profile/weka' &&
+                pathName === '/owner/nhc/weka' &&
                   'bg-gray-200 dark:text-gray-50 text-gray-900 dark:bg-gray-800'
               )}
-              href='/profile/weka'>
+              href='/owner/nhc/weka'>
               <HiUserGroup className='h-6 w-6' />
               Ongeza chumba
             </Link>
@@ -58,10 +58,10 @@ function NavProfile() {
             <Link
               className={cn(
                 'flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50',
-                pathName === '/profile/settings' &&
+                pathName === '/owner/nhc/settings' &&
                   'bg-gray-200 dark:text-gray-50 text-gray-900 dark:bg-gray-800'
               )}
-              href='/profile/settings'>
+              href='/owner/nhc/settings'>
               <CogIcon className='h-6 w-6' />
               Settings
             </Link>
