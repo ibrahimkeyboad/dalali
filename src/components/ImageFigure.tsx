@@ -9,6 +9,7 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import { AspectRatio } from './ui/aspect-ratio';
+import { Dialog, DialogContent, DialogTrigger } from './ui/dialog';
 
 type Props = {
   images: {
@@ -23,17 +24,44 @@ const ImageFigure = ({ images }: Props) => {
       <CarouselContent className='h-[600px]'>
         {images?.map((img, i) => (
           <CarouselItem className='relative' key={i}>
-            <AspectRatio>
-              <Image
-                quality={100}
-                alt=''
-                className='object-cover object-top rounded-lg'
-                priority
-                src={`/images/${img.uri}`}
-                fill
-                sizes='(min-width: 768px) 90vw, (min-width: 1200px) 50vw, 33vw'
-              />
-            </AspectRatio>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Image
+                  src={`/images/${img.uri}`}
+                  alt='apt'
+                  width={879}
+                  height={586}
+                  className='object-cover cursor-pointer'
+                />
+              </DialogTrigger>
+              <DialogContent className='max-w-[80vw] h-[90vh]'>
+                <Carousel className='w-full h-[900px]'>
+                  <CarouselContent className=''>
+                    <CarouselItem key={i} className='relative h-[85vh]'>
+                      <Image
+                        alt='Apartment 1'
+                        fill
+                        priority
+                        className='object-cover'
+                        src={`/images/${img.uri}`}
+                      />
+                    </CarouselItem>
+                  </CarouselContent>
+                  <CarouselPrevious className='left-1' />
+                  <CarouselNext className='right-1' />
+                </Carousel>
+
+                {/* <figure className='relative'>
+          <Image
+            src='/demo/francesca-tosolini-tHkJAMcO3QE-unsplash.jpg'
+            alt='apt'
+            fill
+            priority
+            className='object-cover cursor-pointer'
+          />
+        </figure> */}
+              </DialogContent>
+            </Dialog>
           </CarouselItem>
         ))}
       </CarouselContent>
