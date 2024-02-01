@@ -8,15 +8,17 @@ function FramePage() {
     <>
       <Header />
       <Container>
-        <div className='grid gap-3'>
-          <Image
-            alt='Apartment Building 1'
-            className='rounded-lg object-cover transition-opacity'
-            height={200}
-            src='/images/apartment3.jpg'
-            width={300}
-            priority
-          />
+        <div className='flex flex-col gap-3'>
+          <figure className='relative h-[300px] w-full'>
+            <Image
+              priority
+              fill
+              alt='Apartment Building 1'
+              className='rounded-lg object-cover object-center transition-opacity'
+              src='/images/apartment3.jpg'
+            />
+          </figure>
+
           <div className='grid gap-1'>
             <h3 className='font-semibold'>Apartment Building 1</h3>
             <p className='text-sm leading-none'>Street, City, Country</p>

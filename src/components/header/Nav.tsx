@@ -48,7 +48,7 @@ function Nav() {
   return (
     <>
       {!asPath.includes('search') && (
-        <ul className='flex gap-10 my-1 py-3 overflow-auto justify-center'>
+        <ul className='flex gap-10 my-1 py-3 justify-center'>
           <Carousel
             opts={{
               align: 'start',
