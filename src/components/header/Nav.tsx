@@ -17,6 +17,10 @@ const links = [
     link: '/',
   },
   {
+    name: 'NHC',
+    link: '/nhc',
+  },
+  {
     name: 'Apartments',
     link: '/apartments',
   },
@@ -25,13 +29,13 @@ const links = [
     link: '/houses',
   },
   {
-    name: 'Hostels',
-    link: '/hostels',
-  },
-  {
     name: 'Frames',
     link: '/frames',
   },
+  // {
+  //   name: 'Hostels',
+  //   link: '/hostels',
+  // },
   // {
   //   name: 'Geust Houses',
   //   link: '/geusthouses',

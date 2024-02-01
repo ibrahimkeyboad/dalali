@@ -104,6 +104,7 @@ function Header() {
       {path === '/lodges' && <Nav />}
       {path === '/frames' && <Nav />}
       {path === '/geusthouses' && <Nav />}
+      {path === '/nhc' && <Nav />}
     </>
   );
 }
