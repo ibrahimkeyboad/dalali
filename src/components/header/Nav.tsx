@@ -52,7 +52,7 @@ function Nav() {
   return (
     <>
       {!asPath.includes('search') && (
-        <ul className='flex gap-10 my-1 py-3 justify-center'>
+        <nav className='flex gap-10 my-1 py-3 justify-center'>
           <Carousel
             opts={{
               align: 'start',
@@ -76,7 +76,7 @@ function Nav() {
             <CarouselPrevious className='md:hidden' />
             <CarouselNext className='md:hidden' />
           </Carousel>
-        </ul>
+        </nav>
       )}
     </>
   );

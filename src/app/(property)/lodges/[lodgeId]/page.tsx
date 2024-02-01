@@ -108,15 +108,7 @@ async function LodgePage({ params }: { params: { id: string } }) {
               <h4 className='flex gap-2 items-center'>
                 What this place offers
               </h4>
-              <nav>
-                <ul className='flex flex-wrap gap-10 ml-10'>
-                  {data?.offers?.map((tag: any) => (
-                    <li className='capitalize' key={tag}>
-                      {tag}
-                    </li>
-                  ))}
-                </ul>
-              </nav>
+            
             </div>
           </div>
           <RoomContaine />

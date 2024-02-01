@@ -60,11 +60,11 @@ function HouseRooms({ bath, room, kitchen }: Props) {
                   {item.sort}
                 </h3>
                 <CardDescription>
-                  <ul>
+                  {/* <ul>
                     <li className='text-sm'>{item.shower}</li>
                     <li className='text-sm'>{item.toilet}</li>
                     <li className='text-sm'>{item.description}</li>
-                  </ul>
+                  </ul> */}
                 </CardDescription>
               </CardContent>
             </div>

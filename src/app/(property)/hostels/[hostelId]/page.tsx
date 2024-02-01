@@ -84,15 +84,7 @@ function page() {
           <h3 className='dark:text-[#e6f1ff] tracking-widest p-4 font-bold text-xl'>
             What this place offers
           </h3>
-          <div className='flex p-4 gap-5 flex-col'>
-            <ul className='flex flex-wrap gap-10 ml-10'>
-              {data?.offers?.map((tag: any) => (
-                <li className='capitalize' key={tag}>
-                  {tag}
-                </li>
-              ))}
-            </ul>
-          </div>
+          <div className='flex p-4 gap-5 flex-col'></div>
         </Card>
 
         <div className='dark:bg-[#112240] p-3 my-4 bg-white rounded-sm divide-y'>

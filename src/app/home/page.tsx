@@ -494,8 +494,6 @@ export default function Component() {
       <footer className='bg-[#034047] text-zinc-900 py-4 rounded-xl'>
         <nav>
           <Link href=''>Dalali</Link>
-          <ul></ul>
-          <ul></ul>
         </nav>
       </footer>
     </section>
